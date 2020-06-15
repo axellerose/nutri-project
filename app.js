@@ -9,20 +9,17 @@ const mongoose     = require('mongoose');
 const logger       = require('morgan');
 const path         = require('path');
 
-
-mongoose
-  .connect('mongodb://localhost/nutri-project', {useNewUrlParser: true})
-  .then(x => {
-    console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
-  })
-  .catch(err => {
-    console.error('Error connecting to mongo', err)
-  });
-
 const app_name = require('./package.json').name;
 const debug = require('debug')(`${app_name}:${path.basename(__filename).split('.')[0]}`);
 
 const app = express();
+
+// Set up the database
+require('./configs/db.configs');
+
+// Create Session
+const createSession = require('./configs/session.config')
+createSession(app)
 
 // Middleware Setup
 app.use(logger('dev'));
@@ -50,9 +47,11 @@ app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 app.locals.title = 'NutriSeek / Nutria / NutriHacker / Nutri community / NutriApp / Nutramint';
 
 
-
-const index = require('./routes/index');
+// Routes
+const index = require('./routes/index.routes');
+const auth = require('./routes/auth.routes');
 app.use('/', index);
+app.use('/', auth);
 
 
 module.exports = app;

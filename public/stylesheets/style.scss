@@ -33,3 +33,24 @@ a {
   text-decoration: none;
   color: black;
 }
+
+// IMPORTANT : Start to implement responsive CSS styles
+                                        /* EXTRA-SMALL SCREEN */
+@media screen and (max-width: 767px) {
+  // Fill
+}
+
+                                        /* SMALL SCREEN */
+@media screen and (min-width: 768px) {
+  // Fill
+}
+
+                                        /* MEDIUM SCREEN */
+@media screen and (min-width: 960px) {    
+  // Fill
+}
+
+                                        /* LARGE SCREEN */
+@media screen and (min-width: 1200px) {
+  // Fill
+}
