@@ -1,1 +1,16 @@
 <h2>Login</h2>
+
+<form action="/signup" method="POST">
+  <label for="mail">Email:</label>
+  <input type="email" id="mail" name="email" placeholder="Your email">
+
+  <label for="pwd">Password:</label>
+  <input type="password" id="pwd" name="password" placeholder="******">
+
+  <button type="submit">Send</button>
+  {{#if errorMessage}}
+      <div>
+          <p>{{errorMessage}}</p>
+      </div>   
+    {{/if}}
+</form>
