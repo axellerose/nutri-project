@@ -1,8 +1,35 @@
+/* Colors for this app
+  Fill here
+
+  Find a font-family
+*/
+
 body {
-  padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
+main {
+  padding: 50px;
+}
+
+nav ul {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li {
+  padding: 10px;
+}
+
+#recipes {
+  flex-grow: 5;
+}
+
 a {
-  color: #00B7FF;
+  text-decoration: none;
+  color: black;
 }
