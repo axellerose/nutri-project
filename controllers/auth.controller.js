@@ -65,7 +65,7 @@ const postLogin = (req, res, next) => {
   const {email, password} = req.body;
 
   if (!email || !password) {
-    res.status(500).render('auth/signup', { 
+    res.status(500).render('auth/login', { 
       errorMessage: 'Please fill all the fields.'   
     });
     return;
@@ -87,6 +87,13 @@ const postLogin = (req, res, next) => {
     .catch (err => next(err))
 }
 
+const postLogout = (req, res) => {
+  if (req.session.currentUser) {
+    req.session.destroy();
+    res.redirect('/');
+  }
+}
+
 const getProfile = (req, res, next) => {
   const user = req.session.currentUser
   console.log(user)
@@ -98,5 +105,6 @@ module.exports = {
   postSignup,
   getLogin,
   postLogin,
-  getProfile
+  postLogout,
+  getProfile,
 };
