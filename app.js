@@ -50,8 +50,12 @@ app.locals.title = 'NutriSeek / Nutria / NutriHacker / Nutri community / NutriAp
 // Routes
 const index = require('./routes/index.routes');
 const auth = require('./routes/auth.routes');
+const products = require('./routes/product.routes');
+const recipes = require('./routes/recipe.routes');
 app.use('/', index);
 app.use('/', auth);
+app.use('/products', products);
+app.use('/recipes', recipes);
 
 
 module.exports = app;
