@@ -7,7 +7,7 @@ router
 .get('/signup', getSignup)
 .post('/signup', postSignup)
 .get('/login', getLogin)
-.post('login', postLogin)
+.post('/login', postLogin)
 .get('/profile', getProfile)
 
 module.exports = router;

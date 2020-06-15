@@ -44,7 +44,7 @@ app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 
 
 // default value for title local
-app.locals.title = 'NutriSeek / Nutria / NutriHacker / Nutri community / NutriApp / Nutramint';
+app.locals.title = 'NutriApp';
 
 
 // Routes

@@ -78,7 +78,7 @@ const postLogin = (req, res, next) => {
         return
       } else if (bcrypt.compareSync(password, user.password)) {
         req.session.currentUser = user;
-        res.redirect('/')
+        res.redirect('/profile')
       } else {
         res.render('auth/login', { errorMessage: "Wrong password" })
         return
