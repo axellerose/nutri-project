@@ -4,7 +4,11 @@ const Product = require('../models/Product.model');
 
 const products = (req, res, next) => {
   const user = req.session.currentUser
-  res.render('products/index', {user});
+  Product.find()
+  .then(products => {
+    res.render('products/index', {user,products});
+  })
+  .catch(err => console.log(err))
 }
 
 const getFeed = (req, res, next) => {
@@ -28,7 +32,7 @@ const postFeed = (req, res, next) => {
   }
   Product.create(newProduct)
   .then(product => {
-      res.redirect('/profile');
+      res.redirect('/products');
       console.log(`Product added: ${product}`)
   })
   .catch(error => {
