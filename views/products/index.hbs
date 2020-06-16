@@ -1,6 +1,11 @@
 <h2>Products</h2>
 
 {{#each products}}
-  <img src="{{image}}" width="200px" height="auto" alt="Product picture">
-  <h3>{{name}}</h3>
+  <a href="/products/details/{{name}}">
+    <img src="{{image}}" width="200px" height="auto" alt="Product picture">
+  </a>
+  <h3>
+    <a id="product-detail-link" href="/products/details/{{name}}">{{name}}</a>
+  </h3>
 {{/each}}
+

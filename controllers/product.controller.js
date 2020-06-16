@@ -43,8 +43,22 @@ const postFeed = (req, res, next) => {
   res.render('products/feed-products-db');
 }
 
+const getProductDetails = (req, res, next) => {
+  const user = req.session.currentUser
+  Product.findOne({name: req.params.name})
+  .then(product => {
+    console.log(product.name)
+    res.render('products/product-details', {user: user, product: product});
+  })
+  .catch(err => {
+    console.log(`Error getting product details: ${err}`)
+    res.redirect('/');
+  })
+}
+
 module.exports = {
   products,
   getFeed,
-  postFeed
+  postFeed,
+  getProductDetails
 };
