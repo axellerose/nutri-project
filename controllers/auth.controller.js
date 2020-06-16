@@ -97,7 +97,6 @@ const postLogout = (req, res) => {
 
 const getProfile = (req, res, next) => {
   const user = req.session.currentUser
-  console.log(user)
   res.render('users/profile', {user});
 }
 

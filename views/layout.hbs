@@ -17,13 +17,13 @@
         <li id="recipes"><a href="/recipes">Recipes</a></li>
         {{#unless user}}
           <li><a href="/signup">Signup</a></li>
-          <li><a href="/login">Login</a></li>
+          <li><a href="/login">Login</a></li>        
         {{/unless}}
         {{#if user}}
-          <li><a href="/profile">Profile</a></li>
+          <li><a href="/profile">Profile</a></li>     
           <form action="/logout" style="display: inline;" method="POST">
             <button type="submit">Logout</button>
-          </form>
+          </form>        
         {{/if}}
       </ul>
     </nav>

@@ -109,7 +109,7 @@ Product model
    carbons: Number,
    fat: Number
    }
-- temporada: String
+- temporada: [String]
 ```
 ```
 Recipe model
