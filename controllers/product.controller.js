@@ -2,7 +2,8 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs')
 
 const products = (req, res, next) => {
-  res.render('products/index');
+  const user = req.session.currentUser
+  res.render('products/index', {user});
 }
 
 module.exports = {
