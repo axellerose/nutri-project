@@ -21,6 +21,7 @@ const postFeed = (req, res, next) => {
   const newProduct = {
     name: req.body.name,
     description: req.body.description,
+    category: req.body.category,
     image: req.body.image,
     info :{
       calories: req.body.calories,

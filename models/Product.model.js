@@ -35,6 +35,10 @@ const productSchema = new Schema(
    seasons: {
      type: [String],
      required: [true, 'Season(s) is required.']
+   },
+   category: {
+     type: String,
+     enum: ['Vegetable','Fruit','Fish','Meat','Seafood','Other']
    }
   },
   {
