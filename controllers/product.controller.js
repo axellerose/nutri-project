@@ -1,10 +1,45 @@
 const mongoose = require('mongoose');
-const bcrypt = require('bcryptjs')
+const bcrypt = require('bcryptjs');
+const Product = require('../models/Product.model');
 
 const products = (req, res, next) => {
-  res.render('products/index');
+  const user = req.session.currentUser
+  res.render('products/index', {user});
+}
+
+const getFeed = (req, res, next) => {
+  const user = req.session.currentUser
+  res.render('products/feed-products-db', {user});
+}
+
+const postFeed = (req, res, next) => {
+  const user = req.session.currentUser
+  const newProduct = {
+    name: req.body.name,
+    description: req.body.description,
+    image: req.body.image,
+    info :{
+      calories: req.body.calories,
+      fat: req.body.fat,
+      carbs: req.body.carbs,
+      proteins: req.body.proteins
+    },
+    seasons: req.body.seasons,
+  }
+  Product.create(newProduct)
+  .then(product => {
+      res.redirect('/profile');
+      console.log(`Product added: ${product}`)
+  })
+  .catch(error => {
+      res.render('products/feed-products-db',{error: error, user: user})
+      console.log(`Error : ${error}`)
+  })
+  res.render('products/feed-products-db');
 }
 
 module.exports = {
-  products
+  products,
+  getFeed,
+  postFeed
 };
