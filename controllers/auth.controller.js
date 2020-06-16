@@ -92,6 +92,7 @@ const postLogout = (req, res) => {
     req.session.destroy();
     res.redirect('/');
   }
+  res.redirect('/');
 }
 
 const getProfile = (req, res, next) => {
