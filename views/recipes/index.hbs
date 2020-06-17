@@ -1,1 +1,11 @@
 <h2>Recipes</h2>
+
+{{#each recipes}}
+  <a href="/recipes/details/{{name}}">
+    <img src="{{image}}" width="200px" height="auto" alt="Recipe picture">
+  </a>
+  <h3>
+    <a id="recipe-detail-link" href="/recipes/details/{{name}}">{{name}}</a>
+  </h3>
+{{/each}}
+

@@ -12,11 +12,18 @@ const recipeSchema = new Schema(
       required: true,
       // default
     },
-    time: Number,
-    products: [{ type: Schema.Types.ObjectId, ref: 'Product'}],
+    rate: Number,
+    time: {
+      type: Number,
+      required: true
+    },
     info: {},
-    reviews: [String],
-    rank: Number
+    products: [{ type: Schema.Types.ObjectId, ref: 'Product'}],
+    steps: {
+      type: String,
+      required: true
+    },
+    reviews: [String]
   },
   {
     timestamps: true

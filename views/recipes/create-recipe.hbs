@@ -1,16 +1,27 @@
 <h2>Create a recipe</h2>
 
-<form action="/recipes/create-recipe" method="POST">
+<form action="/recipes/create" method="POST">
   <label for="name">Name:</label>
   <input type="text" id="name" name="name" placeholder="Ex: Pasta Bolognese">
-
-  <label for="descr">Description:</label>
-  <input type="text" id="descr" name="description" placeholder="Something about this product">
 
   <label for="img">Image:</label>
   <input type="text" id="img" name="image" placeholder="Image URL">
 
-  <button type="submit">Create product</button>
+  <label for="time">Cooking time</label>
+  <input type="number" id="time" name="time" placeholder="in minutes">
+
+  <label for="ingredients">Ingredients:</label>
+    <select id="ingredients" name="ingredients">
+      {{#each products}}
+        <option value="{{name}}">{{name}}</option>
+      {{/each}}
+    </select>
+
+  <textarea name="steps" rows="10" cols="30">
+    Write here the different steps for this recipe
+  </textarea>
+
+  <button type="submit">Create recipe</button>
   {{#if errorMessage}}
       <div>
           <p>{{errorMessage}}</p>
