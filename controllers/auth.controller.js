@@ -100,6 +100,16 @@ const getProfile = (req, res, next) => {
   res.render('users/profile', {user});
 }
 
+const getSuperProfile = (req, res, next) => {
+  const user = req.session.currentUser
+  console.log(user.username)
+  if (user.username === "superuser") {
+    res.render('users/super-profile', {user});
+  } else {
+    res.render('not-found')
+  }
+}
+
 module.exports = {
   getSignup,
   postSignup,
@@ -107,4 +117,5 @@ module.exports = {
   postLogin,
   postLogout,
   getProfile,
+  getSuperProfile
 };
