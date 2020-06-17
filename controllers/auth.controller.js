@@ -102,8 +102,7 @@ const getProfile = (req, res, next) => {
 
 const getSuperProfile = (req, res, next) => {
   const user = req.session.currentUser
-  console.log(user.username)
-  if (user.username === "superuser") {
+  if (user && user.username === "superuser") {
     res.render('users/super-profile', {user});
   } else {
     res.render('not-found')

@@ -12,5 +12,4 @@ router
 .get('/profile', getProfile)
 .get('/super-profile', getSuperProfile)
 
-
 module.exports = router;

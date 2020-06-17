@@ -52,7 +52,7 @@ const getProductDetails = (req, res, next) => {
   })
   .catch(err => {
     console.log(`Error getting product details: ${err}`)
-    res.redirect('/');
+    res.redirect('/products');
   })
 }
 

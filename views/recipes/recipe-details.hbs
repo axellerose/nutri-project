@@ -1,0 +1,21 @@
+<div class="wrapper">
+  <div class="details-info" id="recipe-info">
+    <div class="details-img">
+      <img class="img-big" id="img-big-product" src="{{recipe.image}}" width="400px" height="auto" alt="Recipe picture"> 
+    </div>
+    <div class="details-description">
+      <h2>{{recipe.name}}</h2>
+      <h3>Rate: {{recipe.rate}}</h3>
+      <h3>Preparation time: {{recipe.time}}</h3>
+      {{!-- <h3>Calories: {{recipe.info.calories}}</h3>
+      <h3>Fat: {{recipe.info.fat}}g</h3>
+      <h3>Carbs: {{recipe.info.carbs}}g</h3>
+      <h3>Proteins: {{recipe.info.proteins}}g</h3> --}}
+    </div>
+  </div>
+  <div id="recipe-steps">
+    <h3>Ingredients: {{recipe.ingredients}}</h3>
+    <h3>Recipe: {{recipe.steps}}</h3>
+    <h3>Reviews: {{recipe.reviews}}</h3>
+  </div>
+</div>
