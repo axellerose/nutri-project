@@ -1,4 +1,8 @@
 <h2>Recipes</h2>
+{{#if user}}
+  <a href=""></a>
+  <p><a href="/recipes/create">Create a new recipe</a></p>
+{{/if}}
 
 {{#each recipes}}
   <a href="/recipes/details/{{name}}">

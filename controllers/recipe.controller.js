@@ -42,8 +42,8 @@ const postCreateRecipe = (req, res, next) => {
 const getRecipeDetails = (req, res, next) => {
   const user = req.session.currentUser
   Recipe.findOne({name: req.params.name})
+  .populate('products')
   .then(recipe => {
-    console.log(recipe)
     res.render('recipes/recipe-details', {user: user, recipe: recipe});
   })
   .catch(err => {
