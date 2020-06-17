@@ -14,7 +14,10 @@
     </div>
   </div>
   <div id="recipe-steps">
-    <h3>Ingredients: {{recipe.ingredients}}</h3>
+    <h3>Ingredients:</h3>
+    {{#each recipe.products}}
+      <h4>{{name}}</h4>
+    {{/each}}
     <h3>Recipe: {{recipe.steps}}</h3>
     <h3>Reviews: {{recipe.reviews}}</h3>
   </div>
