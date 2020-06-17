@@ -2,7 +2,7 @@
 # Developers: 
 Alex Gerasymenko & Antoine Rolland
 # Link to App: 
-<<<Link>>
+<<<Link>>>
 
 ## Description
 
@@ -57,7 +57,7 @@ List of other features outside of the MVPs scope
 /login
 /add-new
 
-<!-- |Method|URL|Description|
+|Method|URL|Description|
 |---|---|---|
 GET | /auth/login | redirects to / if user logged in. Renders auth/login
 POST | /auth/login | redirects to / if user logged in
@@ -87,7 +87,7 @@ body:
    - escape-room
    - date
    - reserved time
-   - escape-room id -->
+   - escape-room id
 
 ## Models
 
