@@ -16,12 +16,13 @@
   </ul>
     <select id="products" name="products">
       {{#each products}}
-        <option value="{{_id}}">{{name}}</option><br>
+        <option value="{{_id}}">{{this.name}}</option><br>
       {{/each}}
     </select><br>
     <label for="quantity"style="padding-right:20px;">Quantity</label><br>
     <input type="number" id="quantity" name="quantity" placeholder="in grams"><br>
     <button id="new-ingredient">Add</button>
+    <button id="validar-ingredients">Validar</button>
     <br><br>
 
   <label for="steps">Steps:</label>
