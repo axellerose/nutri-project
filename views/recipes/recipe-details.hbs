@@ -7,8 +7,7 @@
       <h2>{{recipe.name}}</h2>
       <h3>Rate: {{recipe.rate}}</h3>
       <h3>Preparation time: {{recipe.time}}</h3>
-      <h3>Calories: 
-      {{recipe.products}}
+      <h3>Calories: <span id="total-recipe-calories"></span>
       </h3>
       {{!--
       <h3>Fat: {{recipe.info.fat}}g</h3>
@@ -19,7 +18,11 @@
   <div id="recipe-steps">
     <h3>Ingredients:</h3>
     {{#each recipe.products}}
-      <h4>{{name}}</h4>
+      <h4>{{this.product.name}} - <span id="product-quantity">{{this.quantity}}</span>g</h4> 
+      <span style="display:none" id="hidden-calories">{{this.product.info.calories}}</span>
+      <span style="display:none" id="hidden-proteins">{{this.product.info.proteins}}</span>
+      <span style="display:none" id="hidden-fat">{{this.product.info.fat}}</span>
+      <span style="display:none" id="hidden-carbs">{{this.product.info.carbs}}</span>
     {{/each}}
     <h3>Recipe: {{recipe.steps}}</h3>
     <h3>Reviews: {{recipe.reviews}}</h3>

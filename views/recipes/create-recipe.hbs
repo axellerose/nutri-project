@@ -1,6 +1,6 @@
 <h2>Create a recipe</h2>
 
-<form action="/recipes/create" method="POST">
+<form id="create-recipe-form" action="/recipes/create" method="POST">
   <label for="name">Name:</label>
   <input type="text" id="name" name="name" placeholder="Ex: Pasta Bolognese"><br>
 
@@ -22,8 +22,9 @@
     <label for="quantity"style="padding-right:20px;">Quantity</label><br>
     <input type="number" id="quantity" name="quantity" placeholder="in grams"><br>
     <button id="new-ingredient">Add</button>
-    <button id="validar-ingredients">Validar</button>
     <br><br>
+  
+  
 
   <label for="steps">Steps:</label>
   <textarea id="steps" name="steps" rows="10" cols="30">

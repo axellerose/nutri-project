@@ -24,13 +24,17 @@ const getCreateRecipe = (req, res, next) => {
 
 const postCreateRecipe = (req, res, next) => {
   const user = req.session.currentUser
+  console.log(req.body)
   const newRecipe = {
     name: req.body.name,
     image: req.body.image,
     time: req.body.time,
-    products: req.body.products,
-    steps: req.body.steps
+    products: [],
+    steps: req.body.steps,
   }
+  
+  req.body.productIds.forEach((elem,idx) => newRecipe.products.push({product: elem,quantity: req.body.quantities[idx]}))
+  console.log(newRecipe)
   Recipe.create(newRecipe)
   .then(recipe => {
     console.log("New recipe created : ", recipe)
@@ -42,7 +46,7 @@ const postCreateRecipe = (req, res, next) => {
 const getRecipeDetails = (req, res, next) => {
   const user = req.session.currentUser
   Recipe.findOne({name: req.params.name})
-  .populate('products')
+  .populate('products.product')
   .then(recipe => {
     res.render('recipes/recipe-details', {user: user, recipe: recipe});
   })

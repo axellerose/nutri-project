@@ -1,5 +1,5 @@
 const { Schema, model } = require('mongoose');
-const Product = require('../models/Product.model')
+const Product = require('../models/Product.model');
 
 const recipeSchema = new Schema(
   {
@@ -18,7 +18,17 @@ const recipeSchema = new Schema(
       required: true
     },
     info: {},
-    products: [{ type: Schema.Types.ObjectId, ref: 'Product'}],
+    products: [
+      {
+      quantity: Number,
+      product: 
+          {
+          type: Schema.Types.ObjectId,
+          ref: 'Product'
+          }
+          
+      }
+    ],
     steps: {
       type: String,
       required: true
