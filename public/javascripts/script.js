@@ -1,15 +1,53 @@
+let html = ''
+const addIngredient = document.getElementById("new-ingredient")
+
+if (addIngredient) {
 document.getElementById("new-ingredient").addEventListener("click", function(){
   event.preventDefault()
-  let html = ''
-  const e = document.getElementById("products")
-  const name = e.options[e.selectedIndex].text
-  const quantity = document.getElementById("quantity").value
-  html += `
-  <li>
-    ${name}     ${quantity}
-  </li>
-  `
-  console.log(name)
-  console.log(quantity)
-  document.getElementById('ingredients-list').innerHTML = html
+  const products = document.getElementById("products")
+  let ingredient = products.options[products.selectedIndex].innerHTML
+  const quantity = document.getElementById("quantity").value ? document.getElementById("quantity").value : 0
+
+  let productAlreadyAdded = false
+  
+  let productsAddedByUser = [...document.getElementById("ingredients-list").querySelectorAll("li")]
+  productsAddedByUser.forEach(elem => {
+    if (elem.querySelectorAll("span")[0].innerHTML === ingredient) {
+      productAlreadyAdded = true
+      return
+    }
+  })
+
+  if (!productAlreadyAdded) {
+    html += `
+    <li>
+      <span>${ingredient}</span>     <span>${quantity} g</span>
+    </li>
+    `
+    document.getElementById('ingredients-list').innerHTML = html
+    const newProductInput = document.createElement('input')
+    newProductInput.type = "hidden"
+    newProductInput.value = products.options[products.selectedIndex].value
+    newProductInput.name = "productIds"
+
+    const newQuantityInput = document.createElement('input')
+    newQuantityInput.type = "hidden"
+    newQuantityInput.value = quantity
+
+    newQuantityInput.name = "quantities"
+
+    document.getElementById('create-recipe-form').appendChild(newProductInput)
+    document.getElementById('create-recipe-form').appendChild(newQuantityInput)
+  }
 });
+}
+
+// FRONT END METHOD TO CALCULATE RECIPE NUTRITIVE INFO
+// window.addEventListener("onload", () => {
+// //Calculate calories
+//   let totalCalories = document.querySelector("#total-recipe-calories").innerHTML
+//   let arrayOfCalories = [...document.querySelectorAll("#hidden-calories")]
+//   totalCalories = arrayOfCalories.reduce((a,b) => a + b, 0)
+  
+//   console.log("ARRAY OF CALORIES: ", total)
+// })
