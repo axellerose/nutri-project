@@ -17,7 +17,12 @@ const recipeSchema = new Schema(
       type: Number,
       required: true
     },
-    info: {},
+    info: {
+      calories: Number,
+      fat: Number,
+      carbs: Number,
+      proteins: Number
+    },
     products: [
       {
       quantity: Number,

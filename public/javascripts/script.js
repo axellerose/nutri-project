@@ -10,8 +10,8 @@ document.getElementById("new-ingredient").addEventListener("click", function(){
 
   let productAlreadyAdded = false
   
-  let check = [...document.getElementById("ingredients-list").querySelectorAll("li")]
-  check.forEach(elem => {
+  let productsAddedByUser = [...document.getElementById("ingredients-list").querySelectorAll("li")]
+  productsAddedByUser.forEach(elem => {
     if (elem.querySelectorAll("span")[0].innerHTML === ingredient) {
       productAlreadyAdded = true
       return
@@ -21,7 +21,7 @@ document.getElementById("new-ingredient").addEventListener("click", function(){
   if (!productAlreadyAdded) {
     html += `
     <li>
-      <span>${ingredient}</span>     <span>${quantity}</span>
+      <span>${ingredient}</span>     <span>${quantity} g</span>
     </li>
     `
     document.getElementById('ingredients-list').innerHTML = html
@@ -42,11 +42,12 @@ document.getElementById("new-ingredient").addEventListener("click", function(){
 });
 }
 
-window.addEventListener("onload", () => {
-//Calculate calories
-  let totalCalories = document.querySelector("#total-recipe-calories").innerHTML
-  let arrayOfCalories = [...document.querySelectorAll("#hidden-calories")]
-  totalCalories = arrayOfCalories.reduce((a,b) => a + b, 0)
+// FRONT END METHOD TO CALCULATE RECIPE NUTRITIVE INFO
+// window.addEventListener("onload", () => {
+// //Calculate calories
+//   let totalCalories = document.querySelector("#total-recipe-calories").innerHTML
+//   let arrayOfCalories = [...document.querySelectorAll("#hidden-calories")]
+//   totalCalories = arrayOfCalories.reduce((a,b) => a + b, 0)
   
-  console.log("ARRAY OF CALORIES: ", total)
-})
+//   console.log("ARRAY OF CALORIES: ", total)
+// })
