@@ -2,6 +2,9 @@
 {{#if user}}
   <p> Welcome {{user.username}}</p>
   <p><a href="/recipes/create">Create a new recipe</a></p>
+  {{#if user.isSuperuser}}
+    <p><a href="/products/feedDb">Feed products DB</a></p>
+  {{/if}}
 {{else}}
   <p>You need to <a href="/login">login</a> to see your profile page. </p>
 
