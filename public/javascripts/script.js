@@ -1,28 +1,46 @@
 let html = ''
+const addIngredient = document.getElementById("new-ingredient")
+
+if (addIngredient) {
 document.getElementById("new-ingredient").addEventListener("click", function(){
   event.preventDefault()
   const products = document.getElementById("products")
   let ingredient = products.options[products.selectedIndex].innerHTML
-  const quantity = document.getElementById("quantity").value
-  html += `
-  <li>
-    ${ingredient.name}     ${quantity}
-  </li>
-  `
-  document.getElementById('ingredients-list').innerHTML = html
-  const newProductInput = document.createElement('input')
-  newProductInput.type = "hidden"
-  newProductInput.value = products.options[products.selectedIndex].value
-  newProductInput.name = "productIds"
+  const quantity = document.getElementById("quantity").value ? document.getElementById("quantity").value : 0
 
-  const newQuantityInput = document.createElement('input')
-  newQuantityInput.type = "hidden"
-  newQuantityInput.value = quantity
-  newQuantityInput.name = "quantities"
+  let productAlreadyAdded = false
+  
+  let check = [...document.getElementById("ingredients-list").querySelectorAll("li")]
+  check.forEach(elem => {
+    if (elem.querySelectorAll("span")[0].innerHTML === ingredient) {
+      productAlreadyAdded = true
+      return
+    }
+  })
 
-  document.getElementById('create-recipe-form').appendChild(newProductInput)
-  document.getElementById('create-recipe-form').appendChild(newQuantityInput)
+  if (!productAlreadyAdded) {
+    html += `
+    <li>
+      <span>${ingredient}</span>     <span>${quantity}</span>
+    </li>
+    `
+    document.getElementById('ingredients-list').innerHTML = html
+    const newProductInput = document.createElement('input')
+    newProductInput.type = "hidden"
+    newProductInput.value = products.options[products.selectedIndex].value
+    newProductInput.name = "productIds"
+
+    const newQuantityInput = document.createElement('input')
+    newQuantityInput.type = "hidden"
+    newQuantityInput.value = quantity
+
+    newQuantityInput.name = "quantities"
+
+    document.getElementById('create-recipe-form').appendChild(newProductInput)
+    document.getElementById('create-recipe-form').appendChild(newQuantityInput)
+  }
 });
+}
 
 window.addEventListener("onload", () => {
 //Calculate calories
@@ -32,4 +50,3 @@ window.addEventListener("onload", () => {
   
   console.log("ARRAY OF CALORIES: ", total)
 })
-// totalCalories = arrayOfCalories.reduce()
