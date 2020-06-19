@@ -1,15 +1,26 @@
 /* Colors for this app
-  Fill here
-
+  NAVBAR COLORS
+  blue navbar - #546de5 
+  text colors - whitesmoke
+  
   Find a font-family
 */
 
 body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
 main {
   padding: 50px;
+}
+
+.navbar {
+  background-color: #546de5;
+    position: fixed;
+    top: 0px;
+    width: 100%;
 }
 
 nav ul {
@@ -23,6 +34,11 @@ nav ul {
 
 nav ul li {
   padding: 10px;
+
+}
+
+nav ul a {
+  color: whitesmoke
 }
 
 #recipes {
@@ -35,15 +51,6 @@ a {
 }
 
 // IMPORTANT : Start to implement responsive CSS styles
-                                        /* EXTRA-SMALL SCREEN */
-@media screen and (max-width: 767px) {
-  // Fill
-}
-
-                                        /* SMALL SCREEN */
-@media screen and (min-width: 768px) {
-  // Fill
-}
 
                                         /* MEDIUM SCREEN */
 @media screen and (min-width: 960px) {    
