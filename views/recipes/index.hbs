@@ -1,15 +1,23 @@
 <h2>Recipes</h2>
-{{#if user}}
-  <a href=""></a>
-  <p><a href="/recipes/create">Create a new recipe</a></p>
-{{/if}}
+<div class="cards-wrapper">
+  {{#if user}}
+    <a href=""></a>
+    <p><a href="/recipes/create">Create a new recipe</a></p>
+  {{/if}}
 
-{{#each recipes}}
-  <a href="/recipes/details/{{name}}">
-    <img src="{{image}}" width="200px" height="auto" alt="Recipe picture">
-  </a>
-  <h3>
-    <a id="recipe-detail-link" href="/recipes/details/{{name}}">{{name}}</a>
-  </h3>
-{{/each}}
+  {{#each recipes}}
+    <div class="card recipe">
+      <div class="card-img">
+        <a href="/recipes/details/{{name}}">
+          <img src="{{image}}" width="200px" height="auto" alt="Recipe picture">
+        </a>
+      </div>
+        <div class="card-info">
+        <h3>
+          <a id="recipe-detail-link" href="/recipes/details/{{name}}">{{name}}</a>
+        </h3>
+      </div>
+    </div>
+  {{/each}}
+</div>
 

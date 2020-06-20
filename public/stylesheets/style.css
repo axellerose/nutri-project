@@ -1,23 +1,26 @@
 /* Colors for this app
   NAVBAR COLORS
   blue navbar - #546de5 
-  text colors - whitesmoke
+  a text color - whitesmoke
+  a text hover - #f5cd79
   
+  
+  CARD COLORS
+  border: #3dc1d3
+
   Find a font-family
 */
 body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   margin: 0;
-  padding: 0; }
-
-main {
-  padding: 50px; }
+  padding-top: 5vh; }
 
 .navbar {
   background-color: #546de5;
   position: fixed;
   top: 0px;
-  width: 100%; }
+  width: 100%;
+  max-height: 5vh; }
 
 nav ul {
   display: flex;
@@ -33,12 +36,37 @@ nav ul li {
 nav ul a {
   color: whitesmoke; }
 
+a:hover {
+  color: #f5cd79; }
+
 #recipes {
   flex-grow: 5; }
 
 a {
   text-decoration: none;
   color: black; }
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  border: 2px solid #3dc1d3;
+  border-radius: 10px;
+  color: whitesmoke;
+  margin: 5px;
+  max-width: 75vw;
+  width: 100%; }
+
+.card-img img {
+  width: 250px;
+  height: 250px;
+  object-fit: contain; }
+
+.cards-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; }
 
 /* MEDIUM SCREEN */
 /* LARGE SCREEN */
