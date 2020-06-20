@@ -45,6 +45,7 @@ document.getElementById("new-ingredient").addEventListener("click", function(){
 // MINIMUM 2 PRODUCTS RULE
 let btnCreate = document.querySelector("#create-recipe-button")
 
+if (addIngredient) {
 document.querySelector("#new-ingredient").addEventListener("click", function(){
   let checkIfTwoProductsMin = [...document.getElementById("ingredients-list").querySelectorAll("li")]
   if (checkIfTwoProductsMin.length < 2) {
@@ -53,3 +54,4 @@ document.querySelector("#new-ingredient").addEventListener("click", function(){
     btnCreate.disabled = false
   }
 })
+}
