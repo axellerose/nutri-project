@@ -36,9 +36,6 @@ nav ul li {
 nav ul a {
   color: whitesmoke; }
 
-a:hover {
-  color: #f5cd79; }
-
 #recipes {
   flex-grow: 5; }
 
@@ -69,7 +66,17 @@ a {
   flex-wrap: wrap;
   justify-content: center; }
 
+.button {
+  border: 1px solid black; }
+
 /* MEDIUM SCREEN */
+@media screen and (min-width: 960px) {
+  a:hover {
+    color: #f5cd79; } }
+
 /* LARGE SCREEN */
+@media screen and (min-width: 1200px) {
+  a:hover {
+    color: #f5cd79; } }
 
 /*# sourceMappingURL=style.css.map */

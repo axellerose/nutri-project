@@ -71,9 +71,23 @@ const getRecipeDetails = (req, res, next) => {
   })
 }
 
+const getDeleteRecipe = (req, res, next) => {
+  const user = req.session.currentUser
+  console.log("REQ RECIPE ID: ", req.params.recipeId)
+  Recipe.findByIdAndDelete(req.params.recipeId)
+  .then(recipe => {
+    res.redirect('/recipes')
+    console.log("Recipe deleted: ", recipe)
+  })
+  .catch(err => {
+    console.log("ERROR DELETING RECIPE: ", err)
+  })
+} 
+
 module.exports = {
   recipes,
   getCreateRecipe,
   postCreateRecipe,
-  getRecipeDetails
+  getRecipeDetails,
+  getDeleteRecipe
 };

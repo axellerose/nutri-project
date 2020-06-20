@@ -42,10 +42,6 @@ nav ul a {
   color: whitesmoke
 }
 
-a:hover {
-  color: #f5cd79
-}
-
 #recipes {
   flex-grow: 5;
 }
@@ -81,6 +77,10 @@ a {
   justify-content: center;
 }
 
+.button {
+  border: 1px solid black;
+}
+
 
 
 // IMPORTANT : Start to implement responsive CSS styles
@@ -88,9 +88,15 @@ a {
                                         /* MEDIUM SCREEN */
 @media screen and (min-width: 960px) {    
   // Fill
+  a:hover {
+    color: #f5cd79
+  }
 }
 
                                         /* LARGE SCREEN */
 @media screen and (min-width: 1200px) {
   // Fill
+  a:hover {
+    color: #f5cd79
+  }
 }
