@@ -2,19 +2,19 @@
 <div class="cards-wrapper">
   {{#if user}}
     <a href=""></a>
-    <p><a href="/recipes/create">Create a new recipe</a></p>
+    <p><a href="/recipes/create" class="button create">Create a new recipe</a></p>
   {{/if}}
 
   {{#each recipes}}
     <div class="card recipe">
       <div class="card-img">
-        <a href="/recipes/details/{{name}}">
+        <a href="/recipes/details/{{_id}}">
           <img src="{{image}}" width="200px" height="auto" alt="Recipe picture">
         </a>
       </div>
         <div class="card-info">
         <h3>
-          <a id="recipe-detail-link" href="/recipes/details/{{name}}">{{name}}</a>
+          <a id="recipe-detail-link" href="/recipes/details/{{_id}}">{{name}}</a>
         </h3>
       </div>
     </div>

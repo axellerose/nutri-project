@@ -24,7 +24,6 @@ const getCreateRecipe = (req, res, next) => {
 
 const postCreateRecipe = (req, res, next) => {
   const user = req.session.currentUser
-  console.log(req.body)
   const newRecipe = {
     name: req.body.name,
     image: req.body.image,
@@ -33,7 +32,6 @@ const postCreateRecipe = (req, res, next) => {
     steps: req.body.steps,
   }
   req.body.productIds.forEach((elem,idx) => newRecipe.products.push({product: elem,quantity: req.body.quantities[idx]}))
-  console.log(newRecipe)
   Recipe.create(newRecipe)
   .then(recipe => {
     console.log("New recipe created : ", recipe)
@@ -44,7 +42,7 @@ const postCreateRecipe = (req, res, next) => {
 
 const getRecipeDetails = (req, res, next) => {
   const user = req.session.currentUser
-  Recipe.findOne({name: req.params.name})
+  Recipe.findById(req.params.recipeId)
   .populate('products.product')
   .then(recipe => {
     // Calculate nutrition info field for the recipe : example with the calories :
@@ -54,11 +52,15 @@ const getRecipeDetails = (req, res, next) => {
     //       to get the real quantity for this recipe
     //       ex : 100g of strawberry = 33 calories --> 25g of it = 33*(25/100) = 8.25g in the recipe)
     // 3 - We make a "rule of three" (regla de tres) to know the quantity of calories for 100g of this recipe
+    
+    // REFACTORIZAR EN UNA FUNCTION
     const totalQuantities = recipe.products.reduce((acc, curr) => acc + curr.quantity, 0)
     const totalCalories = recipe.products.reduce((acc, curr) => acc + (curr.product.info.calories * (curr.quantity/100)), 0)
     const totalFat = recipe.products.reduce((acc, curr) => acc + (curr.product.info.fat * (curr.quantity/100)), 0)
     const totalCarbs = recipe.products.reduce((acc, curr) => acc + (curr.product.info.carbs * (curr.quantity/100)), 0)
     const totalProteins = recipe.products.reduce((acc, curr) => acc + (curr.product.info.proteins * (curr.quantity/100)), 0)
+
+
     recipe.info.calories = ((totalCalories*100)/totalQuantities).toFixed(2)
     recipe.info.fat = ((totalFat*100)/totalQuantities).toFixed(2)
     recipe.info.carbs = ((totalCarbs*100)/totalQuantities).toFixed(2)
@@ -73,7 +75,6 @@ const getRecipeDetails = (req, res, next) => {
 
 const getDeleteRecipe = (req, res, next) => {
   const user = req.session.currentUser
-  console.log("REQ RECIPE ID: ", req.params.recipeId)
   Recipe.findByIdAndDelete(req.params.recipeId)
   .then(recipe => {
     res.redirect('/recipes')
@@ -82,12 +83,49 @@ const getDeleteRecipe = (req, res, next) => {
   .catch(err => {
     console.log("ERROR DELETING RECIPE: ", err)
   })
-} 
+}
+
+const getEditRecipe = (req, res, next) => {
+  const user = req.session.currentUser
+  Recipe.findById(req.params.recipeId)
+  .populate('products.product')
+  .then(recipe => {
+    Product.find()
+    .then(products => {
+      res.render('recipes/recipe-edit', {recipe, products})
+    })
+  })
+  .catch(err => {
+    console.log("ERROR ACCESSING TO EDIT FORM: ", err)
+  })
+}
+
+const postEditRecipe = (req, res, next) => {
+  const user = req.session.currentUser
+  const newValues = {
+    name: req.body.name,
+    image: req.body.image,
+    time: req.body.time,
+    products: [],
+    steps: req.body.steps,
+  }
+  req.body.productIds.forEach((elem,idx) => newValues.products.push({product: elem,quantity: req.body.quantities[idx]}))
+  Recipe.findByIdAndUpdate(req.params.recipeId,{})
+  .then(recipe => {
+    console.log("Recipe edited: ", recipe)
+    res.redirect('/recipes/details/' + recipe._id)
+  })
+  .catch(err => {
+    console.log("ERROR WHILE EDITING RECIPE: ", err)
+  })
+}
 
 module.exports = {
   recipes,
   getCreateRecipe,
   postCreateRecipe,
   getRecipeDetails,
-  getDeleteRecipe
+  getDeleteRecipe,
+  getEditRecipe,
+  postEditRecipe
 };

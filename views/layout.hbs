@@ -21,10 +21,12 @@
           <li><a href="/login">Login</a></li>        
         {{/unless}}
         {{#if user}}
-          <li><a href="/profile">Profile</a></li>     
-          <form action="/logout" style="display: inline;" method="POST">
-            <button type="submit">Logout</button>
-          </form>        
+          <li><a href="/profile">Profile</a></li>
+          <li>     
+          <form action="/logout" style="display: inline" method="POST" class="form-logout">
+            <button type="submit" class="logout">Exit</button>
+          </form>
+          </li>        
         {{/if}}
       </ul>
 
