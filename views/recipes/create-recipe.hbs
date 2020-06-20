@@ -22,7 +22,7 @@
 
   <label for="quantity" style="padding-right:20px;">Quantity</label><br>
   <input type="number" id="quantity" name="quantity" placeholder="in grams"><br>
-  <button id="new-ingredient">Add</button>
+  <button class="button-in-form" id="new-ingredient">Add</button>
   <br><br>
   
   <label for="steps">Steps:</label>
@@ -30,7 +30,7 @@
     Write here the different steps for this recipe
   </textarea><br><br>
 
-  <button type="submit" id="create-recipe-button" disabled>Create recipe</button><br>
+  <button class="button-in-form create" type="submit" id="create-recipe-button" disabled>Create recipe</button><br>
   {{#if errorMessage}}
       <div>
           <p>{{errorMessage}}</p>

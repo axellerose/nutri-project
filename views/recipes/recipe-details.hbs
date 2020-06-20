@@ -1,4 +1,4 @@
-<div class="wrapper">
+<div class="cards-wrapper">
   <div class="details-info" id="recipe-info">
     <div class="details-img">
       <img class="img-big" id="img-big-product" src="{{recipe.image}}" width="400px" height="auto" alt="Recipe picture"> 
@@ -21,12 +21,13 @@
     <h3>Recipe: {{recipe.steps}}</h3>
     <h3>Reviews: {{recipe.reviews}}</h3>
   </div>
-  <div class="recipe-control-buttons">
-    <div class="button edit">
-      <a href="/recipes/edit/{{recipe._id}}">EDIT</a>
-    </div>
-    <div class="button delete">
-      <a href="/recipes/delete/{{recipe._id}}">DELETE</a>
-    </div>
+    <div class="recipe-control-buttons">
+ 
+      <a class="button edit" href="/recipes/edit/{{recipe._id}}">EDIT</a>
+
+
+      <a class="button delete" href="/recipes/delete/{{recipe._id}}">DELETE</a>
+
   </div>
+
 </div>

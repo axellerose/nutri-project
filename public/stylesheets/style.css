@@ -1,6 +1,6 @@
 /* Colors for this app
   NAVBAR COLORS
-  blue navbar - #546de5 
+  blue navbar - #4a69bd 
   a text color - whitesmoke
   a text hover - #f5cd79
   
@@ -8,19 +8,27 @@
   CARD COLORS
   border: #3dc1d3
 
+  button-delete: #c44569
+
   Find a font-family
 */
+*, *:before, *:after {
+  box-sizing: border-box; }
+
 body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   margin: 0;
   padding-top: 5vh; }
 
 .navbar {
-  background-color: #546de5;
+  background-color: #4a69bd;
   position: fixed;
   top: 0px;
   width: 100%;
   max-height: 5vh; }
+
+.nav-item {
+  font-size: 18px; }
 
 nav ul {
   display: flex;
@@ -48,7 +56,7 @@ a {
   flex-direction: column;
   align-items: center;
   padding: 10px;
-  border: 2px solid #3dc1d3;
+  border: 2px solid #3c6382;
   border-radius: 10px;
   color: whitesmoke;
   margin: 5px;
@@ -67,7 +75,100 @@ a {
   justify-content: center; }
 
 .button {
-  border: 1px solid black; }
+  color: #fff !important;
+  text-transform: uppercase;
+  text-decoration: none;
+  background: #079992;
+  padding: 20px;
+  border-radius: 10px;
+  display: inline-block;
+  border: none;
+  transition: all 0.4s ease 0s; }
+
+.button-in-form {
+  color: #fff !important;
+  text-transform: uppercase;
+  text-decoration: none;
+  background: #079992;
+  padding: 10px;
+  border-radius: 10px;
+  display: inline-block;
+  border: none;
+  transition: all 0.4s ease 0s;
+  width: fit-content; }
+
+.button:hover {
+  background: #434343;
+  letter-spacing: 1px;
+  -webkit-box-shadow: 0px 5px 40px -10px rgba(0, 0, 0, 0.57);
+  -moz-box-shadow: 0px 5px 40px -10px rgba(0, 0, 0, 0.57);
+  box-shadow: 5px 40px -10px rgba(0, 0, 0, 0.57);
+  transition: all 0.4s ease 0s; }
+
+.logout {
+  color: whitesmoke;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: #4a69bd;
+  font-weight: bolder;
+  border: none; }
+
+.details-info {
+  display: flex;
+  flex-direction: column; }
+
+.details-description, #recipe-steps {
+  display: flex;
+  flex-direction: column;
+  margin: 10px 15px;
+  padding: 15px;
+  border: 3px solid #3c6382;
+  border-radius: 10px; }
+
+.details-description h3 {
+  font-size: 1em; }
+
+.details-description h2 {
+  font-size: 1.5em;
+  text-align: center; }
+
+h3 span {
+  font-size: 1.2em; }
+
+#recipe-steps {
+  padding: 5px 10px; }
+
+.details-img {
+  display: flex;
+  justify-content: center; }
+
+.details-img img {
+  width: 250px;
+  height: 250px;
+  object-fit: contain; }
+
+.recipe-control-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 100%;
+  margin: 10px 0px; }
+
+.recipe-control-buttons a {
+  text-align: center;
+  max-width: 35vw;
+  width: 100%; }
+
+.delete {
+  background-color: #c44569; }
+
+.edit {
+  background-color: #574b90; }
+
+.create {
+  background-color: #38ada9; }
+
+#new-ingredient {
+  background-color: #3c6382; }
 
 /* MEDIUM SCREEN */
 @media screen and (min-width: 960px) {
