@@ -42,12 +42,14 @@ document.getElementById("new-ingredient").addEventListener("click", function(){
 });
 }
 
-// FRONT END METHOD TO CALCULATE RECIPE NUTRITIVE INFO
-// window.addEventListener("onload", () => {
-// //Calculate calories
-//   let totalCalories = document.querySelector("#total-recipe-calories").innerHTML
-//   let arrayOfCalories = [...document.querySelectorAll("#hidden-calories")]
-//   totalCalories = arrayOfCalories.reduce((a,b) => a + b, 0)
-  
-//   console.log("ARRAY OF CALORIES: ", total)
-// })
+// MINIMUM 2 PRODUCTS RULE
+let btnCreate = document.querySelector("#create-recipe-button")
+
+document.querySelector("#new-ingredient").addEventListener("click", function(){
+  let checkIfTwoProductsMin = [...document.getElementById("ingredients-list").querySelectorAll("li")]
+  if (checkIfTwoProductsMin.length < 2) {
+    btnCreate.disabled = true
+  } else {
+    btnCreate.disabled = false
+  }
+})
