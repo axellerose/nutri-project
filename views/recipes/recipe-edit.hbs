@@ -14,7 +14,8 @@
   <ul id="ingredients-list">
     {{#each recipe.products}}
       <li>
-        <span>{{product.name}}</span>     <span>{{quantity}} g</span>
+        {{!-- <span>{{product.name}}</span>     <span>{{quantity}}</span>g --}}
+        <span>{{product.name}}</span>     <span>{{quantity}}</span> g  <button class="remove-product">REMOVE</button><span style="visibility:hidden">{{product.id}}</span>
       </li>
     {{/each}}
   </ul>
@@ -35,10 +36,9 @@
     Write here the different steps for this recipe
   </textarea><br><br>
 
-  {{#each recipe.products}}
-    <input type="hidden" name="productIds" value="{{product._id}}">
-    <input type="hidden" name="quantity" value="{{quantity}}"> 
-  {{/each}}
+  <div id="list-to-send">
+    {{!-- Will be filled dynamically with JS --}}
+  </div>
 
   <button class="button-in-form create" type="submit" id="create-recipe-button">Save changes</button><br>
 

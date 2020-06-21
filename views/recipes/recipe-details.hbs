@@ -16,7 +16,7 @@
   <div id="recipe-steps">
     <h3>Ingredients:</h3>
     {{#each recipe.products}}
-      <h4>{{this.product.name}}
+      <h4>{{this.product.name}}    {{this.quantity}} g</h4>
     {{/each}}
     <h3>Recipe: {{recipe.steps}}</h3>
     <h3>Reviews: {{recipe.reviews}}</h3>

@@ -92,7 +92,7 @@ const getEditRecipe = (req, res, next) => {
   .then(recipe => {
     Product.find()
     .then(products => {
-      res.render('recipes/recipe-edit', {recipe, products})
+      res.render('recipes/recipe-edit', {recipe, products, user})
     })
   })
   .catch(err => {
@@ -102,6 +102,7 @@ const getEditRecipe = (req, res, next) => {
 
 const postEditRecipe = (req, res, next) => {
   const user = req.session.currentUser
+  console.log(req.body)
   const newValues = {
     name: req.body.name,
     image: req.body.image,
@@ -109,8 +110,10 @@ const postEditRecipe = (req, res, next) => {
     products: [],
     steps: req.body.steps,
   }
-  req.body.productIds.forEach((elem,idx) => newValues.products.push({product: elem,quantity: req.body.quantities[idx]}))
-  Recipe.findByIdAndUpdate(req.params.recipeId,{})
+  req.body.productIds.forEach((elem,idx) => {
+    newValues.products.push({product: elem,quantity: req.body.quantities[idx]})
+  })
+  Recipe.findByIdAndUpdate(req.params.recipeId,newValues)
   .then(recipe => {
     console.log("Recipe edited: ", recipe)
     res.redirect('/recipes/details/' + recipe._id)
