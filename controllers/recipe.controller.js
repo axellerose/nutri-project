@@ -54,17 +54,29 @@ const getRecipeDetails = (req, res, next) => {
     // 3 - We make a "rule of three" (regla de tres) to know the quantity of calories for 100g of this recipe
     
     // REFACTORIZAR EN UNA FUNCTION
-    const totalQuantities = recipe.products.reduce((acc, curr) => acc + curr.quantity, 0)
-    const totalCalories = recipe.products.reduce((acc, curr) => acc + (curr.product.info.calories * (curr.quantity/100)), 0)
-    const totalFat = recipe.products.reduce((acc, curr) => acc + (curr.product.info.fat * (curr.quantity/100)), 0)
-    const totalCarbs = recipe.products.reduce((acc, curr) => acc + (curr.product.info.carbs * (curr.quantity/100)), 0)
-    const totalProteins = recipe.products.reduce((acc, curr) => acc + (curr.product.info.proteins * (curr.quantity/100)), 0)
 
 
-    recipe.info.calories = ((totalCalories*100)/totalQuantities).toFixed(2)
-    recipe.info.fat = ((totalFat*100)/totalQuantities).toFixed(2)
-    recipe.info.carbs = ((totalCarbs*100)/totalQuantities).toFixed(2)
-    recipe.info.proteins = ((totalProteins*100)/totalQuantities).toFixed(2)
+    //##############################################################
+    //#####################!!!!!!ACHTUNG!!!!!!######################
+    //##############################################################
+    //##########You should request each product from DB#############
+    //#by id contained in each recipe.products Array before .reduce#
+    //##############################################################
+    //###################!!!!!!END ACHTUNG!!!!!!####################
+    //##############################################################
+    
+    console.log(recipe.products)
+    //const totalQuantities = recipe.products.reduce((acc, curr) => acc + curr.quantity, 0)
+//    const totalCalories = recipe.products.reduce((acc, curr) => acc + (curr.product.info.calories * (curr.quantity/100)), 0)
+//    const totalFat = recipe.products.reduce((acc, curr) => acc + (curr.product.info.fat * (curr.quantity/100)), 0)
+//    const totalCarbs = recipe.products.reduce((acc, curr) => acc + (curr.product.info.carbs * (curr.quantity/100)), 0)
+//    const totalProteins = recipe.products.reduce((acc, curr) => acc + (curr.product.info.proteins * (curr.quantity/100)), 0)
+
+
+//    recipe.info.calories = ((totalCalories*100)/totalQuantities).toFixed(2)
+//    recipe.info.fat = ((totalFat*100)/totalQuantities).toFixed(2)
+//    recipe.info.carbs = ((totalCarbs*100)/totalQuantities).toFixed(2)
+//    recipe.info.proteins = ((totalProteins*100)/totalQuantities).toFixed(2)
     res.render('recipes/recipe-details', {user: user, recipe: recipe});
   })
   .catch(err => {
@@ -100,28 +112,28 @@ const getEditRecipe = (req, res, next) => {
   })
 }
 
-const postEditRecipe = (req, res, next) => {
-  const user = req.session.currentUser
-  console.log(req.body)
-  const newValues = {
-    name: req.body.name,
-    image: req.body.image,
-    time: req.body.time,
-    products: [],
-    steps: req.body.steps,
-  }
-  req.body.productIds.forEach((elem,idx) => {
-    newValues.products.push({product: elem,quantity: req.body.quantities[idx]})
-  })
-  Recipe.findByIdAndUpdate(req.params.recipeId,newValues)
-  .then(recipe => {
-    console.log("Recipe edited: ", recipe)
-    res.redirect('/recipes/details/' + recipe._id)
-  })
-  .catch(err => {
-    console.log("ERROR WHILE EDITING RECIPE: ", err)
-  })
-}
+// const postEditRecipe = (req, res, next) => {
+//   const user = req.session.currentUser
+//   console.log(req.body)
+//   const newValues = {
+//     name: req.body.name,
+//     image: req.body.image,
+//     time: req.body.time,
+//     products: [],
+//     steps: req.body.steps,
+//   }
+//   req.body.productIds.forEach((elem,idx) => {
+//     newValues.products.push({product: elem,quantity: req.body.quantities[idx]})
+//   })
+//   Recipe.findByIdAndUpdate(req.params.recipeId, newValues)
+//   .then(recipe => {
+//     console.log("Recipe edited: ", recipe)
+//     res.redirect('/recipes/details/' + recipe._id)
+//   })
+//   .catch(err => {
+//     console.log("ERROR WHILE EDITING RECIPE: ", err)
+//   })
+// }
 
 module.exports = {
   recipes,
@@ -130,5 +142,5 @@ module.exports = {
   getRecipeDetails,
   getDeleteRecipe,
   getEditRecipe,
-  postEditRecipe
+  // postEditRecipe
 };

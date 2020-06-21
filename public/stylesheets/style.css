@@ -1,6 +1,6 @@
 /* Colors for this app
   NAVBAR COLORS
-  blue navbar - #4a69bd 
+  blue navbar - #4a69bd
   a text color - whitesmoke
   a text hover - #f5cd79
   
@@ -10,7 +10,7 @@
 
   button-delete: #c44569
 
-  Find a font-family
+  Find a font-familyasdasd
 */
 *, *:before, *:after {
   box-sizing: border-box; }
@@ -20,12 +20,16 @@ body {
   margin: 0;
   padding-top: 5vh; }
 
+.flex-spacer {
+  flex: 1; }
+
 .navbar {
   background-color: #4a69bd;
   position: fixed;
   top: 0px;
   width: 100%;
-  max-height: 5vh; }
+  height: 50px;
+  z-index: 1; }
 
 .nav-item {
   font-size: 18px; }
@@ -36,43 +40,43 @@ nav ul {
   flex-wrap: nowrap;
   list-style: none;
   margin: 0;
-  padding: 0; }
-
-nav ul li {
-  padding: 10px; }
-
-nav ul a {
-  color: whitesmoke; }
-
-#recipes {
-  flex-grow: 5; }
+  padding: 0;
+  align-items: center;
+  height: 100%; }
+  nav ul li {
+    padding: 10px; }
+  nav ul a {
+    color: whitesmoke; }
 
 a {
   text-decoration: none;
   color: black; }
 
-.card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 10px;
-  border: 2px solid #3c6382;
-  border-radius: 10px;
-  color: whitesmoke;
-  margin: 5px;
-  max-width: 75vw;
-  width: 100%;
-  box-shadow: 2px 5px 5px #596275; }
-
-.card-img img {
-  width: 250px;
-  height: 250px;
-  object-fit: contain; }
-
 .cards-wrapper {
   display: flex;
   flex-wrap: wrap;
   justify-content: center; }
+  .cards-wrapper .card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid #d3d3d3;
+    background-color: #fff;
+    margin: 5px;
+    max-width: 75vw;
+    width: 100%;
+    animation: fade-in 0.65s ease-in-out forwards;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15);
+    overflow: hidden; }
+    .cards-wrapper .card .card-img {
+      width: 100%;
+      height: 200px;
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat; }
+    .cards-wrapper .card .card-info h3 {
+      font-size: 16px;
+      color: #323232; }
 
 .button {
   color: #fff !important;
@@ -179,5 +183,90 @@ h3 span {
 @media screen and (min-width: 1200px) {
   a:hover {
     color: #f5cd79; } }
+
+.auth-form {
+  width: 100%;
+  max-width: 300px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center; }
+  .auth-form__heading {
+    margin-bottom: 20px; }
+  .auth-form .input-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px; }
+    .auth-form .input-container label {
+      font-size: 14px;
+      color: #585858;
+      margin-bottom: 10px; }
+    .auth-form .input-container input {
+      padding: 10px;
+      background: #fff;
+      border: 1px solid #cdcdcd;
+      transition: border .35s ease-in-out 0s;
+      outline: none; }
+      .auth-form .input-container input:focus {
+        border: 1px solid #4a69bd; }
+  .auth-form .actions {
+    display: flex;
+    width: 100%; }
+    .auth-form .actions button {
+      border: none;
+      background-color: #4a69bd;
+      color: #fff;
+      font-size: 14px;
+      padding: 10px 20px;
+      border-radius: 4px;
+      outline: none; }
+      .auth-form .actions button:hover {
+        cursor: pointer; }
+    .auth-form .actions a {
+      font-size: 14px;
+      padding: 10px 0px 10px 20px;
+      border-radius: 4px;
+      background: transparent;
+      color: #000;
+      text-decoration: none; }
+    .auth-form .actions .spacer {
+      flex: 1; }
+
+@keyframes slide-up {
+  0% {
+    transform: translateY(calc(100% + 10px));
+    opacity: 0; }
+  100% {
+    transform: translateY(0);
+    opacity: 1; } }
+
+@keyframes fade-in {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+
+.cards-wrapper .create-recipe__button {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 48px;
+  height: 48px;
+  background-color: #38ada9;
+  color: #fff;
+  border-radius: 50%;
+  right: 10px;
+  bottom: 10px;
+  font-size: 16px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
+  animation: slide-up 0.65s ease-in-out forwards;
+  opacity: 1;
+  z-index: 1; }
+  .cards-wrapper .create-recipe__button img {
+    margin-top: 5px;
+    margin-right: 2px;
+    width: 20px; }
 
 /*# sourceMappingURL=style.css.map */

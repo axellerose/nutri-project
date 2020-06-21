@@ -2,19 +2,23 @@
 <div class="cards-wrapper">
   {{#if user}}
     <a href=""></a>
-    <p><a href="/recipes/create" class="button create">Create a new recipe</a></p>
+    <a
+      href="/recipes/create"
+      class="create-recipe__button"
+    > 
+      <div>
+        <img src="/images/add-icon.svg">
+      </div>
+    </a>
   {{/if}}
 
   {{#each recipes}}
-    <div class="card recipe">
-      <div class="card-img">
-        <a href="/recipes/details/{{_id}}">
-          <img src="{{image}}" width="200px" height="auto" alt="Recipe picture">
-        </a>
+    <div class="card" onclick="location='/recipes/details/{{_id}}'">
+      <div class="card-img" style="background-image: url({{image}})">
       </div>
-        <div class="card-info">
+      <div class="card-info">
         <h3>
-          <a id="recipe-detail-link" href="/recipes/details/{{_id}}">{{name}}</a>
+          {{name}}
         </h3>
       </div>
     </div>

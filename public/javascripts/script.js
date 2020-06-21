@@ -35,35 +35,35 @@ btnRemove.forEach(btn => {
 // MINIMUM 2 PRODUCTS RULE
 let btnCreate = document.querySelector("#create-recipe-button")
 if (createRecipe) {
-document.querySelector("#new-ingredient").addEventListener("click", function(){
-  let checkIfTwoProductsMin = [...document.getElementById("ingredients-list").querySelectorAll("li")]
-  if (checkIfTwoProductsMin.length < 2) {
-    btnCreate.disabled = true
-  } else {
-    btnCreate.disabled = false
-  }
-})
+  document.querySelector("#new-ingredient").addEventListener("click", function(){
+    let checkIfTwoProductsMin = [...document.getElementById("ingredients-list").querySelectorAll("li")]
+    if (checkIfTwoProductsMin.length < 2) {
+      btnCreate.disabled = true
+    } else {
+      btnCreate.disabled = false
+    }
+  })
 }
 
-btnCreate.addEventListener("click", function(){
-  let productsToAdd = [...document.getElementById("ingredients-list").querySelectorAll("li")]
-  productsToAdd.forEach(elem => {
-    const newProductItem = elem.querySelectorAll("span")[2].innerHTML
-    const newQuantityItem = parseFloat(elem.querySelectorAll("span")[1].innerHTML)
+if(btnCreate){
+  btnCreate.addEventListener("click", function(){
+    let productsToAdd = [...document.getElementById("ingredients-list").querySelectorAll("li")]
+    productsToAdd.forEach(elem => {
+      const newProductItem = elem.querySelectorAll("span")[2].innerHTML
+      const newQuantityItem = parseFloat(elem.querySelectorAll("span")[1].innerHTML)
 
-    const newProductInput = document.createElement('input')
-    newProductInput.type = "hidden"
-    newProductInput.value = newProductItem
-    newProductInput.name = "productIds"
+      const newProductInput = document.createElement('input')
+      newProductInput.type = "hidden"
+      newProductInput.value = newProductItem
+      newProductInput.name = "productIds"
 
-    const newQuantityInput = document.createElement('input')
-    newQuantityInput.type = "hidden"
-    newQuantityInput.value = newQuantityItem
-    newQuantityInput.name = "quantities"
+      const newQuantityInput = document.createElement('input')
+      newQuantityInput.type = "hidden"
+      newQuantityInput.value = newQuantityItem
+      newQuantityInput.name = "quantities"
 
-    document.getElementById('list-to-send').appendChild(newProductInput)
-    document.getElementById('list-to-send').appendChild(newQuantityInput)
+      document.getElementById('list-to-send').appendChild(newProductInput)
+      document.getElementById('list-to-send').appendChild(newQuantityInput)
+    })
   })
-})
-
-
+}
