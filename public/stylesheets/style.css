@@ -111,10 +111,14 @@ a {
 
 .logout {
   color: whitesmoke;
+  background: url("../images/exit-icon.png");
+  background-size: contain;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   background-color: #4a69bd;
   font-weight: bolder;
-  border: none; }
+  border: none;
+  width: 32px;
+  height: 37px; }
 
 .details-info {
   display: flex;
