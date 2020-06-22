@@ -23,10 +23,10 @@
     <h3>Reviews: {{recipe.reviews}}</h3>
   </div>
     <div class="recipe-control-buttons">
-      {{#ifCond user.username recipe.author user.isSuperuser}}
+      {{#ifHasAuth user.username recipe.author user.isSuperuser}}
           <a class="button edit" href="/recipes/edit/{{recipe._id}}">EDIT</a>
           <a class="button delete" href="/recipes/delete/{{recipe._id}}">DELETE</a>
-      {{/ifCond}}
+      {{/ifHasAuth}}
   </div>
 
 </div>

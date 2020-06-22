@@ -91,14 +91,22 @@ const getRecipeDetails = (req, res, next) => {
 
 const getDeleteRecipe = (req, res, next) => {
   const user = req.session.currentUser
-  Recipe.findByIdAndDelete(req.params.recipeId)
+  Recipe.findOne({_id: req.params.recipeId})
   .then(recipe => {
-    res.redirect('/recipes')
-    console.log("Recipe deleted: ", recipe)
+    if (user.username === recipe.author || user.isSuperuser) {
+      Recipe.findByIdAndDelete(req.params.recipeId)
+      .then(recipe => {
+        res.redirect('/recipes')
+        console.log("Recipe deleted: ", recipe)
+      })
+      .catch(err => {
+        console.log("ERROR DELETING RECIPE: ", err)
+      })
+    } else {
+      res.redirect('/recipes')
+    }
   })
-  .catch(err => {
-    console.log("ERROR DELETING RECIPE: ", err)
-  })
+  .catch(err => next(err))
 }
 
 const getEditRecipe = (req, res, next) => {
@@ -108,7 +116,11 @@ const getEditRecipe = (req, res, next) => {
   .then(recipe => {
     Product.find()
     .then(products => {
-      res.render('recipes/recipe-edit', {recipe, products, user})
+      if (user.username === recipe.author || user.isSuperuser) {
+        res.render('recipes/recipe-edit', {recipe, products, user})
+      } else {
+        res.redirect('/recipes')
+      }
     })
   })
   .catch(err => {
