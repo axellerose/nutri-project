@@ -7,6 +7,9 @@ const recipeSchema = new Schema(
       type: String,
       required: [true, 'Name is required.'],
     },
+    author: {
+      type: String
+    },
     image: {
       type: String,
       required: true,
