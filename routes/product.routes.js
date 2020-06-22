@@ -1,14 +1,13 @@
 const express = require('express');
 const router  = express.Router();
 
-const {products,getFeed,postFeed,getProductDetails} = require('../controllers/product.controller')
+const {getProducts,getFeed,postFeed,getProductDetails,getDeleteProduct} = require('../controllers/product.controller')
 
 router
-.get('/', products)
+.get('/', getProducts)
 .get('/feedDb', getFeed)
 .post('/feedDb', postFeed)
 .get('/details/:name', getProductDetails)
-
-// http://localhost:3000/products/product-details/Kiwi
+.get('/delete/:name', getDeleteProduct)
 
 module.exports = router;

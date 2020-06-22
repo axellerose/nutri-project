@@ -4,7 +4,7 @@ const Product = require('../models/Product.model')
 const Recipe = require('../models/Recipe.model')
 
 
-const recipes = (req, res, next) => {
+const getRecipes = (req, res, next) => {
   const user = req.session.currentUser
   Recipe.find()
   .then(recipes => {
@@ -15,11 +15,15 @@ const recipes = (req, res, next) => {
 
 const getCreateRecipe = (req, res, next) => {
   const user = req.session.currentUser
-  Product.find()
-  .then(products => {
-    res.render('recipes/create-recipe', {user, products});
-  })
-  .catch(err => console.log(`Error : ${err}`))
+  if (user) {
+    Product.find()
+    .then(products => {
+      res.render('recipes/create-recipe', {user, products});
+    })
+    .catch(err => console.log(`Error : ${err}`))
+  } else {
+    res.redirect('/recipes')
+  }
 }
 
 const postCreateRecipe = (req, res, next) => {
@@ -55,8 +59,6 @@ const getRecipeDetails = (req, res, next) => {
     // 3 - We make a "rule of three" (regla de tres) to know the quantity of calories for 100g of this recipe
     
     // REFACTORIZAR EN UNA FUNCTION
-
-
     //##############################################################
     //#####################!!!!!!ACHTUNG!!!!!!######################
     //##############################################################
@@ -65,19 +67,24 @@ const getRecipeDetails = (req, res, next) => {
     //##############################################################
     //###################!!!!!!END ACHTUNG!!!!!!####################
     //##############################################################
+
+    const calculateProp = (products, prop) => products.reduce((acc, curr) => acc + (curr.product.info[prop] * (curr.quantity/100)), 0)
+    const calculateTotal = (prop, quantity) => (prop * 100/ quantity).toFixed(2)
     
-    console.log(recipe.products)
-    const totalQuantities = recipe.products.reduce((acc, curr) => acc + curr.quantity, 0)
-    const totalCalories = recipe.products.reduce((acc, curr) => acc + (curr.product.info.calories * (curr.quantity/100)), 0)
-    const totalFat = recipe.products.reduce((acc, curr) => acc + (curr.product.info.fat * (curr.quantity/100)), 0)
-    const totalCarbs = recipe.products.reduce((acc, curr) => acc + (curr.product.info.carbs * (curr.quantity/100)), 0)
-    const totalProteins = recipe.products.reduce((acc, curr) => acc + (curr.product.info.proteins * (curr.quantity/100)), 0)
-
-
-    recipe.info.calories = ((totalCalories*100)/totalQuantities).toFixed(2)
-    recipe.info.fat = ((totalFat*100)/totalQuantities).toFixed(2)
-    recipe.info.carbs = ((totalCarbs*100)/totalQuantities).toFixed(2)
-    recipe.info.proteins = ((totalProteins*100)/totalQuantities).toFixed(2)
+    function calculateRecipe(recipe) {
+      const totalQty = recipe.products.reduce((acc, curr) => acc + curr.quantity, 0)
+      const calories = calculateProp(recipe.products, "calories")
+      const proteins = calculateProp(recipe.products, "proteins")
+      const fat = calculateProp(recipe.products, "fat")
+      const carbs = calculateProp(recipe.products, "carbs")
+      return {
+        calories: calculateTotal(calories, totalQty),
+        fat: calculateTotal(fat, totalQty),
+        carbs: calculateTotal(carbs, totalQty),
+        proteins: calculateTotal(proteins, totalQty),
+      }
+    }
+    recipe.info = calculateRecipe(recipe) 
     res.render('recipes/recipe-details', {user: user, recipe: recipe});
   })
   .catch(err => {
@@ -88,14 +95,22 @@ const getRecipeDetails = (req, res, next) => {
 
 const getDeleteRecipe = (req, res, next) => {
   const user = req.session.currentUser
-  Recipe.findByIdAndDelete(req.params.recipeId)
+  Recipe.findOne({_id: req.params.recipeId})
   .then(recipe => {
-    res.redirect('/recipes')
-    console.log("Recipe deleted: ", recipe)
+    if ((user && user.username === recipe.author) || (user && user.isSuperuser)) {
+      Recipe.findByIdAndDelete(req.params.recipeId)
+      .then(recipe => {
+        res.redirect('/recipes')
+        console.log("Recipe deleted: ", recipe)
+      })
+      .catch(err => {
+        console.log("ERROR DELETING RECIPE: ", err)
+      })
+    } else {
+      res.redirect('/recipes')
+    }
   })
-  .catch(err => {
-    console.log("ERROR DELETING RECIPE: ", err)
-  })
+  .catch(err => next(err))
 }
 
 const getEditRecipe = (req, res, next) => {
@@ -105,7 +120,11 @@ const getEditRecipe = (req, res, next) => {
   .then(recipe => {
     Product.find()
     .then(products => {
-      res.render('recipes/recipe-edit', {recipe, products, user})
+      if ((user && user.username === recipe.author) || (user && user.isSuperuser)) {
+        res.render('recipes/recipe-edit', {recipe, products, user})
+      } else {
+        res.redirect('/recipes')
+      }
     })
   })
   .catch(err => {
@@ -137,7 +156,7 @@ const postEditRecipe = (req, res, next) => {
 }
 
 module.exports = {
-  recipes,
+  getRecipes,
   getCreateRecipe,
   postCreateRecipe,
   getRecipeDetails,

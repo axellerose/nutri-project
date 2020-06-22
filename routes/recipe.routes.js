@@ -2,7 +2,7 @@ const express = require('express');
 const router  = express.Router();
 
 const {
-  recipes,
+  getRecipes,
   getCreateRecipe,
   postCreateRecipe,
   getRecipeDetails,
@@ -12,7 +12,7 @@ const {
 } = require('../controllers/recipe.controller')
 
 router
-.get('/', recipes)
+.get('/', getRecipes)
 .get('/create', getCreateRecipe)
 .post('/create', postCreateRecipe)
 .get('/details/:recipeId', getRecipeDetails)
