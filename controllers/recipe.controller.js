@@ -15,11 +15,15 @@ const getRecipes = (req, res, next) => {
 
 const getCreateRecipe = (req, res, next) => {
   const user = req.session.currentUser
-  Product.find()
-  .then(products => {
-    res.render('recipes/create-recipe', {user, products});
-  })
-  .catch(err => console.log(`Error : ${err}`))
+  if (user) {
+    Product.find()
+    .then(products => {
+      res.render('recipes/create-recipe', {user, products});
+    })
+    .catch(err => console.log(`Error : ${err}`))
+  } else {
+    res.redirect('/recipes')
+  }
 }
 
 const postCreateRecipe = (req, res, next) => {
@@ -93,7 +97,7 @@ const getDeleteRecipe = (req, res, next) => {
   const user = req.session.currentUser
   Recipe.findOne({_id: req.params.recipeId})
   .then(recipe => {
-    if (user.username === recipe.author || user.isSuperuser) {
+    if ((user && user.username === recipe.author) || (user && user.isSuperuser)) {
       Recipe.findByIdAndDelete(req.params.recipeId)
       .then(recipe => {
         res.redirect('/recipes')
@@ -116,7 +120,7 @@ const getEditRecipe = (req, res, next) => {
   .then(recipe => {
     Product.find()
     .then(products => {
-      if (user.username === recipe.author || user.isSuperuser) {
+      if ((user && user.username === recipe.author) || (user && user.isSuperuser)) {
         res.render('recipes/recipe-edit', {recipe, products, user})
       } else {
         res.redirect('/recipes')

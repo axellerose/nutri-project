@@ -13,7 +13,7 @@ const getProducts = (req, res, next) => {
 
 const getFeed = (req, res, next) => {
   const user = req.session.currentUser
-  if (user.isSuperuser) {
+  if (user && user.isSuperuser) {
     res.render('products/feed-products-db', {user});
   } else {
     res.redirect('/products');
@@ -62,7 +62,7 @@ const getProductDetails = (req, res, next) => {
 
 const getDeleteProduct = (req, res, next) => {
   const user = req.session.currentUser
-  if (user.isSuperuser) {
+  if (user && user.isSuperuser) {
     Product.findOneAndDelete({name: req.params.name})
     .then(() => {
       res.redirect('/products');
