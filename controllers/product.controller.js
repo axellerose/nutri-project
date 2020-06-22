@@ -13,7 +13,11 @@ const getProducts = (req, res, next) => {
 
 const getFeed = (req, res, next) => {
   const user = req.session.currentUser
-  res.render('products/feed-products-db', {user});
+  if (user.isSuperuser) {
+    res.render('products/feed-products-db', {user});
+  } else {
+    res.redirect('/products');
+  }
 }
 
 const postFeed = (req, res, next) => {
@@ -56,9 +60,24 @@ const getProductDetails = (req, res, next) => {
   })
 }
 
+const getDeleteProduct = (req, res, next) => {
+  const user = req.session.currentUser
+  if (user.isSuperuser) {
+    Product.findOneAndDelete({name: req.params.name})
+    .then(() => {
+      res.redirect('/products');
+      console.log("Product deleted!")
+    })
+    .catch(err => console.log("Error while deleting product" + err))
+  } else {
+    res.redirect('/products');
+  }
+}
+
 module.exports = {
   getProducts,
   getFeed,
   postFeed,
-  getProductDetails
+  getProductDetails,
+  getDeleteProduct
 };

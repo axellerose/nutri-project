@@ -14,5 +14,16 @@
       </div>
     </div>
   {{/each}}
+  {{#if user.isSuperuser}}
+    <a href=""></a>
+    <a
+      href="/products/feedDb"
+      class="create-recipe__button"
+    > 
+      <div>
+        <img src="/images/add-icon.svg">
+      </div>
+    </a>
+  {{/if}}
 </div>
 
