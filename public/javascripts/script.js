@@ -1,4 +1,26 @@
 const createRecipe = document.getElementById("create-recipe-form")
+
+// Minimum 2 products in the ingredients list
+function checkIngredientListLength() {
+  let checkIfTwoProductsMin = [...document.getElementById("ingredients-list").querySelectorAll("li")]
+  if (checkIfTwoProductsMin.length < 2) {
+    btnCreate.disabled = true
+  } else {
+    btnCreate.disabled = false
+  }
+}
+
+function addListenersRemoveButton() {
+  let btnRemove = [...document.getElementsByClassName("remove-product")]
+  btnRemove.forEach(btn => {
+    btn.addEventListener("click", function(){
+      event.preventDefault()
+      btn.parentNode.remove()
+      checkIngredientListLength()
+    })
+  })
+}
+
 if (createRecipe) {
 document.getElementById("new-ingredient").addEventListener("click", function(){
   event.preventDefault()
@@ -8,7 +30,7 @@ document.getElementById("new-ingredient").addEventListener("click", function(){
   let ingredientId = document.getElementById("products").value
 
   const newProduct = document.createElement('li')
-  newProduct.innerHTML = `<span>${ingredient}</span>     <span>${quantity}</span> g <button class="remove-product">REMOVE</button>     
+  newProduct.innerHTML = `<span>${ingredient}</span>     <span>${quantity}</span> g <button class="remove-product button-in-form">REMOVE</button>     
                           <span style="visibility:hidden">${ingredientId}</span>`
   let productAlreadyAdded = false
   let productsAddedByUser = [...document.getElementById("ingredients-list").querySelectorAll("li")]
@@ -21,31 +43,18 @@ document.getElementById("new-ingredient").addEventListener("click", function(){
   if (!productAlreadyAdded) {
     document.getElementById('ingredients-list').appendChild(newProduct)
   }
+  addListenersRemoveButton()
 });
 }
 
-let btnRemove = [...document.getElementsByClassName("remove-product")]
-btnRemove.forEach(btn => {
-  btn.addEventListener("click", function(){
-    event.preventDefault()
-    btn.parentNode.remove()
-  })
-})
-
-// MINIMUM 2 PRODUCTS RULE
 let btnCreate = document.querySelector("#create-recipe-button")
 if (createRecipe) {
   document.querySelector("#new-ingredient").addEventListener("click", function(){
-    let checkIfTwoProductsMin = [...document.getElementById("ingredients-list").querySelectorAll("li")]
-    if (checkIfTwoProductsMin.length < 2) {
-      btnCreate.disabled = true
-    } else {
-      btnCreate.disabled = false
-    }
+    checkIngredientListLength()
   })
 }
 
-if(btnCreate){
+if(createRecipe){
   btnCreate.addEventListener("click", function(){
     let productsToAdd = [...document.getElementById("ingredients-list").querySelectorAll("li")]
     productsToAdd.forEach(elem => {
@@ -67,3 +76,5 @@ if(btnCreate){
     })
   })
 }
+
+addListenersRemoveButton()
