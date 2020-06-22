@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 const Product = require('../models/Product.model');
 
-const products = (req, res, next) => {
+const getProducts = (req, res, next) => {
   const user = req.session.currentUser
   Product.find()
   .then(products => {
@@ -57,7 +57,7 @@ const getProductDetails = (req, res, next) => {
 }
 
 module.exports = {
-  products,
+  getProducts,
   getFeed,
   postFeed,
   getProductDetails

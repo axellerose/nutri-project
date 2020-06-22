@@ -4,7 +4,7 @@ const Product = require('../models/Product.model')
 const Recipe = require('../models/Recipe.model')
 
 
-const recipes = (req, res, next) => {
+const getRecipes = (req, res, next) => {
   const user = req.session.currentUser
   Recipe.find()
   .then(recipes => {
@@ -152,7 +152,7 @@ const postEditRecipe = (req, res, next) => {
 }
 
 module.exports = {
-  recipes,
+  getRecipes,
   getCreateRecipe,
   postCreateRecipe,
   getRecipeDetails,
