@@ -26,6 +26,7 @@ const postCreateRecipe = (req, res, next) => {
   const user = req.session.currentUser
   const newRecipe = {
     name: req.body.name,
+    author: user.username,
     image: req.body.image,
     time: req.body.time,
     products: [],

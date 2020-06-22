@@ -5,6 +5,7 @@
     </div>
     <div class="details-description">
       <h2>{{recipe.name}}</h2>
+      <h3>Shared by: <em>{{recipe.author}}</em></h3>
       <h3>Rate: {{recipe.rate}}</h3>
       <h3>Preparation time: {{recipe.time}}</h3>
       <h3>Calories (for 100g): <span>{{recipe.info.calories}}</span></h3>
@@ -22,12 +23,10 @@
     <h3>Reviews: {{recipe.reviews}}</h3>
   </div>
     <div class="recipe-control-buttons">
- 
-      <a class="button edit" href="/recipes/edit/{{recipe._id}}">EDIT</a>
-
-
-      <a class="button delete" href="/recipes/delete/{{recipe._id}}">DELETE</a>
-
+      {{#ifCond user.username recipe.author user.isSuperuser}}
+          <a class="button edit" href="/recipes/edit/{{recipe._id}}">EDIT</a>
+          <a class="button delete" href="/recipes/delete/{{recipe._id}}">DELETE</a>
+      {{/ifCond}}
   </div>
 
 </div>
