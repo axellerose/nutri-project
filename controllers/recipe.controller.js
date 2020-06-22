@@ -55,8 +55,6 @@ const getRecipeDetails = (req, res, next) => {
     // 3 - We make a "rule of three" (regla de tres) to know the quantity of calories for 100g of this recipe
     
     // REFACTORIZAR EN UNA FUNCTION
-
-
     //##############################################################
     //#####################!!!!!!ACHTUNG!!!!!!######################
     //##############################################################
@@ -65,19 +63,24 @@ const getRecipeDetails = (req, res, next) => {
     //##############################################################
     //###################!!!!!!END ACHTUNG!!!!!!####################
     //##############################################################
+
+    const calculateProp = (products, prop) => products.reduce((acc, curr) => acc + (curr.product.info[prop] * (curr.quantity/100)), 0)
+    const calculateTotal = (prop, quantity) => (prop * 100/ quantity).toFixed(2)
     
-    console.log(recipe.products)
-    const totalQuantities = recipe.products.reduce((acc, curr) => acc + curr.quantity, 0)
-    const totalCalories = recipe.products.reduce((acc, curr) => acc + (curr.product.info.calories * (curr.quantity/100)), 0)
-    const totalFat = recipe.products.reduce((acc, curr) => acc + (curr.product.info.fat * (curr.quantity/100)), 0)
-    const totalCarbs = recipe.products.reduce((acc, curr) => acc + (curr.product.info.carbs * (curr.quantity/100)), 0)
-    const totalProteins = recipe.products.reduce((acc, curr) => acc + (curr.product.info.proteins * (curr.quantity/100)), 0)
-
-
-    recipe.info.calories = ((totalCalories*100)/totalQuantities).toFixed(2)
-    recipe.info.fat = ((totalFat*100)/totalQuantities).toFixed(2)
-    recipe.info.carbs = ((totalCarbs*100)/totalQuantities).toFixed(2)
-    recipe.info.proteins = ((totalProteins*100)/totalQuantities).toFixed(2)
+    function calculateRecipe(recipe) {
+      const totalQty = recipe.products.reduce((acc, curr) => acc + curr.quantity, 0)
+      const calories = calculateProp(recipe.products, "calories")
+      const proteins = calculateProp(recipe.products, "proteins")
+      const fat = calculateProp(recipe.products, "fat")
+      const carbs = calculateProp(recipe.products, "carbs")
+      return {
+        calories: calculateTotal(calories, totalQty),
+        fat: calculateTotal(fat, totalQty),
+        carbs: calculateTotal(carbs, totalQty),
+        proteins: calculateTotal(proteins, totalQty),
+      }
+    }
+    recipe.info = calculateRecipe(recipe) 
     res.render('recipes/recipe-details', {user: user, recipe: recipe});
   })
   .catch(err => {
