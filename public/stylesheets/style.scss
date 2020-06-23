@@ -14,6 +14,7 @@
 */
 
 $blue-navbar: #4a69bd;
+$click-btn: #e55039;
 
 *, *:before, *:after {
   box-sizing: border-box;
@@ -67,7 +68,7 @@ a {
   text-decoration: none;
   color: black;
 }
-.cards-wrapper {
+.wrapper {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -213,10 +214,6 @@ h3 span {
 }
 
 .create {
-  background-color: #38ada9;
-}
-
-#new-ingredient {
   background-color: #3c6382;
 }
 
@@ -329,14 +326,14 @@ h3 span {
   }
 }
 
-.cards-wrapper {
+.wrapper {
   .create-recipe__button {
     position: fixed;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 48px;
-    height: 48px;
+    width: 50px;
+    height: 50px;
     background-color: #38ada9;
     color: #fff; 
     border-radius: 50%;
@@ -347,11 +344,12 @@ h3 span {
     animation: slide-up 0.65s ease-in-out forwards;
     opacity: 1;
     z-index: 1;
+    outline: none;
 
     img {
       margin-top: 5px;
       margin-right: 2px;
-      width: 20px;
+      width: 30px;
     }
   }
 }
@@ -373,6 +371,20 @@ h3 span {
     display: flex;
     flex-direction: column;
     margin-bottom: 15px;
+
+    textarea {
+      width: 100%;
+      max-width: 350px;
+      height: 120px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.35);
+      font-size: 14px;
+      color: #585858;
+      padding: 10px;
+      background: #fff;
+      border: 1px solid #cdcdcd;
+      transition: border .35s ease-in-out 0s;
+      outline: none;
+    }
     
     label {
       font-size: 14px;
@@ -390,6 +402,15 @@ h3 span {
       &:focus {
         border: 1px solid $blue-navbar;
       }
+    }
+    select {
+      padding: 10px;
+      background: #fff;
+      border: 1px solid #cdcdcd;
+      transition: border .35s ease-in-out 0s;
+      outline: none;
+      max-width: 150px;
+      width: 100%;
     }    
   }
 
@@ -398,13 +419,36 @@ h3 span {
     &:hover {
       cursor: pointer;
     }
+    &:active {
+      border: 1px solid $click-btn;
+    }
+  }
+
+  .add-product__button {
+    background: url('/images/plus-icon.png');
+    background-size: cover;
+    width: 32px;
+    height: 32px;
+    color: #fff;
+    border-radius: 50%;
+    font-size: larger;
+    background-color: #38ada9;
+    margin-left: 75%;
+    margin-bottom: 15px;
+    outline: none;
   }
 
   .delete-product__button{
     background: url('/images/delete-icon.svg');
     background-size: cover;
-    width: 20px;
-    height: 20px;
+    width: 24px;
+    height: 24px;
+    padding-right: 10px;
+    outline: none;
+
+    &:active {
+      border: 1px solid $click-btn;
+    }
   }    
 
   a {
@@ -430,23 +474,25 @@ h3 span {
   label, span{
     font-size: 14px;
     color: #585858;
-    margin-bottom: 10px;
+    margin-bottom: 3px;
     margin-right: 10px;
   }
 
   input {
-    padding: 10px;
+    padding: 10px 10px 10px 16px;
     background: #fff;
     border: 1px solid #cdcdcd;
     transition: border .35s ease-in-out 0s;
     outline: none;
     width: 50px;
     margin-left: 10px;
+    margin-right: 10px;
 
     &:focus {
       border: 1px solid $blue-navbar;
     }
-  }  
+  }
+
 }
 
 .list-container {
@@ -459,6 +505,7 @@ h3 span {
     display: flex;
     justify-content: space-between;
     padding: 0px 50px;
+    font-weight: bolder;
   }
 
   ul {
@@ -467,9 +514,53 @@ h3 span {
     li {
       display: flex;
       width: 100%;
-      background-color: red;
       justify-content: space-between;
-      
+
+      span {
+        width: 40%;
+        text-align: left;
+        padding-left: 50px 
+      }
+    }
+  }
+
+}
+
+.add-product-container {
+  display: flex;
+  flex-direction: row;
+  max-width: 300px;
+  width: 100%;
+    
+  .input-container {
+    max-width: 140px;
+    width: 100%;
+    padding: 0;
+    margin: 0px 0px 15px 20px;
+  }
+
+  .quant-grams {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    max-width: 10px;
+    width: 100%;
+    margin: 0px 0px 15px 20px;
+
+    label {
+      font-size: 14px;
+      color: #585858;
+      margin: 6px 10px 0px 10px;
+    }
+
+    input {
+      padding: 10px 0px 10px 10px;
+      margin-right: 5px;
+      background: #fff;
+      border: 1px solid #cdcdcd;
+      transition: border .35s ease-in-out 0s;
+      outline: none;
+      width: 75px;
     }
   }
 }

@@ -1,5 +1,17 @@
 <h2>Recipes</h2>
-<div class="cards-wrapper">
+<div class="wrapper">
+  {{#each recipes}}
+    {{> cards}}
+    {{!-- <div class="card" onclick="location='/recipes/details/{{_id}}'">
+      <div class="card-img" style="background-image: url({{image}})">
+      </div>
+      <div class="card-info">
+        <h3>
+          {{name}}
+        </h3>
+      </div>
+    </div> --}}
+  {{/each}}
   {{#if user}}
     <a href=""></a>
     <a
@@ -11,17 +23,5 @@
       </div>
     </a>
   {{/if}}
-
-  {{#each recipes}}
-    <div class="card" onclick="location='/recipes/details/{{_id}}'">
-      <div class="card-img" style="background-image: url({{image}})">
-      </div>
-      <div class="card-info">
-        <h3>
-          {{name}}
-        </h3>
-      </div>
-    </div>
-  {{/each}}
 </div>
 

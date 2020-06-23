@@ -1,7 +1,8 @@
 <h2>Products</h2>
-<div class="cards-wrapper">
+<div class="wrapper">
   {{#each products}}
-    <div class="card product">
+    {{> cards}}
+    {{!-- <div class="card product">
       <div class="card-img">
         <a href="/products/details/{{name}}">
           <img src="{{image}}" width="200px" height="auto" alt="Product picture">
@@ -12,7 +13,7 @@
           <a id="product-detail-link" href="/products/details/{{name}}">{{name}}</a>
         </h3>
       </div>
-    </div>
+    </div> --}}
   {{/each}}
   {{#if user.isSuperuser}}
     <a href=""></a>
@@ -26,4 +27,7 @@
     </a>
   {{/if}}
 </div>
+  
+
+
 
