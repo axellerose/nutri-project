@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 const Product = require('../models/Product.model');
+const Recipe = require('../models/Recipe.model')
 
 const getProducts = (req, res, next) => {
   const user = req.session.currentUser
@@ -51,8 +52,12 @@ const getProductDetails = (req, res, next) => {
   const user = req.session.currentUser
   Product.findOne({name: req.params.name})
   .then(product => {
-    console.log(product.name)
-    res.render('products/product-details', {user: user, product: product});
+    Recipe.find({"products.product": product._id})
+    .then(recipes => {
+      // recipes.forEach(elem => console.log(elem.product))
+      res.render('products/product-details', {user: user, product: product, relatedRecipes: recipes});
+    })
+    .catch(err => console.log(`Error creating relation products-recipes on Product's page: ${err}`))
   })
   .catch(err => {
     console.log(`Error getting product details: ${err}`)
