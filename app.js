@@ -52,10 +52,12 @@ app.locals.title = 'NutriApp';
 // Routes
 const index = require('./routes/index.routes');
 const auth = require('./routes/auth.routes');
+const profile = require('./routes/profile.routes');
 const products = require('./routes/product.routes');
 const recipes = require('./routes/recipe.routes');
 app.use('/', index);
 app.use('/', auth);
+app.use('/profile', profile);
 app.use('/products', products);
 app.use('/recipes', recipes);
 
