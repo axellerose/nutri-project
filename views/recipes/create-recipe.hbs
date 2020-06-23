@@ -1,5 +1,11 @@
 <h2>Create a recipe</h2>
 
+{{#if errorMessage}}
+  <div>
+      <p>{{errorMessage}}</p>
+  </div>   
+{{/if}}
+
 <form id="create-recipe-form" class="create-form" action="/recipes/create" method="POST">
   <div class="input-container">
     <label for="name">Name:</label>
@@ -44,9 +50,4 @@
   </div>
 
   <button class="button-in-form create" type="submit" id="create-recipe-button" disabled>Create recipe</button><br>
-  {{#if errorMessage}}
-      <div>
-          <p>{{errorMessage}}</p>
-      </div>   
-    {{/if}}
 </form>

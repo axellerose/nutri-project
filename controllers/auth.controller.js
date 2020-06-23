@@ -39,7 +39,7 @@ const postSignup = (req, res, next) => {
       res.redirect('/profile')
     })
     .catch(error => {
-      // Email error
+      // Wrong email
       if (error instanceof mongoose.Error.ValidationError) {
         res.status(400).render('auth/signup', {
             errorMessage: error.message
@@ -74,13 +74,13 @@ const postLogin = (req, res, next) => {
   User.findOne({email})
     .then(user => {
       if (!user) {
-        res.render('auth/login', { errorMessage: "Wrong email" })
+        res.render('auth/login', { errorMessage: "Email is incorrect" })
         return
       } else if (bcrypt.compareSync(password, user.password)) {
         req.session.currentUser = user;
         res.redirect('/profile')
       } else {
-        res.render('auth/login', { errorMessage: "Wrong password" })
+        res.render('auth/login', { errorMessage: "Password is incorrect" })
         return
       }
     })

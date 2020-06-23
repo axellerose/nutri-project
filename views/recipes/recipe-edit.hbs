@@ -1,5 +1,11 @@
 <h2>Edit a recipe</h2>
 
+{{#if errorMessage}}
+    <div>
+        <p>{{errorMessage}}</p>
+    </div>   
+{{/if}}
+
 <form id="create-recipe-form" action="/recipes/edit/{{recipe._id}}" method="POST">
   <label for="name">Name:</label>
   <input type="text" id="name" name="name" placeholder="Ex: Pasta Bolognese" value="{{recipe.name}}"><br>
@@ -40,12 +46,8 @@
     {{!-- Will be filled dynamically with JS --}}
   </div>
 
+  <input type="hidden" name="recipeId" value="{{recipe._id}}">
+
   <button class="button-in-form create" type="submit" id="create-recipe-button">Save changes</button><br>
 
 </form>
-
-{{#if errorMessage}}
-    <div>
-        <p>{{errorMessage}}</p>
-    </div>   
-{{/if}}
