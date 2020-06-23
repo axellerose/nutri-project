@@ -1,9 +1,3 @@
-{{#if errorMessage}}
-  <div>
-      <p>{{errorMessage}}</p>
-  </div>   
-{{/if}}
-
 <form id="create-recipe-form" class="create-form" action="/recipes/create" method="POST">
   <h2>Create a recipe</h2>
   <div class="input-container">
@@ -18,7 +12,8 @@
   
   <div class="time-container">
     <label for="time">Cooking time</label>
-    <input type="number" id="time" name="time" placeholder="min">
+    <input type="number" id="time" name="time" placeholder="15">
+    <label>minutes</label>
   </div>
 
   <div class="list-container">
@@ -28,29 +23,36 @@
     <ul id="ingredients-list">
     </ul>
   </div>
+  <div class="add-product-container">
+    <div class="input-container">
+      <select id="products" name="products">
+        {{#each products}}
+          <option value="{{_id}}">{{this.name}}</option>
+        {{/each}}
+      </select>
+    </div>
+    <div class="quant-grams">
+      <input type="number" id="quantity" name="quantity" placeholder="100" min=0>
+      <label>gr</label>
+    </div>
 
-  <div class="input-container">
-    <select id="products" name="products">
-      {{#each products}}
-        <option value="{{_id}}">{{this.name}}</option>
-      {{/each}}
-    </select>
   </div>
-
+  <button class="add-product__button" id="new-ingredient">+</button>
   <div class="input-container">
-    <label for="quantity" style="">Quantity</label>
-    <input type="number" id="quantity" name="quantity" placeholder="in grams" min=0>
-    <button class="button-in-form" id="new-ingredient">Add</button>
+    <label for="steps">Steps:</label>
+    <textarea id="steps" name="steps" rows="10" cols="30">
+      Describe the steps here
+    </textarea>
   </div>
-  
-  <label for="steps">Steps:</label>
-  <textarea id="steps" name="steps" rows="10" cols="30">
-    Write here the different steps for this recipe
-  </textarea>
-
   <div id="list-to-send">
     {{!-- Will be filled dynamically with JS --}}
   </div>
 
   <button class="button-in-form create" type="submit" id="create-recipe-button" disabled>Create recipe</button><br>
 </form>
+
+{{#if errorMessage}}
+  <div>
+      <p>{{errorMessage}}</p>
+  </div>   
+{{/if}}

@@ -82,3 +82,14 @@ if(createRecipe){
 }
 
 addListenersRemoveButton()
+
+
+
+
+// [...document.querySelectorAll(".product")].map((el, idx) => {
+//   const producto = {
+//       producto:  el.textContent.trim(),
+//       index: idx
+//   }
+//   return producto
+// })
