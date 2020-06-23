@@ -111,10 +111,14 @@ a {
 
 .logout {
   color: whitesmoke;
+  background: url("../images/exit-icon.png");
+  background-size: contain;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   background-color: #4a69bd;
   font-weight: bolder;
-  border: none; }
+  border: none;
+  width: 32px;
+  height: 37px; }
 
 .details-info {
   display: flex;
@@ -268,5 +272,54 @@ h3 span {
     margin-top: 5px;
     margin-right: 2px;
     width: 20px; }
+
+.create-form {
+  width: 100%;
+  max-width: 300px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center; }
+  .create-form__heading {
+    margin-bottom: 20px; }
+  .create-form .input-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px; }
+    .create-form .input-container label {
+      font-size: 14px;
+      color: #585858;
+      margin-bottom: 10px; }
+    .create-form .input-container input {
+      padding: 10px;
+      background: #fff;
+      border: 1px solid #cdcdcd;
+      transition: border .35s ease-in-out 0s;
+      outline: none; }
+      .create-form .input-container input:focus {
+        border: 1px solid #4a69bd; }
+  .create-form .actions {
+    display: flex;
+    width: 100%; }
+    .create-form .actions button {
+      border: none;
+      background-color: #4a69bd;
+      color: #fff;
+      font-size: 14px;
+      padding: 10px 20px;
+      border-radius: 4px;
+      outline: none; }
+      .create-form .actions button:hover {
+        cursor: pointer; }
+    .create-form .actions a {
+      font-size: 14px;
+      padding: 10px 0px 10px 20px;
+      border-radius: 4px;
+      background: transparent;
+      color: #000;
+      text-decoration: none; }
+    .create-form .actions .spacer {
+      flex: 1; }
 
 /*# sourceMappingURL=style.css.map */

@@ -1,27 +1,36 @@
 <h2>Create a recipe</h2>
 
-<form id="create-recipe-form" action="/recipes/create" method="POST">
-  <label for="name">Name:</label>
-  <input type="text" id="name" name="name" placeholder="Ex: Pasta Bolognese"><br>
+<form id="create-recipe-form" class="create-form" action="/recipes/create" method="POST">
+  <div class="input-container">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" placeholder="Ex: Pasta Bolognese">
+  </div>
 
-  <label for="img">Image:</label>
-  <input type="text" id="img" name="image" placeholder="Image URL"><br>
+  <div class="input-container">
+    <label for="img">Image:</label>
+    <input type="text" id="img" name="image" placeholder="Image URL"><br>
+  </div>
+  
+  <div class="input-container">
+    <label for="time">Cooking time</label>
+    <input type="number" id="time" name="time" placeholder="in minutes"><br>
+  </div>
 
-  <label for="time">Cooking time</label>
-  <input type="number" id="time" name="time" placeholder="in minutes"><br>
+  <div class="list-container">
+    <label style="padding-right:20px;">Ingredients</label><span>Quantity</span><br>
+    <ul id="ingredients-list">
+    </ul>
+  </div>
 
-  <label style="padding-right:20px;">Ingredients</label><span>Quantity</span><br>
-  <ul id="ingredients-list">
-  </ul>
-
-  <select id="products" name="products">
-    {{#each products}}
-      <option value="{{_id}}">{{this.name}}</option><br>
-    {{/each}}
-  </select><br>
+    <select id="products" name="products">
+      {{#each products}}
+        <option value="{{_id}}">{{this.name}}</option><br>
+      {{/each}}
+    </select>
+  </div>
 
   <label for="quantity" style="padding-right:20px;">Quantity</label><br>
-  <input type="number" id="quantity" name="quantity" placeholder="in grams"><br>
+  <input type="number" id="quantity" name="quantity" placeholder="in grams" min=0><br>
   <button class="button-in-form" id="new-ingredient">Add</button>
   <br><br>
   
