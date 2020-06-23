@@ -287,6 +287,9 @@ h3 span {
     display: flex;
     flex-direction: column;
     margin-bottom: 15px; }
+    .create-form .input-container #time-container {
+      display: flex;
+      flex-direction: row; }
     .create-form .input-container label {
       font-size: 14px;
       color: #585858;
@@ -299,27 +302,24 @@ h3 span {
       outline: none; }
       .create-form .input-container input:focus {
         border: 1px solid #4a69bd; }
-  .create-form .actions {
-    display: flex;
-    width: 100%; }
-    .create-form .actions button {
-      border: none;
-      background-color: #4a69bd;
-      color: #fff;
-      font-size: 14px;
-      padding: 10px 20px;
-      border-radius: 4px;
-      outline: none; }
-      .create-form .actions button:hover {
-        cursor: pointer; }
-    .create-form .actions a {
-      font-size: 14px;
-      padding: 10px 0px 10px 20px;
-      border-radius: 4px;
-      background: transparent;
-      color: #000;
-      text-decoration: none; }
-    .create-form .actions .spacer {
-      flex: 1; }
+  .create-form button {
+    border: none;
+    background-color: #4a69bd;
+    color: #fff;
+    font-size: 14px;
+    padding: 10px 20px;
+    border-radius: 4px;
+    outline: none; }
+    .create-form button:hover {
+      cursor: pointer; }
+  .create-form a {
+    font-size: 14px;
+    padding: 10px 0px 10px 20px;
+    border-radius: 4px;
+    background: transparent;
+    color: #000;
+    text-decoration: none; }
+  .create-form .spacer {
+    flex: 1; }
 
 /*# sourceMappingURL=style.css.map */

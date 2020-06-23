@@ -373,6 +373,12 @@ h3 span {
     display: flex;
     flex-direction: column;
     margin-bottom: 15px;
+
+    #time-container {
+      display: flex;
+      flex-direction: row; 
+
+    }
     
     label {
       font-size: 14px;
@@ -393,35 +399,31 @@ h3 span {
     }    
   }
 
-  .actions {
-    display: flex;
-    width: 100%;
+  button {
+    border: none;
+    background-color: $blue-navbar;
+    color: #fff;
+    font-size: 14px;
+    padding: 10px 20px;
+    border-radius: 4px;
+    outline: none;
 
-    button {
-      border: none;
-      background-color: $blue-navbar;
-      color: #fff;
-      font-size: 14px;
-      padding: 10px 20px;
-      border-radius: 4px;
-      outline: none;
-
-      &:hover {
-        cursor: pointer;
-      }
-    }
-
-    a {
-      font-size: 14px;
-      padding: 10px 0px 10px 20px;
-      border-radius: 4px;
-      background: transparent;
-      color: #000;
-      text-decoration: none;
-    }
-
-    .spacer {
-      flex: 1;
+    &:hover {
+      cursor: pointer;
     }
   }
+
+  a {
+    font-size: 14px;
+    padding: 10px 0px 10px 20px;
+    border-radius: 4px;
+    background: transparent;
+    color: #000;
+    text-decoration: none;
+  }
+
+  .spacer {
+    flex: 1;
+  }
+
 }
