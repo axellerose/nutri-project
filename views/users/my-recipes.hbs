@@ -1,0 +1,11 @@
+<h2>My Recipes</h2>
+{{#if user}}
+  {{#if myRecipes}}
+    <div id="my-recipes" class="details-description">
+      {{#each myRecipes}}
+        <a href="/recipes/details/{{_id}}"><img src="{{image}}" width="100px" height="auto" alt="Recipe containing this product"></a>
+        <span>{{name}}</span>
+      {{/each}}
+    </div> 
+  {{/if}}
+{{/if}}

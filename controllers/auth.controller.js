@@ -95,19 +95,10 @@ const postLogout = (req, res) => {
   res.redirect('/');
 }
 
-const getProfile = (req, res, next) => {
-  const user = req.session.currentUser
-  if (user && user.username === "superuser") {
-    user.isSuperuser = true
-  }
-  res.render('users/profile', {user});
-}
-
 module.exports = {
   getSignup,
   postSignup,
   getLogin,
   postLogin,
-  postLogout,
-  getProfile
+  postLogout
 };
