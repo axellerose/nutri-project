@@ -28,6 +28,7 @@
     </ul>
   </div>
 
+  <div class="input-container">
     <select id="products" name="products">
       {{#each products}}
         <option value="{{_id}}">{{this.name}}</option><br>
@@ -35,10 +36,11 @@
     </select>
   </div>
 
-  <label for="quantity" style="padding-right:20px;">Quantity</label><br>
-  <input type="number" id="quantity" name="quantity" placeholder="in grams" min=0><br>
-  <button class="button-in-form" id="new-ingredient">Add</button>
-  <br><br>
+  <div class="input-container">
+    <label for="quantity" style="padding-right:20px;">Quantity</label><br>
+    <input type="number" id="quantity" name="quantity" placeholder="in grams" min=0><br>
+    <button class="button-in-form" id="new-ingredient">Add</button>
+  </div>
   
   <label for="steps">Steps:</label>
   <textarea id="steps" name="steps" rows="10" cols="30">
