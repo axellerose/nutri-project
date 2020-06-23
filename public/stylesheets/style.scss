@@ -373,12 +373,6 @@ h3 span {
     display: flex;
     flex-direction: column;
     margin-bottom: 15px;
-
-    #time-container {
-      display: flex;
-      flex-direction: row; 
-
-    }
     
     label {
       font-size: 14px;
@@ -401,17 +395,17 @@ h3 span {
 
   button {
     border: none;
-    background-color: $blue-navbar;
-    color: #fff;
-    font-size: 14px;
-    padding: 10px 20px;
-    border-radius: 4px;
-    outline: none;
-
     &:hover {
       cursor: pointer;
     }
   }
+
+  .delete-product__button{
+    background: url('/images/delete-icon.svg');
+    background-size: cover;
+    width: 20px;
+    height: 20px;
+  }    
 
   a {
     font-size: 14px;
@@ -425,5 +419,57 @@ h3 span {
   .spacer {
     flex: 1;
   }
+}
 
+.time-container {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 15px;
+  align-items: center;
+
+  label, span{
+    font-size: 14px;
+    color: #585858;
+    margin-bottom: 10px;
+    margin-right: 10px;
+  }
+
+  input {
+    padding: 10px;
+    background: #fff;
+    border: 1px solid #cdcdcd;
+    transition: border .35s ease-in-out 0s;
+    outline: none;
+    width: 50px;
+    margin-left: 10px;
+
+    &:focus {
+      border: 1px solid $blue-navbar;
+    }
+  }  
+}
+
+.list-container {
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+  width: 100%;
+
+  div {
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 50px;
+  }
+
+  ul {
+    padding: 0;
+
+    li {
+      display: flex;
+      width: 100%;
+      background-color: red;
+      justify-content: space-between;
+      
+    }
+  }
 }

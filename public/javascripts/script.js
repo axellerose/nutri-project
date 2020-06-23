@@ -11,7 +11,7 @@ function checkIngredientListLength() {
 }
 
 function addListenersRemoveButton() {
-  let btnRemove = [...document.getElementsByClassName("remove-product")]
+  let btnRemove = [...document.getElementsByClassName("delete-product__button")]
   btnRemove.forEach(btn => {
     btn.addEventListener("click", function(){
       event.preventDefault()
@@ -30,8 +30,12 @@ document.getElementById("new-ingredient").addEventListener("click", function(){
   let ingredientId = document.getElementById("products").value
 
   const newProduct = document.createElement('li')
-  newProduct.innerHTML = `<span>${ingredient}</span>     <span>${quantity}</span> g <button class="remove-product button-in-form">REMOVE</button>     
-                          <span style="visibility:hidden">${ingredientId}</span>`
+  newProduct.innerHTML = `<span>${ingredient}</span>     <span>${quantity}</span> g 
+                          <button
+                            class="delete-product__button"
+                          >
+                          </button>
+                          <span style="display:none">${ingredientId}</span>`
   let productAlreadyAdded = false
   let productsAddedByUser = [...document.getElementById("ingredients-list").querySelectorAll("li")]
   productsAddedByUser.forEach(elem => {

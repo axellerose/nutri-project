@@ -16,13 +16,15 @@
     <input type="text" id="img" name="image" placeholder="Image URL">
   </div>
   
-  <div id="time-container">
+  <div class="time-container">
     <label for="time">Cooking time</label>
     <input type="number" id="time" name="time" placeholder="min">
   </div>
 
   <div class="list-container">
-    <label style="padding-right:20px;">Ingredients</label><span>Quantity</span>
+    <div>
+      <label style="">Ingredients</label><span>Quantity</span>
+    </div>
     <ul id="ingredients-list">
     </ul>
   </div>
@@ -36,7 +38,7 @@
   </div>
 
   <div class="input-container">
-    <label for="quantity" style="padding-right:20px;">Quantity</label><br>
+    <label for="quantity" style="">Quantity</label>
     <input type="number" id="quantity" name="quantity" placeholder="in grams" min=0>
     <button class="button-in-form" id="new-ingredient">Add</button>
   </div>
