@@ -7,11 +7,11 @@
       <h2>{{recipe.name}}</h2>
       <h3>Shared by: <em>{{recipe.author}}</em></h3>
       <h3>Rate: {{recipe.rate}}</h3>
-      <h3>Preparation time: {{recipe.time}}</h3>
-      <h3>Calories (for 100g): <span>{{recipe.info.calories}}</span></h3>
-      <h3>Fat (for 100g): <span>{{recipe.info.fat}} g</span></h3>
-      <h3>Carbs (for 100g): <span>{{recipe.info.carbs}} g</span></h3>
-      <h3>Proteins (for 100g): <span>{{recipe.info.proteins}} g</span></h3>
+      <h3>Preparation time: {{recipe.time}} min</h3>
+      <h3>Calories (for 100g): <span>{{#if recipe.info.calories}}{{recipe.info.calories}}{{else}}0{{/if}}</span></h3>
+      <h3>Fat (for 100g): <span>{{#if recipe.info.fat}}{{recipe.info.fat}}{{else}}0{{/if}} g</span></h3>
+      <h3>Carbs (for 100g): <span>{{#if recipe.info.carbs}}{{recipe.info.carbs}}{{else}}0{{/if}} g</span></h3>
+      <h3>Proteins (for 100g): <span>{{#if recipe.info.proteins}}{{recipe.info.proteins}}{{else}}0{{/if}} g</span></h3>
     </div>
   </div>
   <div id="recipe-steps">

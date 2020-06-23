@@ -42,7 +42,20 @@ const postCreateRecipe = (req, res, next) => {
     console.log("New recipe created : ", recipe)
     res.redirect('/recipes')
   })
-  .catch(err => console.log(`Error : ${err}`))
+  .catch(error => {
+    if (error instanceof mongoose.Error.ValidationError) {
+      Product.find()
+      .then(products => {
+        res.status(400).render('recipes/create-recipe', {
+          errorMessage: "Please fill all the fields to create a new recipe",
+          user: user,
+          products: products
+      })
+      })
+    } else {
+      console.log(`Error while creating recipe: ${error}`)
+    }
+  })
 }
 
 const getRecipeDetails = (req, res, next) => {
@@ -50,24 +63,6 @@ const getRecipeDetails = (req, res, next) => {
   Recipe.findById(req.params.recipeId)
   .populate('products.product')
   .then(recipe => {
-    // Calculate nutrition info field for the recipe : example with the calories :
-    // 1 - We sum the total of quantities of all the products for the recipe
-    // 2 - We calculate the amount of calories thanks to the info of each product 
-    //     ( we need to multiply the calories of each product by the quantity of the product, divided by 100
-    //       to get the real quantity for this recipe
-    //       ex : 100g of strawberry = 33 calories --> 25g of it = 33*(25/100) = 8.25g in the recipe)
-    // 3 - We make a "rule of three" (regla de tres) to know the quantity of calories for 100g of this recipe
-    
-    // REFACTORIZAR EN UNA FUNCTION
-    //##############################################################
-    //#####################!!!!!!ACHTUNG!!!!!!######################
-    //##############################################################
-    //##########You should request each product from DB#############
-    //#by id contained in each recipe.products Array before .reduce#
-    //##############################################################
-    //###################!!!!!!END ACHTUNG!!!!!!####################
-    //##############################################################
-
     const calculateProp = (products, prop) => products.reduce((acc, curr) => acc + (curr.product.info[prop] * (curr.quantity/100)), 0)
     const calculateTotal = (prop, quantity) => (prop * 100/ quantity).toFixed(2)
     
@@ -134,7 +129,7 @@ const getEditRecipe = (req, res, next) => {
 
 const postEditRecipe = (req, res, next) => {
   const user = req.session.currentUser
-  console.log(req.body)
+  const recipeId = req.body.recipeId
   const newValues = {
     name: req.body.name,
     image: req.body.image,
@@ -145,13 +140,28 @@ const postEditRecipe = (req, res, next) => {
   req.body.productIds.forEach((elem,idx) => {
     newValues.products.push({product: elem,quantity: req.body.quantities[idx]})
   })
-  Recipe.findByIdAndUpdate(req.params.recipeId, newValues)
+  Recipe.findByIdAndUpdate(req.params.recipeId, newValues, { runValidators: true })
   .then(recipe => {
-    console.log("Recipe edited: ", recipe)
     res.redirect('/recipes/details/' + recipe._id)
   })
-  .catch(err => {
-    console.log("ERROR WHILE EDITING RECIPE: ", err)
+  .catch(error => {
+    if (error instanceof mongoose.Error.ValidationError) {
+      Product.find()
+      .then(products => {
+        Recipe.findOne({_id: recipeId})
+        .populate('products.product')
+        .then(recipe => {
+          res.status(400).render('recipes/recipe-edit', {
+            errorMessage: "Please fill all the fields to edit a recipe",
+            user: user,
+            products: products,
+            recipe: recipe
+        })
+      })
+      })
+    } else {
+      console.log(`Error while editing recipe: ${error}`)
+    }
   })
 }
 
