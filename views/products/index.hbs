@@ -1,19 +1,7 @@
 <h2>Products</h2>
 <div class="wrapper">
   {{#each products}}
-    {{> cards}}
-    {{!-- <div class="card product">
-      <div class="card-img">
-        <a href="/products/details/{{name}}">
-          <img src="{{image}}" width="200px" height="auto" alt="Product picture">
-        </a>
-      </div>
-      <div class="card-info">
-        <h3>
-          <a id="product-detail-link" href="/products/details/{{name}}">{{name}}</a>
-        </h3>
-      </div>
-    </div> --}}
+    {{> cards parameter1="products" parameter2=name parameter3=image parameter4=name }}
   {{/each}}
   {{#if user.isSuperuser}}
     <a href=""></a>
