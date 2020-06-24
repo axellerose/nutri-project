@@ -3,6 +3,7 @@
   <input type="text" id="search-item" placeholder="Search a recipe..">
   {{#each recipes}}
     {{> cards parameter1="recipes" parameter2=_id parameter3=image parameter4=name }}
+    <form action="/recipes/addFavorite" method="POST"><button name="favorite" value="{{_id}}">Add to favorites</button></form>
   {{/each}}
   {{#if user}}
     <a href=""></a>
