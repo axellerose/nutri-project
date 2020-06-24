@@ -1,5 +1,6 @@
 <h2>Recipes</h2>
-<div class="wrapper">
+<div id="search-results" class="wrapper">
+  <input type="text" id="search-item" placeholder="Search a recipe..">
   {{#each recipes}}
     {{> cards parameter1="recipes" parameter2=_id parameter3=image parameter4=name }}
   {{/each}}

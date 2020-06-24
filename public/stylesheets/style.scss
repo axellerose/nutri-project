@@ -217,6 +217,11 @@ h3 span {
   background-color: #3c6382;
 }
 
+.create:disabled {
+  background-color: #686e74;
+  opacity: 0.5;
+}
+
 
 // IMPORTANT : Start to implement responsive CSS styles
 

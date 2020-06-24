@@ -1,5 +1,6 @@
 <h2>Products</h2>
-<div class="wrapper">
+<div id="search-results" class="wrapper">
+  <input type="text" id="search-item" placeholder="Search a product..">
   {{#each products}}
     {{> cards parameter1="products" parameter2=name parameter3=image parameter4=name }}
   {{/each}}
