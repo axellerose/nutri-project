@@ -1,8 +1,9 @@
-<h2>My Recipes</h2>
+<h2>My Favorite Recipes</h2>
 {{#if user}}
-  {{#if myRecipes}}
+  {{#if favoriteRecipes}}
     <div id="my-recipes" class="wrapper">
-      {{#each myRecipes}}
+      {{#each favoriteRecipes}}
+      {{this.name}}
         {{> cards parameter1="recipes" parameter2=_id parameter3=image parameter4=name }}
       {{/each}}
     </div> 

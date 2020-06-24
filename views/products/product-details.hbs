@@ -18,13 +18,10 @@
       <a class="button delete" href="/products/delete/{{product.name}}">DELETE</a>
   {{/if}}
   {{#if relatedRecipes}}
-    <div id="details-recipes">
+    <div class="wrapper">
       <h2>Find a recipe with this ingredient</h2>
       {{#each relatedRecipes}}
-      <div class="details-description">
-        <a href="/recipes/details/{{_id}}"><img src="{{image}}" width="100px" height="auto" alt="Recipe containing this product"></a>
-        <span>{{name}}</span>
-      </div>
+      {{> cards parameter1="recipes" parameter2=_id parameter3=image parameter4=name }}
       {{/each}}
     </div>
   {{/if}}

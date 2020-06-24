@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs')
 const Product = require('../models/Product.model')
-const Recipe = require('../models/Recipe.model')
+const Recipe = require('../models/Recipe.model');
+const User = require('../models/User.model');
 
 
 const getRecipes = (req, res, next) => {
@@ -165,6 +166,25 @@ const postEditRecipe = (req, res, next) => {
   })
 }
 
+const postAddFavorites = (req, res, next) => {
+  const user = req.session.currentUser
+  const recipe = req.body.favorite
+  User.findOne({username: user.username})
+  .then(thisUser => {
+    if (thisUser.favorites.indexOf(recipe) === -1) {
+      User.findOneAndUpdate({username: user.username}, {$push:{favorites:recipe}})
+      .then(userToUpdate => {
+        console.log(userToUpdate)
+        res.redirect('/recipes')
+      })
+      .catch(err => console.log(`Error while adding to favorites: ${err}`))
+    } else {
+      res.redirect('/recipes')
+    }
+  })
+  .catch(err => console.log(`Error while retrieving this user: ${err}`))
+}
+
 module.exports = {
   getRecipes,
   getCreateRecipe,
@@ -172,5 +192,6 @@ module.exports = {
   getRecipeDetails,
   getDeleteRecipe,
   getEditRecipe,
-  postEditRecipe
+  postEditRecipe,
+  postAddFavorites
 };

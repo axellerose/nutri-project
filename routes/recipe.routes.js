@@ -8,7 +8,8 @@ const {
   getRecipeDetails,
   getDeleteRecipe,
   getEditRecipe,
-  postEditRecipe
+  postEditRecipe,
+  postAddFavorites
 } = require('../controllers/recipe.controller')
 
 router
@@ -19,5 +20,6 @@ router
 .get('/delete/:recipeId', getDeleteRecipe)
 .get('/edit/:recipeId', getEditRecipe)
 .post('/edit/:recipeId', postEditRecipe)
+.post('/addFavorite', postAddFavorites)
 
 module.exports = router;
