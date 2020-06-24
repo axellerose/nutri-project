@@ -2,11 +2,14 @@ const createRecipe = document.getElementById("create-recipe-form")
 
 // Minimum 2 products in the ingredients list
 function checkIngredientListLength() {
+  const minimumLengthMessage = document.getElementById("info-min-products")
   let checkIfTwoProductsMin = [...document.getElementById("ingredients-list").querySelectorAll("li")]
   if (checkIfTwoProductsMin.length < 2) {
     btnCreate.disabled = true
+    minimumLengthMessage.style.display = ""
   } else {
     btnCreate.disabled = false
+    minimumLengthMessage.style.display = "none"
   }
 }
 
@@ -81,15 +84,25 @@ if(createRecipe){
   })
 }
 
+const searchResults = document.getElementById("search-results")
+if (searchResults) {
+  const searchItem = document.getElementById("search-item")
+  searchItem.addEventListener("keyup", filterFunction)
+
+  function filterFunction() {
+    console.log(searchItem.value)
+    let filter = searchItem.value.toUpperCase()
+    let card = document.getElementsByClassName("card")
+    for (let i=0; i<card.length; i++) {
+      let txtValue = card[i].textContent.trim() || card[i].innerText.trim()
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        card[i].style.display = "";
+      } else {
+        card[i].style.display = "none";
+      }
+    }
+  }
+}
+
 addListenersRemoveButton()
-
-
-
-
-// [...document.querySelectorAll(".product")].map((el, idx) => {
-//   const producto = {
-//       producto:  el.textContent.trim(),
-//       index: idx
-//   }
-//   return producto
-// })
+checkIngredientListLength()

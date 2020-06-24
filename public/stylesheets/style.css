@@ -175,6 +175,10 @@ h3 span {
 .create {
   background-color: #3c6382; }
 
+.create:disabled {
+  background-color: #686e74;
+  opacity: 0.5; }
+
 /* MEDIUM SCREEN */
 @media screen and (min-width: 960px) {
   a:hover {

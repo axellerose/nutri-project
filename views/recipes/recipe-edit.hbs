@@ -22,13 +22,17 @@
     <input type="number" id="time" name="time" placeholder="in minutes" value="{{recipe.time}}"><br>
   </div>
 
+  <div id="info-min-products">
+    <label>Minimum two products to create a recipe</label>
+  </div>
+
   <div class="list-container">
     <label style="padding-right:20px;">Ingredients</label><span>Quantity</span><br>
     <ul id="ingredients-list">
       {{#each recipe.products}}
         <li>
           {{!-- <span>{{product.name}}</span>     <span>{{quantity}}</span>g --}}
-          <span>{{product.name}}</span>     <span>{{quantity}}</span> g  <button class="remove-product button-in-form">REMOVE</button><span style="visibility:hidden">{{product.id}}</span>
+          <span>{{product.name}}</span>     <span>{{quantity}}</span> g  <button class="delete-product__button button-in-form">REMOVE</button><span style="display:none">{{product.id}}</span>
         </li>
       {{/each}}
     </ul>
