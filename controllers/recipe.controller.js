@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs')
 const Product = require('../models/Product.model')
 const Recipe = require('../models/Recipe.model');
+const User = require('../models/User.model');
 
 const getRecipes = (req, res, next) => {
   const user = req.session.currentUser
@@ -79,8 +80,10 @@ const getRecipeDetails = (req, res, next) => {
       }
     }
     recipe.info = calculateRecipe(recipe)
-    console.log(user)
-    res.render('recipes/recipe-details', {user: user, recipe: recipe});
+    User.findOne({username: user.username})
+    .then(thisUser => {
+      res.render('recipes/recipe-details', {user: thisUser, recipe: recipe});
+    })
   })
   .catch(err => {
     console.log(`Error getting product details: ${err}`)
@@ -167,16 +170,34 @@ const postEditRecipe = (req, res, next) => {
 
 const postAddFavorites = (req, res, next) => {
   const user = req.session.currentUser
-  const recipe = req.body.favorite
+  const recipe = req.body.addFavorite
   User.findOne({username: user.username})
   .then(thisUser => {
     if (thisUser.favorites.indexOf(recipe) === -1) {
       User.findOneAndUpdate({username: user.username}, {$push:{favorites:recipe}})
-      .then(userToUpdate => {
-        console.log(userToUpdate)
+      .then(() => {
         res.redirect('/recipes')
       })
       .catch(err => console.log(`Error while adding to favorites: ${err}`))
+    } else {
+      res.redirect('/recipes')
+    }
+  })
+  .catch(err => console.log(`Error while retrieving this user: ${err}`))
+}
+
+const postDeleteFavorites = (req, res, next) => {
+  const user = req.session.currentUser
+  const recipe = req.body.deleteFavorite
+  console.log(recipe)
+  User.findOne({username: user.username})
+  .then(thisUser => {
+    if (thisUser.favorites.indexOf(recipe) === -1) {
+      User.findOneAndUpdate({username: user.username}, {$pull:{favorites:{id:recipe}}})
+      .then(() => {
+        res.redirect('/recipes')
+      })
+      .catch(err => console.log(`Error while removing from favorites: ${err}`))
     } else {
       res.redirect('/recipes')
     }
@@ -192,5 +213,6 @@ module.exports = {
   getDeleteRecipe,
   getEditRecipe,
   postEditRecipe,
-  postAddFavorites
+  postAddFavorites,
+  postDeleteFavorites
 };
