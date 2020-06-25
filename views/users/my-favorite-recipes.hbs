@@ -3,7 +3,6 @@
   {{#if favoriteRecipes}}
     <div id="my-recipes" class="wrapper">
       {{#each favoriteRecipes}}
-      {{this.name}}
         {{> cards parameter1="recipes" parameter2=_id parameter3=image parameter4=name }}
       {{/each}}
     </div> 

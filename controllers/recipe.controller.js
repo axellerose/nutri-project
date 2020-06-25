@@ -80,7 +80,8 @@ const getRecipeDetails = (req, res, next) => {
         proteins: calculateTotal(proteins, totalQty),
       }
     }
-    recipe.info = calculateRecipe(recipe) 
+    recipe.info = calculateRecipe(recipe)
+    console.log(user)
     res.render('recipes/recipe-details', {user: user, recipe: recipe});
   })
   .catch(err => {
