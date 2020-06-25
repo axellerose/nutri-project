@@ -104,5 +104,7 @@ if (searchResults) {
   }
 }
 
-addListenersRemoveButton()
-checkIngredientListLength()
+if (createRecipe) {
+  addListenersRemoveButton()
+  checkIngredientListLength()
+}

@@ -5,6 +5,14 @@
     </div>
     <div class="details-description">
       <h2>{{recipe.name}}</h2>
+      {{!-- Check how to add a helper for this --}}
+      {{!-- Ojo que el User tiene que estar actualizado, sino no aparecen los favorites recien añadidos --}}
+      {{!-- {{#ifContains user.favorites recipe._id}}
+        <h3>True</h3>        
+      {{else}}
+        <h3>False</h3>
+      {{/ifContains}} --}}
+      <form action="/recipes/addFavorite" method="POST"><button name="favorite" value="{{recipe._id}}">Add to favorites</button></form>
       <h3>Shared by: <em>{{recipe.author}}</em></h3>
       <h3>Rate: {{recipe.rate}}</h3>
       <h3>Preparation time: {{recipe.time}} min</h3>
