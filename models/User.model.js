@@ -23,10 +23,12 @@ const userSchema = new Schema(
       type: String,
       required: [true, 'Password is required']
     },
-    favorites: {
-      type: [Schema.Types.ObjectId],
-      ref: 'Recipe'
-    }
+    favorites: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'Recipe'
+      }
+    ]
   },
   {
     timestamps: true
