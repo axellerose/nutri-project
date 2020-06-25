@@ -175,8 +175,8 @@ h3 span {
 .create {
   background-color: #3c6382; }
 
-.create:disabled {
-  background-color: #686e74;
+button:disabled {
+  background-color: #cdcdcd;
   opacity: 0.5; }
 
 /* MEDIUM SCREEN */
@@ -275,6 +275,11 @@ h3 span {
     margin-right: 2px;
     width: 30px; }
 
+#info-min-products {
+  color: #b71540;
+  font-size: smaller;
+  margin: 10px 0px; }
+
 .create-form {
   width: 100%;
   max-width: 300px;
@@ -310,7 +315,8 @@ h3 span {
       background: #fff;
       border: 1px solid #cdcdcd;
       transition: border .35s ease-in-out 0s;
-      outline: none; }
+      outline: none;
+      color: #585858; }
       .create-form .input-container input:focus {
         border: 1px solid #4a69bd; }
     .create-form .input-container select {
@@ -320,13 +326,14 @@ h3 span {
       transition: border .35s ease-in-out 0s;
       outline: none;
       max-width: 150px;
-      width: 100%; }
+      width: 100%;
+      color: #585858; }
   .create-form button {
     border: none; }
     .create-form button:hover {
       cursor: pointer; }
     .create-form button:active {
-      border: 1px solid #e55039; }
+      border: 1px solid #60a3bc; }
   .create-form .add-product__button {
     background: url("/images/plus-icon.png");
     background-size: cover;
@@ -347,7 +354,7 @@ h3 span {
     padding-right: 10px;
     outline: none; }
     .create-form .delete-product__button:active {
-      border: 1px solid #e55039; }
+      border: 1px solid #60a3bc; }
   .create-form a {
     font-size: 14px;
     padding: 10px 0px 10px 20px;
@@ -384,7 +391,8 @@ h3 span {
   display: flex;
   flex-direction: column;
   max-width: 300px;
-  width: 100%; }
+  width: 100%;
+  color: #585858; }
   .list-container div {
     display: flex;
     justify-content: space-between;
@@ -429,6 +437,7 @@ h3 span {
       border: 1px solid #cdcdcd;
       transition: border .35s ease-in-out 0s;
       outline: none;
-      width: 75px; }
+      width: 75px;
+      color: #585858; }
 
 /*# sourceMappingURL=style.css.map */

@@ -1,25 +1,19 @@
-<h2>Edit a recipe</h2>
-
-{{#if errorMessage}}
-  <div>
-      <p>{{errorMessage}}</p>
-  </div>   
-{{/if}}
-
 <form id="create-recipe-form" class="create-form" action="/recipes/edit/{{recipe._id}}" method="POST">
+  <h2>Edit a recipe</h2>
   <div class="input-container">
     <label for="name">Name:</label>
-    <input type="text" id="name" name="name" placeholder="Ex: Pasta Bolognese" value="{{recipe.name}}"><br>
+    <input type="text" id="name" name="name" placeholder="Ex: Pasta Bolognese" value="{{recipe.name}}">
   </div>
 
   <div class="input-container">
     <label for="img">Image:</label>
-    <input type="text" id="img" name="image" placeholder="Image URL" value="{{recipe.image}}"><br>
+    <input type="text" id="img" name="image" placeholder="Image URL" value="{{recipe.image}}">
   </div>
 
-  <div class="input-container">
+  <div class="time-container">
     <label for="time">Cooking time</label>
-    <input type="number" id="time" name="time" placeholder="in minutes" value="{{recipe.time}}"><br>
+    <input type="number" id="time" name="time" placeholder="--" value="{{recipe.time}}">
+    <label>minutes</label>
   </div>
 
   <div id="info-min-products">
@@ -27,35 +21,38 @@
   </div>
 
   <div class="list-container">
-    <label style="padding-right:20px;">Ingredients</label><span>Quantity</span><br>
+    <div>
+      <label style="">Ingredients</label><span>Quantity</span>
+    </div>
     <ul id="ingredients-list">
       {{#each recipe.products}}
         <li>
           {{!-- <span>{{product.name}}</span>     <span>{{quantity}}</span>g --}}
-          <span>{{product.name}}</span>     <span>{{quantity}}</span> g  <button class="delete-product__button button-in-form">REMOVE</button><span style="display:none">{{product.id}}</span>
+          <span>{{product.name}}</span>     <span>{{quantity}}</span> g  <button class="delete-product__button"></button><span style="display:none">{{product.id}}</span>
         </li>
       {{/each}}
     </ul>
   </div>
-
-  <div class="input-container">
-    <select id="products" name="products">
-      {{#each products}}
-        <option value="{{_id}}">{{name}}</option><br>
-      {{/each}}
-    </select><br>
+  <div class="add-product-container">
+    <div class="input-container">
+      <select id="products" name="products">
+        {{#each products}}
+          <option value="{{_id}}">{{this.name}}</option>
+        {{/each}}
+      </select>
+    </div>
+    <div class="quant-grams">
+      <input type="number" id="quantity" name="quantity" placeholder="-" min=0>
+      <label>gr</label>
+    </div>
   </div>
-
+  <button class="add-product__button" id="new-ingredient">+</button>
   <div class="input-container">
-    <label for="quantity" style="padding-right:20px;">Quantity</label><br>
-    <input type="number" id="quantity" name="quantity" placeholder="in grams"><br>
-    <button class="button-in-form" id="new-ingredient">Add</button>
+    <label for="steps">Steps:</label>
+    <textarea id="steps" name="steps" rows="10" cols="30" value="{{recipe.steps}}">
+      Describe the steps here
+    </textarea>
   </div>
-  
-  <label for="steps">Steps:</label>
-  <textarea id="steps" name="steps" rows="10" cols="30" value="{{recipe.steps}}">
-    Write here the different steps for this recipe
-  </textarea><br><br>
 
   <div id="list-to-send">
     {{!-- Will be filled dynamically with JS --}}
@@ -63,6 +60,13 @@
 
   <input type="hidden" name="recipeId" value="{{recipe._id}}">
 
-  <button class="button-in-form create" type="submit" id="create-recipe-button">Save changes</button><br>
+  <button class="button-in-form create" type="submit" id="create-recipe-button">Save changes</button>
 
 </form>
+
+
+{{#if errorMessage}}
+  <div>
+      <p>{{errorMessage}}</p>
+  </div>   
+{{/if}}
