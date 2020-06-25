@@ -19,6 +19,35 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   margin: 0;
   padding-top: 5vh; }
+  body .header {
+    font: 1.5em;
+    color: red; }
+  body footer {
+    background-color: #4a69bd;
+    width: 100%;
+    border-radius: 0;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap; }
+    body footer ul {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      align-items: center;
+      height: 100%; }
+      body footer ul li {
+        padding: 10px; }
+      body footer ul a {
+        color: whitesmoke; }
+  body .logo {
+    background-color: #b71540;
+    width: 50px;
+    height: 50px;
+    border-radius: 10px; }
 
 .flex-spacer {
   flex: 1; }
@@ -29,7 +58,8 @@ body {
   top: 0px;
   width: 100%;
   height: 50px;
-  z-index: 1; }
+  z-index: 1;
+  margin: 0; }
 
 .nav-item {
   font-size: 18px; }
@@ -263,7 +293,7 @@ button:disabled {
   color: #fff;
   border-radius: 50%;
   right: 10px;
-  bottom: 10px;
+  bottom: 60px;
   font-size: 16px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
   animation: slide-up 0.65s ease-in-out forwards;
@@ -274,6 +304,18 @@ button:disabled {
     margin-top: 5px;
     margin-right: 2px;
     width: 30px; }
+
+.wrapper input {
+  padding: 10px 10px 10px 16px;
+  background: #fff;
+  border: 1px solid #cdcdcd;
+  transition: border .35s ease-in-out 0s;
+  outline: none;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-bottom: 10px; }
+  .wrapper input:focus {
+    border: 1px solid #4a69bd; }
 
 #info-min-products {
   color: #b71540;

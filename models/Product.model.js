@@ -12,7 +12,8 @@ const productSchema = new Schema(
     required: [true, 'Description is required.']
    },
    image: {
-    type: String
+    type: String,
+    required: true
    },
    info: {
      calories: {
