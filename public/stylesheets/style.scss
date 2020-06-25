@@ -16,6 +16,7 @@
 $blue-navbar: #4a69bd;
 $click-btn: #60a3bc;
 $error: #b71540;
+$blue-header: #0c2461;
 
 *, *:before, *:after {
   box-sizing: border-box;
@@ -27,8 +28,11 @@ body {
   padding-top: 5vh;
   
   .header {
-    font: 1.5em;
-    color: red;
+    font-size: 2em;
+    color: $blue-header;
+    padding: 0px 0px 6px 30px;
+    width: 100%;
+    border-bottom: 1px solid rgba(0,0,0,0.15);
   }
   footer{
     background-color: $blue-navbar;
@@ -115,6 +119,22 @@ a {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+
+  .container {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin: 10px 5px;
+
+    div {
+      width: 150px;
+      height: 150px;
+      background-repeat: no-repeat;
+      background-size: cover;
+      border: none;
+    }
+  }
 
   .card {
     display: flex;

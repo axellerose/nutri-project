@@ -20,8 +20,11 @@ body {
   margin: 0;
   padding-top: 5vh; }
   body .header {
-    font: 1.5em;
-    color: red; }
+    font-size: 2em;
+    color: #0c2461;
+    padding: 0px 0px 6px 30px;
+    width: 100%;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.15); }
   body footer {
     background-color: #4a69bd;
     width: 100%;
@@ -86,6 +89,18 @@ a {
   display: flex;
   flex-wrap: wrap;
   justify-content: center; }
+  .wrapper .container {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin: 10px 5px; }
+    .wrapper .container div {
+      width: 150px;
+      height: 150px;
+      background-repeat: no-repeat;
+      background-size: cover;
+      border: none; }
   .wrapper .card {
     display: flex;
     flex-direction: column;
