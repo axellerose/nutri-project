@@ -2,8 +2,6 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs')
 const Product = require('../models/Product.model')
 const Recipe = require('../models/Recipe.model');
-const User = require('../models/User.model');
-
 
 const getRecipes = (req, res, next) => {
   const user = req.session.currentUser

@@ -108,3 +108,16 @@ if (createRecipe) {
   addListenersRemoveButton()
   checkIngredientListLength()
 }
+
+const globalSearch = document.getElementById("global-search")
+if (globalSearch) {
+  const products = document.getElementById("global-products")
+  const productsFound = products.getElementsByClassName("card").length
+  document.getElementById("global-products-count").innerText = 
+  productsFound === 0 ? `No product found.` : productsFound === 1 ? `1 product found: ` : `${productsFound} products found: `
+
+  const recipes = document.getElementById("global-recipes")
+  const recipesFound = recipes.getElementsByClassName("card").length
+  document.getElementById("global-recipes-count").innerText =
+  recipesFound === 0 ? `No recipe found.` : recipesFound === 1 ? `1 recipe found: ` : `${recipesFound} recipes found: `
+}
