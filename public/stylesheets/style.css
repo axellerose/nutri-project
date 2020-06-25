@@ -22,7 +22,7 @@ html {
 body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   margin: 0;
-  padding-top: 5vh; }
+  padding-top: 50px; }
   body .header {
     font-size: 2em;
     color: #0c2461;
@@ -95,7 +95,70 @@ a {
 .wrapper {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center; }
+  justify-content: center;
+  width: 100%; }
+  .wrapper .details-container .details-info {
+    display: flex;
+    flex-direction: column;
+    width: 100%; }
+    .wrapper .details-container .details-info .head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 90%; }
+    .wrapper .details-container .details-info img {
+      width: 100vw;
+      height: 250px;
+      object-fit: cover; }
+    .wrapper .details-container .details-info button {
+      background-size: cover;
+      border: none;
+      background-color: none;
+      background-repeat: no-repeat;
+      height: 42px;
+      width: 42px; }
+  .wrapper .details-container .nutrition {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; }
+    .wrapper .details-container .nutrition ul {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      list-style: none;
+      border-bottom: 2px solid #cdcdcd;
+      width: 90%;
+      padding: 10px 0px; }
+      .wrapper .details-container .nutrition ul li {
+        margin: 5px 10px;
+        padding-left: 5px;
+        border-left: 2px solid #cdcdcd; }
+        .wrapper .details-container .nutrition ul li label {
+          color: #535353;
+          font-weight: normal; }
+        .wrapper .details-container .nutrition ul li span {
+          font-weight: bolder;
+          font-size: smaller; }
+  .wrapper .details-container .details-ingredients {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; }
+    .wrapper .details-container .details-ingredients ul {
+      display: flex;
+      flex-direction: column;
+      list-style: square;
+      border-bottom: 2px solid #cdcdcd;
+      width: 90%;
+      padding: 10px 0px;
+      justify-content: center; }
+      .wrapper .details-container .details-ingredients ul li {
+        margin: 5px 10px;
+        padding-left: 5px; }
+        .wrapper .details-container .details-ingredients ul li label {
+          color: #535353;
+          font-weight: normal; }
   .wrapper .text-row {
     display: flex;
     justify-content: space-evenly;
@@ -196,40 +259,6 @@ a {
   border: none;
   width: 32px;
   height: 37px; }
-
-.details-info {
-  display: flex;
-  flex-direction: column; }
-
-.details-description, #recipe-steps {
-  display: flex;
-  flex-direction: column;
-  margin: 10px 15px;
-  padding: 15px;
-  border: 3px solid #3c6382;
-  border-radius: 10px; }
-
-.details-description h3 {
-  font-size: 1em; }
-
-.details-description h2 {
-  font-size: 1.5em;
-  text-align: center; }
-
-h3 span {
-  font-size: 1.2em; }
-
-#recipe-steps {
-  padding: 5px 10px; }
-
-.details-img {
-  display: flex;
-  justify-content: center; }
-
-.details-img img {
-  width: 250px;
-  height: 250px;
-  object-fit: contain; }
 
 .recipe-control-buttons {
   display: flex;

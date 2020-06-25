@@ -1,40 +1,68 @@
 <div class="wrapper">
-  <div class="details-info" id="recipe-info">
-    <div class="details-img">
-      <img class="img-big" id="img-big-product" src="{{recipe.image}}" width="400px" height="auto" alt="Recipe picture"> 
+  <div class="details-container">
+    <div class="details-info" id="recipe-info">
+      <img class="img-big" id="img-big-product" src="{{recipe.image}}" alt="Recipe picture"> 
+      <div class="details-description">
+        <div class="head">
+          <label class="header">{{recipe.name}}</label>
+          {{#ifNotContains user.favorites recipe._id}}
+            <form action="/recipes/addFavorite" method="POST">
+              <button name="addFavorite" value="{{recipe._id}}" 
+                style="background:url('https://image.flaticon.com/icons/svg/125/125327.svg')">
+              </button>
+            </form>
+          {{else}}
+            <form action="/recipes/deleteFavorite" method="POST">
+              <button name="deleteFavorite" value="{{recipe._id}}"
+                style="background:url('https://image.flaticon.com/icons/svg/196/196222.svg');">
+              </button>
+            </form>
+          {{/ifNotContains}}
+        </div> 
+        <div class="nutrition">
+          <div>
+            <label>Author: <em>{{recipe.author}}</em></label>
+              || 
+            <label>Rate: {{recipe.rate}}</label>
+          </div>
+          <ul>
+            <li>
+              <label>Time: <span>{{recipe.time}}</span> min</label>
+            </li>
+            <li>
+              <label>ckal: <span>{{#if recipe.info.calories}}{{recipe.info.calories}}{{else}}0{{/if}}</span></label>
+            </li>
+            <li>
+              <label>fats: <span>{{#if recipe.info.fat}}{{recipe.info.fat}}{{else}}0{{/if}} g</span></label>
+            </li>
+            <li>
+              <label>carbs: <span>{{#if recipe.info.carbs}}{{recipe.info.carbs}}{{else}}0{{/if}} g</span></label>
+            </li>
+            <li>
+              <label>prots: <span>{{#if recipe.info.proteins}}{{recipe.info.proteins}}{{else}}0{{/if}} g</span></label>
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
-    <div class="details-description">
-      <h2>{{recipe.name}}</h2>
-
-      {{#ifNotContains user.favorites recipe._id}}
-        <form action="/recipes/addFavorite" method="POST"><button name="addFavorite" value="{{recipe._id}}">Add to favorites</button></form>
-      {{else}}
-        <label> This recipe is part of your favorites !</label>
-        <form action="/recipes/deleteFavorite" method="POST"><button name="deleteFavorite" value="{{recipe._id}}">Remove from favorites</button></form>
-      {{/ifNotContains}} 
-
-      <h3>Shared by: <em>{{recipe.author}}</em></h3>
-      <h3>Rate: {{recipe.rate}}</h3>
-      <h3>Preparation time: {{recipe.time}} min</h3>
-      <h3>Calories (for 100g): <span>{{#if recipe.info.calories}}{{recipe.info.calories}}{{else}}0{{/if}}</span></h3>
-      <h3>Fat (for 100g): <span>{{#if recipe.info.fat}}{{recipe.info.fat}}{{else}}0{{/if}} g</span></h3>
-      <h3>Carbs (for 100g): <span>{{#if recipe.info.carbs}}{{recipe.info.carbs}}{{else}}0{{/if}} g</span></h3>
-      <h3>Proteins (for 100g): <span>{{#if recipe.info.proteins}}{{recipe.info.proteins}}{{else}}0{{/if}} g</span></h3>
+    <div class="details-ingredients" id="recipe-steps">
+      <label>Ingredients:</label>
+      <ul>
+      {{#each recipe.products}}
+        <li>
+          {{this.product.name}}    {{this.quantity}} g
+        </li>
+      {{/each}}
+      </ul>
+      <h3>Recipe: {{recipe.steps}}</h3>
+      <h3>Reviews: {{recipe.reviews}}</h3>
     </div>
-  </div>
-  <div id="recipe-steps">
-    <h3>Ingredients:</h3>
-    {{#each recipe.products}}
-      <h4>{{this.product.name}}    {{this.quantity}} g</h4>
-    {{/each}}
-    <h3>Recipe: {{recipe.steps}}</h3>
-    <h3>Reviews: {{recipe.reviews}}</h3>
   </div>
     <div class="recipe-control-buttons">
-      {{#ifHasAuth user.username recipe.author user.isSuperuser}}
+      {{!-- {{#ifHasAuth user.username recipe.author user.isSuperuser}} --}}
           <a class="button edit" href="/recipes/edit/{{recipe._id}}">EDIT</a>
           <a class="button delete" href="/recipes/delete/{{recipe._id}}">DELETE</a>
-      {{/ifHasAuth}}
+      {{!-- {{/ifHasAuth}} --}}
   </div>
 
 </div>
