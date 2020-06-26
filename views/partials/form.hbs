@@ -6,7 +6,8 @@
 
 <div class="input-container">
   <label for="img">Image:</label>
-  <input type="text" id="img" name="image" placeholder="Image URL" value="{{image}}">
+  <input type="file" id="img" name="image">
+  <input type="text" name="existingImage" hidden id="img" value="{{image}}">
 </div>
 
 <div class="time-container">

@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
-const bcrypt = require('bcryptjs')
-const Product = require('../models/Product.model')
+const bcrypt = require('bcryptjs');
+const Product = require('../models/Product.model');
 const Recipe = require('../models/Recipe.model');
 const User = require('../models/User.model');
 
@@ -31,7 +31,7 @@ const postCreateRecipe = (req, res, next) => {
   const newRecipe = {
     name: req.body.name,
     author: user.username,
-    image: req.body.image,
+    image: req.file.path,
     time: req.body.time,
     products: [],
     steps: req.body.steps,
@@ -116,6 +116,7 @@ const getEditRecipe = (req, res, next) => {
   Recipe.findById(req.params.recipeId)
   .populate('products.product')
   .then(recipe => {
+    console.log(recipe)
     Product.find()
     .then(products => {
       if ((user && user.username === recipe.author) || (user && user.isSuperuser)) {
@@ -139,6 +140,11 @@ const postEditRecipe = (req, res, next) => {
     time: req.body.time,
     products: [],
     steps: req.body.steps,
+  }
+  if (req.file) {
+    newValues.image = req.file.path;
+  } else {
+    newValues.image = req.body.existingImage;
   }
   req.body.productIds.forEach((elem,idx) => {
     newValues.products.push({product: elem,quantity: req.body.quantities[idx]})
