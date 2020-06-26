@@ -4,16 +4,18 @@
       <img class="img-big" id="img-big-product" src="{{recipe.image}}" alt="Recipe picture"> 
       <div class="details-description">
         <div class="head">
-          <label class="header">{{recipe.name}}</label>
+          <label class="header" style="border: none">{{recipe.name}}</label>
           {{#ifNotContains user.favorites recipe._id}}
             <form action="/recipes/addFavorite" method="POST">
               <button name="addFavorite" value="{{recipe._id}}" 
+              {{!-- WTF CSS??? --}}
                 style="background:url('https://image.flaticon.com/icons/svg/1077/1077035.svg');background-repeat:no-repeat;width:20px;margin-top:16px">
               </button>
             </form>
           {{else}}
             <form action="/recipes/deleteFavorite" method="POST">
               <button name="deleteFavorite" value="{{recipe._id}}"
+                            {{!-- WTF CSS??? --}}
                 style="background:url('https://image.flaticon.com/icons/svg/833/833472.svg');background-repeat:no-repeat;width:20px;margin-top:16px">
               </button>
             </form>
@@ -54,15 +56,21 @@
         </li>
       {{/each}}
       </ul>
-      <h3>Recipe: {{recipe.steps}}</h3>
-      <h3>Reviews: {{recipe.reviews}}</h3>
+      <div>
+        <label>Description: <span>{{recipe.steps}}</span>
+        </label>
+      </div>
+      <div>
+        <label>Reviews: <span>{{recipe.reviews}}</span>
+        </label>
+      </div>
     </div>
   </div>
     <div class="recipe-control-buttons">
-      {{#ifHasAuth user.username recipe.author user.isSuperuser}}
-          <a class="button edit" href="/recipes/edit/{{recipe._id}}">EDIT</a>
-          <a class="button delete" href="/recipes/delete/{{recipe._id}}">DELETE</a>
-      {{/ifHasAuth}}
+      {{!-- {{#ifHasAuth user.username recipe.author user.isSuperuser}} --}}
+          <a class="edit__button" href="/recipes/edit/{{recipe._id}}">EDIT</a>
+          <a class="delete__button" href="/recipes/delete/{{recipe._id}}">DELETE</a>
+      {{!-- {{/ifHasAuth}} --}}
   </div>
 
 </div>

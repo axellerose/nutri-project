@@ -49,8 +49,6 @@ body {
       padding: 0;
       align-items: center;
       height: 100%; }
-      body footer ul li {
-        padding: 10px; }
       body footer ul a {
         color: whitesmoke; }
   body .logo {
@@ -105,7 +103,7 @@ a {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      width: 90%; }
+      width: 95%; }
     .wrapper .details-container .details-info img {
       width: 100vw;
       height: 250px;
@@ -145,6 +143,9 @@ a {
     flex-direction: column;
     justify-content: center;
     align-items: center; }
+    .wrapper .details-container .details-ingredients label {
+      color: #535353;
+      font-weight: bolder; }
     .wrapper .details-container .details-ingredients ul {
       display: flex;
       flex-direction: column;
@@ -155,10 +156,22 @@ a {
       justify-content: center; }
       .wrapper .details-container .details-ingredients ul li {
         margin: 5px 10px;
-        padding-left: 5px; }
+        padding-left: 5px;
+        color: #535353; }
         .wrapper .details-container .details-ingredients ul li label {
           color: #535353;
-          font-weight: normal; }
+          font-weight: bolder; }
+    .wrapper .details-container .details-ingredients div {
+      display: flex;
+      width: 90%;
+      justify-content: flex-start;
+      margin: 10px 0;
+      align-items: left; }
+      .wrapper .details-container .details-ingredients div label {
+        color: #535353;
+        font-weight: bolder; }
+        .wrapper .details-container .details-ingredients div label span {
+          font-weight: lighter; }
   .wrapper .text-row {
     display: flex;
     justify-content: space-evenly;
@@ -234,12 +247,12 @@ a {
   text-transform: uppercase;
   text-decoration: none;
   background: #079992;
-  padding: 10px;
-  border-radius: 10px;
+  padding: 10px 20px;
   display: inline-block;
   border: none;
   transition: all 0.4s ease 0s;
-  width: fit-content; }
+  width: fit-content;
+  font-size: 14px; }
 
 .button:hover {
   background: #434343;
@@ -259,18 +272,6 @@ a {
   border: none;
   width: 32px;
   height: 37px; }
-
-.recipe-control-buttons {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  width: 100%;
-  margin: 10px 0px; }
-
-.recipe-control-buttons a {
-  text-align: center;
-  max-width: 35vw;
-  width: 100%; }
 
 .delete {
   background-color: #c44569; }
@@ -393,6 +394,26 @@ button:disabled {
   margin: 10px; }
   .wrapper input:focus {
     border: 1px solid #4a69bd; }
+
+.wrapper .recipe-control-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 100%;
+  margin: 10px 0px; }
+  .wrapper .recipe-control-buttons a {
+    width: 50%;
+    text-align: center;
+    border: none;
+    border-radius: 0;
+    color: #fff;
+    font-size: 14px; }
+  .wrapper .recipe-control-buttons .edit__button {
+    background-color: #786fa6;
+    padding: 10px 20px; }
+  .wrapper .recipe-control-buttons .delete__button {
+    background-color: #c44569;
+    padding: 10px 20px; }
 
 .form-error {
   color: #b71540;
