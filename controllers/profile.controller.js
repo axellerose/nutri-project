@@ -35,7 +35,8 @@ const getMyFavoriteRecipes = (req, res, next) => {
   User.findOne({username: user.username})
   .populate('favorites')
   .then(thisUser => {
-    res.render('users/my-favorite-recipes', {user: user, favoriteRecipes: thisUser.favorites});
+    console.log(thisUser)
+    res.render('users/my-favorite-recipes', {user: thisUser, favoriteRecipes: thisUser.favorites});
   })
   .catch(err => console.log(`Error when getting favorite recipes: ${err}`))
 }

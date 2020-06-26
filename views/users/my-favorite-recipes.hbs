@@ -6,5 +6,7 @@
         {{> cards parameter1="recipes" parameter2=_id parameter3=image parameter4=name }}
       {{/each}}
     </div> 
+  {{else}}
+  <p>You don't have any favorite recipe for the moment! Check <a id="no-favorite" href="/recipes">recipes</a> and see if you find ones that you like!</p>
   {{/if}}
 {{/if}}

@@ -285,6 +285,9 @@ button:disabled {
   background-color: #cdcdcd;
   opacity: 0.5; }
 
+#no-favorite {
+  color: #4a69bd; }
+
 /* MEDIUM SCREEN */
 @media screen and (min-width: 960px) {
   a:hover {
@@ -581,9 +584,9 @@ button:disabled {
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
-    width: 32px;
-    height: 32px;
-    margin: 12px 0px 0px 5px;
+    width: 26px;
+    height: 26px;
+    margin: 0px 0px 0px 5px;
     outline: none;
     padding: 3px; }
     .search-form button:hover {

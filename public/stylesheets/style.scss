@@ -376,6 +376,10 @@ button:disabled {
   opacity: 0.5;
 }
 
+#no-favorite {
+  color: #4a69bd;
+}
+
 
 // IMPORTANT : Start to implement responsive CSS styles
 
@@ -777,9 +781,9 @@ button:disabled {
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
-    width: 32px;
-    height: 32px;
-    margin: 12px 0px 0px 5px;
+    width: 26px;
+    height: 26px;
+    margin: 0px 0px 0px 5px;
     outline: none;
     padding: 3px;
 

@@ -176,7 +176,7 @@ const postAddFavorites = (req, res, next) => {
     if (thisUser.favorites.indexOf(recipe) === -1) {
       User.findOneAndUpdate({username: user.username}, {$push:{favorites:recipe}})
       .then(() => {
-        res.redirect('/recipes')
+        res.redirect(`/recipes/details/${recipe}`)
       })
       .catch(err => console.log(`Error while adding to favorites: ${err}`))
     } else {
@@ -189,20 +189,12 @@ const postAddFavorites = (req, res, next) => {
 const postDeleteFavorites = (req, res, next) => {
   const user = req.session.currentUser
   const recipe = req.body.deleteFavorite
-  console.log(recipe)
-  User.findOne({username: user.username})
-  .then(thisUser => {
-    if (thisUser.favorites.indexOf(recipe) === -1) {
-      User.findOneAndUpdate({username: user.username}, {$pull:{favorites:{id:recipe}}})
-      .then(() => {
-        res.redirect('/recipes')
-      })
-      .catch(err => console.log(`Error while removing from favorites: ${err}`))
-    } else {
-      res.redirect('/recipes')
-    }
+  User.findOneAndUpdate({username: user.username}, {$pull:{favorites:recipe}})
+  .then(deletedThing => {
+    console.log(`Recipe deleted: ${deletedThing}`)
+    res.redirect(`/recipes/details/${recipe}`)
   })
-  .catch(err => console.log(`Error while retrieving this user: ${err}`))
+  .catch(err => console.log(`Error while removing from favorites: ${err}`))
 }
 
 module.exports = {
