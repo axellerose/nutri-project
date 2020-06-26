@@ -8,13 +8,13 @@
           {{#ifNotContains user.favorites recipe._id}}
             <form action="/recipes/addFavorite" method="POST">
               <button name="addFavorite" value="{{recipe._id}}" 
-                style="background:url('https://image.flaticon.com/icons/svg/125/125327.svg')">
+                style="background:url('https://image.flaticon.com/icons/svg/1077/1077035.svg');background-repeat:no-repeat;width:20px;margin-top:16px">
               </button>
             </form>
           {{else}}
             <form action="/recipes/deleteFavorite" method="POST">
               <button name="deleteFavorite" value="{{recipe._id}}"
-                style="background:url('https://image.flaticon.com/icons/svg/196/196222.svg');">
+                style="background:url('https://image.flaticon.com/icons/svg/833/833472.svg');background-repeat:no-repeat;width:20px;margin-top:16px">
               </button>
             </form>
           {{/ifNotContains}}
@@ -22,7 +22,7 @@
         <div class="nutrition">
           <div>
             <label>Author: <em>{{recipe.author}}</em></label>
-              || 
+              |
             <label>Rate: {{recipe.rate}}</label>
           </div>
           <ul>
@@ -30,16 +30,16 @@
               <label>Time: <span>{{recipe.time}}</span> min</label>
             </li>
             <li>
-              <label>ckal: <span>{{#if recipe.info.calories}}{{recipe.info.calories}}{{else}}0{{/if}}</span></label>
+              <label>kcal: <span>{{#if recipe.info.calories}}{{recipe.info.calories}}{{else}}0{{/if}}</span></label>
             </li>
             <li>
-              <label>fats: <span>{{#if recipe.info.fat}}{{recipe.info.fat}}{{else}}0{{/if}} g</span></label>
+              <label>fat: <span>{{#if recipe.info.fat}}{{recipe.info.fat}}{{else}}0{{/if}} g</span></label>
             </li>
             <li>
               <label>carbs: <span>{{#if recipe.info.carbs}}{{recipe.info.carbs}}{{else}}0{{/if}} g</span></label>
             </li>
             <li>
-              <label>prots: <span>{{#if recipe.info.proteins}}{{recipe.info.proteins}}{{else}}0{{/if}} g</span></label>
+              <label>proteins: <span>{{#if recipe.info.proteins}}{{recipe.info.proteins}}{{else}}0{{/if}} g</span></label>
             </li>
           </ul>
         </div>
