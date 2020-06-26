@@ -141,11 +141,11 @@ const postEditRecipe = (req, res, next) => {
     products: [],
     steps: req.body.steps,
   }
-  // if (req.file) {
-  //   newValues.image = req.file.path;
-  // } else {
-  //   newValues.image = req.body.existingImage;
-  // }
+  if (req.file) {
+    newValues.image = req.file.path;
+  } else {
+    newValues.image = req.body.existingImage;
+  }
   req.body.productIds.forEach((elem,idx) => {
     newValues.products.push({product: elem,quantity: req.body.quantities[idx]})
   })

@@ -11,8 +11,8 @@ const recipeSchema = new Schema(
       type: String
     },
     image: {
-      type: String
-      // default: "images/recipe-book.png"
+      type: String,
+      default: "images/recipe-book.png"
     },
     rate: Number,
     time: {
