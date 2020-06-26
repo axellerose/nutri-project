@@ -1,5 +1,7 @@
 const express = require('express');
 const router  = express.Router();
+const uploader = require('../configs/cloudinary.config');
+const fileUploader = uploader.single('image');
 
 const {
   getRecipes,
@@ -16,7 +18,7 @@ const {
 router
 .get('/', getRecipes)
 .get('/create', getCreateRecipe)
-.post('/create', postCreateRecipe)
+.post('/create', fileUploader, postCreateRecipe)
 .get('/details/:recipeId', getRecipeDetails)
 .get('/delete/:recipeId', getDeleteRecipe)
 .get('/edit/:recipeId', getEditRecipe)

@@ -1,4 +1,4 @@
-<form id="create-recipe-form" class="create-form" action="/recipes/edit/{{recipe._id}}" method="POST">
+<form id="create-recipe-form" class="create-form" action="/recipes/edit/{{recipe._id}}" method="POST" enctype="multipart/form-data">
   {{> form title="Edit a recipe" sendButton="Save changes" name=recipe.name image=recipe.image time=recipe.time recipe=recipe steps=recipe.steps}}
   <input type="hidden" name="recipeId" value="{{recipe._id}}">
 </form>
