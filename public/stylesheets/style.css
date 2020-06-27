@@ -128,7 +128,7 @@ body {
 
 a {
   text-decoration: none;
-  color: black; }
+  outline: none; }
 
 .wrapper {
   display: flex;
@@ -225,6 +225,40 @@ a {
         font-weight: bolder; }
         .wrapper .details-container .details-ingredients div label span {
           font-weight: lighter; }
+  .wrapper .profile {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    margin: 10px 0; }
+    .wrapper .profile img {
+      margin: 15px 0;
+      align-self: center;
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 50%;
+      box-shadow: 2px 2px rgba(0, 0, 0, 0.15); }
+    .wrapper .profile label {
+      font-size: 18px;
+      color: #535353; }
+      .wrapper .profile label span {
+        font-size: 18px;
+        font-weight: bolder; }
+    .wrapper .profile ul {
+      list-style: none;
+      align-items: center;
+      outline: none;
+      padding: 0 10px; }
+      .wrapper .profile ul li {
+        border: 1px solid #cdcdcd;
+        margin: 5px 0px;
+        padding: 10px 15px; }
+        .wrapper .profile ul li:active {
+          border: 1px solid #60a3bc; }
+        .wrapper .profile ul li a {
+          font-size: 14px;
+          color: #535353;
+          font-weight: bolder; }
   .wrapper .text-row {
     display: flex;
     justify-content: space-evenly;

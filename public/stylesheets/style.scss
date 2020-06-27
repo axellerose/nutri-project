@@ -87,7 +87,7 @@ body {
   flex: 1;
 }
 
-.navbar {
+.navbar{
   background-color: $blue-navbar;
   position: fixed;
   top: 0px;
@@ -160,7 +160,7 @@ body {
             &:active{
               border: 1px solid $click-btn;
             }
-          }
+        }
 
           form {
             button {
@@ -181,8 +181,9 @@ body {
 
 a {
   text-decoration: none;
-  color: black;
+  outline: none;
 }
+
 .wrapper {
   display: flex;
   flex-wrap: wrap;
@@ -316,7 +317,58 @@ a {
     }
   }
 }
-  .text-row {
+
+.profile {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  margin: 10px 0;
+
+  img {
+    margin: 15px 0;
+    align-self: center;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    box-shadow: 2px 2px rgba(0,0,0,0.15);
+  }
+
+  label {
+    font-size: 18px;
+    color: #535353;
+
+    span {
+      font-size: 18px;
+      font-weight: bolder;
+    }
+  }
+
+  ul {
+    list-style: none;
+    align-items: center;
+    outline: none;
+    padding: 0 10px;
+
+    li {
+      border: 1px solid #cdcdcd;
+      margin: 5px 0px;
+      padding: 10px 15px;
+
+      &:active{
+        border: 1px solid $click-btn;
+      }
+
+      a {
+        font-size: 14px;
+        color: #535353;
+        font-weight: bolder;
+      }
+    }
+  }
+}
+
+.text-row {
     display: flex;
     justify-content: space-evenly;
     width: 90%;
@@ -334,9 +386,9 @@ a {
         border-radius: 10px;
       }
     }
-  }
+}
 
-  .container {
+.container {
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -365,8 +417,8 @@ a {
         border-radius: 30%;
         outline: none;
       }
-    }
   }
+}
   .wrapper-small {
     display: flex;
     flex-wrap: wrap;

@@ -1,14 +1,29 @@
-<h2>Profile</h2>
-{{#if user}}
-  <p> Welcome {{user.username}}</p>
-  <p><a href="/recipes/create">Create a new recipe</a></p>
-  {{#if user.isSuperuser}}
-    <p><a href="/products/feedDb">Feed products DB</a></p>
-  {{/if}}
-  {{#if myRecipes}}
-    <h3><a href="/profile/my-recipes">My recipes</a></h3>
-  {{/if}}
-  <h3><a href="/profile/favorite-recipes">My favorite recipes</a></h3>
-{{else}}
-  <p>You need to <a href="/login">login</a> to see your profile page. </p>
-{{/if}}
+<div class="wrapper">
+  {{#if user}}
+  <div class="profile">
+    
+    <label> Welcome <span>{{user.username}}</span></label>
+    <img src="https://image.flaticon.com/icons/svg/3089/3089855.svg"class="avatar">
+    <ul>
+      <li>
+      <a href="/recipes/create">Create a new recipe</a>
+      </li>
+      <li>
+      {{#if user.isSuperuser}}
+        <a href="/products/feedDb">Feed products DB</a>
+      {{/if}}
+      </li>
+      <li>
+      {{#if myRecipes}}
+        <a href="/profile/my-recipes">My recipes</a>
+      {{/if}}
+      </li>
+      <li>
+      <a href="/profile/favorite-recipes">My favorite recipes</a>
+      </li>
+    {{else}}
+      <p>You need to <a href="/login">login</a> to see your profile page. </p>
+    {{/if}}
+  </ul>
+  </div>
+</div>
