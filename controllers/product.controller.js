@@ -27,7 +27,7 @@ const postFeed = (req, res, next) => {
     name: req.body.name,
     description: req.body.description,
     category: req.body.category,
-    image: req.body.image,
+    image: req.file.path,
     info :{
       calories: req.body.calories,
       fat: req.body.fat,
