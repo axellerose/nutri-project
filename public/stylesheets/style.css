@@ -120,6 +120,20 @@ a {
     flex-direction: column;
     justify-content: center;
     align-items: center; }
+    .wrapper .details-container .nutrition div {
+      display: flex;
+      flex-direction: column;
+      width: 90%;
+      padding-bottom: 5px;
+      border-bottom: 2px solid #cdcdcd; }
+      .wrapper .details-container .nutrition div label {
+        font-weight: bolder;
+        font-size: larger;
+        color: #535353;
+        margin: 5px; }
+      .wrapper .details-container .nutrition div span {
+        color: #535353;
+        font-weight: normal; }
     .wrapper .details-container .nutrition ul {
       display: flex;
       flex-direction: row;
@@ -209,6 +223,28 @@ a {
         border: 2px solid #60a3bc;
         border-radius: 30%;
         outline: none; }
+  .wrapper .wrapper-small .card {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    border: 1px solid #d3d3d3;
+    background-color: #fff;
+    margin: 10px 5px;
+    max-width: 35vw;
+    width: 100%;
+    animation: fade-in 0.65s ease-in-out forwards;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15);
+    overflow: hidden; }
+    .wrapper .wrapper-small .card .card-img {
+      width: 100%;
+      height: 70px;
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat; }
+    .wrapper .wrapper-small .card .card-info h3 {
+      font-size: 12px;
+      color: #323232; }
   .wrapper .card {
     display: flex;
     flex-direction: column;
