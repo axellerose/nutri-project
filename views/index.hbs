@@ -1,2 +1,21 @@
-<h1>{{title}}</h1>
-<p>Welcome to {{title}}</p>
+<h1 class="header">{{title}}</h1>
+<div class="wrapper">
+  <div class="container">
+      <div onclick=location="/recipes"  "card" style="background-image: url('https://image.flaticon.com/icons/svg/2934/2934108.svg');">
+        </div>  
+      <div onclick=location="/products" class="card" style="background-image: url('https://image.flaticon.com/icons/svg/2909/2909753.svg');">
+        </div>
+    </div>
+      <div class="text-row">
+        <label onclick=location="/recipes">RECIPES</label>
+        <label onclick=location="/products">PRODUCTS</label>
+      </div>
+  
+  <form class="search-form" action="/search">
+    <div>
+      <input class="search-input" type="text" placeholder="Find a recipes or a product" name="name">
+    </div>
+    <button class="search-submit__button" type="submit"></button>
+  </form>
+</div>
+

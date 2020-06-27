@@ -1,0 +1,74 @@
+<div class="wrapper">
+  <div class="details-container">
+    <div class="details-info" id="recipe-info">
+      <img class="img-big" id="img-big-product" src="{{recipe.image}}" alt="Recipe picture"> 
+      <div class="details-description">
+        <div class="head">
+          <label class="header" style="border: none">{{recipe.name}}</label>
+          {{#ifNotContains user.favorites recipe._id}}
+            <form action="/recipes/addFavorite" method="POST">
+              <button name="addFavorite" value="{{recipe._id}}" 
+                style="background:url('https://image.flaticon.com/icons/svg/1077/1077035.svg');">
+              </button>
+            </form>
+          {{else}}
+            <form action="/recipes/deleteFavorite" method="POST">
+              <button name="deleteFavorite" value="{{recipe._id}}"
+                style="background:url('https://image.flaticon.com/icons/svg/833/833472.svg');">
+              </button>
+            </form>
+          {{/ifNotContains}}
+        </div> 
+        <div class="nutrition">
+          <div>
+            <label>Author: <em>{{recipe.author}}</em></label>
+              |
+            <label>Rate: {{recipe.rate}}</label>
+          </div>
+          <ul>
+            <li>
+              <label>Time: <span>{{recipe.time}}</span> min</label>
+            </li>
+            <li>
+              <label>kcal: <span>{{#if recipe.info.calories}}{{recipe.info.calories}}{{else}}0{{/if}}</span></label>
+            </li>
+            <li>
+              <label>fat: <span>{{#if recipe.info.fat}}{{recipe.info.fat}}{{else}}0{{/if}} g</span></label>
+            </li>
+            <li>
+              <label>carbs: <span>{{#if recipe.info.carbs}}{{recipe.info.carbs}}{{else}}0{{/if}} g</span></label>
+            </li>
+            <li>
+              <label>proteins: <span>{{#if recipe.info.proteins}}{{recipe.info.proteins}}{{else}}0{{/if}} g</span></label>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="details-ingredients" id="recipe-steps">
+      <label>Ingredients:</label>
+      <ul>
+      {{#each recipe.products}}
+        <li>
+          {{this.product.name}}    {{this.quantity}} g
+        </li>
+      {{/each}}
+      </ul>
+      <div>
+        <label>Description: <span>{{recipe.steps}}</span>
+        </label>
+      </div>
+      <div>
+        <label>Reviews: <span>{{recipe.reviews}}</span>
+        </label>
+      </div>
+    </div>
+  </div>
+    <div class="recipe-control-buttons">
+      {{#ifHasAuth user.username recipe.author user.isSuperuser}}
+          <a class="edit__button" href="/recipes/edit/{{recipe._id}}">EDIT</a>
+          <a class="delete__button" href="/recipes/delete/{{recipe._id}}">DELETE</a>
+      {{/ifHasAuth}}
+  </div>
+
+</div>

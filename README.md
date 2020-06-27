@@ -2,7 +2,7 @@
 # Developers: 
 Alex Gerasymenko & Antoine Rolland
 # Link to App: 
-<<<Link>>
+<<<Link>>>
 
 ## Description
 
@@ -57,37 +57,23 @@ List of other features outside of the MVPs scope
 /login
 /add-new
 
-<!-- |Method|URL|Description|
+|Method|URL|Description|
 |---|---|---|
-GET | /auth/login | redirects to / if user logged in. Renders auth/login
-POST | /auth/login | redirects to / if user logged in
-
-body:
-   - username
-   - password
-
-GET | /auth/signup| redirects to / if user logged in. Renders auth/signup
-
-body:
-   - username
-   - password
-GET | / | renders the homepage. if the user is not logged in, render access. 
-GET | /event/id | renders event-detail
-POST | /event/id | update event. redirect /event-detail
-body:
-   - username
-   - event id
-   - image
-GET | /escape-room-list | renders escape-room-list
-POST | /logout | redirects to /
-GET | /escape-room-detail | renders escape-room-detail
-POST | /escape-room/id | 
-body:
-   - username
-   - escape-room
-   - date
-   - reserved time
-   - escape-room id -->
+GET | / | renders homepage
+GET | /auth/signup| renders signup form
+POST | /auth/signup| renders signup form if error - redirects to user profile if correct
+GET | /auth/login | renders login form
+POST | /auth/login | renders login form if error - redirects to user profile if correct
+POST | /auth/logout | redirects to homepage
+GET | /auth/profile | renders user profile
+GET | /products | renders products list
+GET | /products/feedDb | !superuser only! renders form to manage the products collection
+POST | /productsfeedDb | redirects to products list
+GET | /products/details/:name | renders single product details page
+GET | /recipes | renders recipes list
+GET | /recipes/create | renders recipe creation form
+POST | /recipes/create | renders recipe creation form if error - redirects to recipes list
+GET | /recipes/details/:name | renders single recipe details page
 
 ## Models
 
@@ -109,7 +95,7 @@ Product model
    carbons: Number,
    fat: Number
    }
-- temporada: String
+- temporada: [String]
 ```
 ```
 Recipe model

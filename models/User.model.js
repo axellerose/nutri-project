@@ -1,4 +1,6 @@
 const { Schema, model } = require('mongoose');
+const Recipe = require('../models/Recipe.model');
+const Product = require('../models/Product.model');
 
 const userSchema = new Schema(
   {
@@ -21,9 +23,12 @@ const userSchema = new Schema(
       type: String,
       required: [true, 'Password is required']
     },
-    etc: {
-      // TO BE CONTINUED
-    }
+    favorites: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'Recipe'
+      }
+    ]
   },
   {
     timestamps: true

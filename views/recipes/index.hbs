@@ -1,1 +1,19 @@
-<h2>Recipes</h2>
+<h2 class="header">Recipes</h2>
+<div id="search-results" class="wrapper search-input">
+  <input type="text" id="search-item" placeholder="Find a recipe..">
+  {{#each recipes}}
+    {{> cards parameter1="recipes" parameter2=_id parameter3=image parameter4=name }}
+  {{/each}}
+  {{#if user}}
+    <a href=""></a>
+    <a
+      href="/recipes/create"
+      class="create-recipe__button"
+    > 
+      <div>
+        <img src="/images/add-icon.svg">
+      </div>
+    </a>
+  {{/if}}
+</div>
+

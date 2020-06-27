@@ -1,0 +1,54 @@
+<div class="wrapper">
+  <div class="details-container">
+    <div class="details-info" id="product-info">
+      <div class="details-img">
+        <img class="img-big" id="img-big-product" src="{{product.image}}" width="400px" height="auto" alt="Product picture"> 
+      </div>
+      <div class="details-description">
+        <div class="head">
+          <label class="header" style="border: none">{{product.name}}</label>
+        </div>
+        <div class="nutrition">
+          <div>
+            <label>Description: <span>{{product.description}}</span></label>
+            <label>Season: <span>{{product.seasons}}</span></label>
+          </div>
+          <ul>
+            <li style="list-style: none;
+                      border: none;
+                      font-weight: bolder;
+                      "> 
+              Nutrition facts (for 100g):
+            </li>
+            <li>kcal: <span>{{product.info.calories}}</span></li>
+            <li>fat: <span>{{product.info.fat}}</span> g</li>
+            <li>carbs: <span>{{product.info.carbs}}</span> g</li>
+            <li>proteins: </span>{{product.info.proteins}}</span> g</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="recipe-control-buttons">
+    {{#if user.isSuperuser}}
+        <a class="edit__button" href="/products/edit/{{recipe._id}}">EDIT</a>
+        <a class="delete__button" href="/products/delete/{{product.name}}">DELETE</a>
+    {{/if}}
+  </div>
+  {{#if relatedRecipes}}
+
+    <div class="wrapper-small" id="">
+      <label class="header" style="
+                          font-size: 20px;
+                          padding: 0;
+                          border: none;
+                          margin: auto"
+      >
+        Check recipes with this product:
+      </label>
+      {{#each relatedRecipes}}
+      {{> cards parameter1="recipes" parameter2=_id parameter3=image parameter4=name }}
+      {{/each}}
+    </div>
+  {{/if}}
+</div>

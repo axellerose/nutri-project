@@ -1,0 +1,47 @@
+<h2>Add a product</h2>
+
+<form action="/products/feedDb" method="POST">
+  <label for="name">Name:</label>
+  <input type="text" id="name" name="name" placeholder="Ex: Strawberry">
+
+  <label for="descr">Description:</label>
+  <input type="text" id="descr" name="description" placeholder="Something about this product">
+
+  <label for="category">Category</label>
+    <select id="category" name="category">
+        <option value="Vegetable">Vegetable</option>
+        <option value="Fruit">Fruit</option>
+        <option value="Fish">Fish</option>
+        <option value="Meat">Meat</option>
+        <option value="Seafood">Seafood</option>
+        <option value="Other">Other</option>
+    </select>
+
+  <label for="img">Image:</label>
+  <input type="text" id="img" name="image" placeholder="Image URL">
+
+  <label>Info:</label>
+    <label for="calories">Calories:</label>
+    <input type="number" step="0.01" id="calories" name="calories" placeholder="for 100g">
+    <label for="fat">Fat:</label>
+    <input type="number" step="0.01" id="fat" name="fat" placeholder="for 100g">
+    <label for="carbs">Carbs:</label>
+    <input type="number" step="0.01" id="carbs" name="carbs" placeholder="for 100g">
+    <label for="proteins">Proteins:</label>
+    <input type="number" step="0.01" id="proteins" name="proteins" placeholder="for 100g">
+  
+  <label for="seasons">Season(s):</label>
+    <select id="seasons" name="seasons" multiple>
+        <option value="Spring">Spring</option>
+        <option value="Summer">Summer</option>
+        <option value="Autumn">Autumn</option>
+        <option value="Winter">Winter</option>
+    </select>
+
+  <button type="submit">Create product</button>
+  {{#if errorMessage}}
+      <div>
+          <p>{{errorMessage}}</p>
+      </div>   
+    {{/if}}
+</form>
