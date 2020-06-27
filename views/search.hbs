@@ -1,36 +1,17 @@
 <h2 class="header" id="global-search">Results for "{{query}}"</h2>
-{{!-- id="search-results" --}}
 <div class="wrapper">
-  {{!-- <input type="text" id="search-item" placeholder="Search a product or a recipe"> --}}
   <div id="global-products">
   <h3 id="global-products-count"></h3>
-    {{#if products}}
-      {{#each products}}
-        {{> cards parameter1="products" parameter2=name parameter3=image parameter4=name }}
-      {{/each}}
-    {{/if}}
+    {{#each products}}
+      {{> cards parameter1="products" parameter2=name parameter3=image parameter4=name }}
+    {{/each}}
   </div>
   <br>
   <div id="global-recipes">
   <h3 id="global-recipes-count"></h3>
-    {{#if recipes}}
-      {{#each recipes}}
-        {{> cards parameter1="recipes" parameter2=_id parameter3=image parameter4=name }}
-      {{/each}}
-    {{/if}}
+    {{#each recipes}}
+      {{> cards parameter1="recipes" parameter2=_id parameter3=image parameter4=name }}
+    {{/each}}
   </div>
-  
-
-  {{!-- {{#if user}}
-    <a href=""></a>
-    <a
-      href="/recipes/create"
-      class="create-recipe__button"
-    > 
-      <div>
-        <img src="/images/add-icon.svg">
-      </div>
-    </a>
-  {{/if}} --}}
 </div>
 

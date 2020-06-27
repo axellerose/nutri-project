@@ -5,32 +5,50 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>{{title}}</title>
-  <link rel="stylesheet" href="/stylesheets/style.css" />
+  <link rel="stylesheet" href="/stylesheets/style.css">
 </head>
 
 <body>
 <header>
-    <nav class="navbar">
+  <nav class="navbar">
+      <a href="/">NutriApp</a>
 
-      <ul class="nav-all-items">
-        <li class="nav-item"><a href="/">NutriApp</a></li>
-        <li><a href="/products">Products</a></li>
-        <li id="recipes"><a href="/recipes">Recipes</a></li>
-        <div class="flex-spacer"></div>
-        {{#unless user}}
-          <li><a href="/signup">Signup</a></li>
-          <li><a href="/login">Login</a></li>        
-        {{/unless}}
-        {{#if user}}
-          <li><a href="/profile">Profile</a></li>
-          <li>     
-          <form action="/logout" style="display: inline" method="POST" class="form-logout">
-            <button type="submit" class="logout"></button>
-          </form>
-          </li>        
-        {{/if}}
-      </ul>
+        <form class="search-form" action="/search">
+          <div>
+            <input class="search-input" type="text" placeholder="Search..." name="name">
+          </div>
+          <button class="search-submit__button" type="submit"></button>
+        </form>
+        <div class="dropdown">
+          <a id="show-menu-btn" class="dropdown__button"></a>
+            <div class="dropdown__content">
+              <ul>
+                <li>
+                  <a href="/products">Products</a>
+                </li>
+                <li id="recipes">
+                  <a href="/recipes">Recipes</a>
+                </li>
+                <div class="flex-spacer"></div>
+                {{#unless user}}
+                <li>
+                  <a href="/login">Login</a>
+                </li>        
+                {{/unless}}
 
+                {{#if user}}
+                <li>
+                  <a href="/profile">Profile</a>
+                </li>
+                <li>     
+                  <form action="/logout" style="display: inline" method="POST" class="form-logout">
+                  <button type="submit">Logout</button>
+                  </form>
+                </li>   
+                {{/if}}
+              </ul>
+            </div>
+          </div>
     </nav>
 </header>
 <main>

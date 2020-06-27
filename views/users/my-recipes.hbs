@@ -1,10 +1,5 @@
-<h2>My Recipes</h2>
-{{#if user}}
-  {{#if myRecipes}}
-    <div id="my-recipes" class="wrapper">
-      {{#each myRecipes}}
-        {{> cards parameter1="recipes" parameter2=_id parameter3=image parameter4=name }}
-      {{/each}}
-    </div> 
-  {{/if}}
-{{/if}}
+{{> profileRecipeSection
+  title="My Recipes"
+  object=myRecipes
+  ifEmpty='You recipes added yet. Go ahead and <a id="no-favorite" href="/recipes/create">create your first recipe!</a>'
+}}

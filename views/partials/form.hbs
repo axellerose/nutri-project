@@ -25,13 +25,11 @@
     <label style="">Ingredients</label><span>Quantity</span>
   </div>
   <ul id="ingredients-list">
-    {{#if recipe}}
       {{#each recipe.products}}
         <li>
           <span>{{product.name}}</span>     <span>{{quantity}}</span> g  <button class="delete-product__button"></button><span style="display:none">{{product.id}}</span>
         </li>
       {{/each}}
-    {{/if}}
   </ul>
 </div>
 
