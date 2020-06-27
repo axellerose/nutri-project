@@ -19,6 +19,8 @@ $error: #b71540;
 $blue-header: #0c2461;
 $edit-btn: #786fa6;
 $delete-btn: #c44569;
+$bg-dropdown: rgba(255, 255, 255, .8);
+
 
 *, *:before, *:after {
   box-sizing: border-box;
@@ -93,29 +95,86 @@ body {
   height: 50px;
   z-index: 1;
   margin: 0;
-}
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 15px;
 
-.nav-item {
-  font-size: 18px
-}
+  a {
+    color: #fff;
+    font-size: 20px;
+  }
 
-nav {
-  ul {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    list-style: none;
-    margin: 0;
+  form {
     padding: 0;
-    align-items: center;
-    height: 100%;
+    margin: 0;
+    max-width: 180px;
+    width: 100%;
+    outline: 0;
 
-    li {
-      padding: 10px;
+    button {
+      width: 20px;
+      height: 20px;
+    }
+  }
+  .dropdown {
+    display: flex;
+    flex-direction: column;
+    
+
+    .dropdown__button {
+      background: url('/images/icon-menu.svg');
+      background-size: cover;
+      width: 32px;
+      height: 32px;
+      border: none;
+      outline: none;
     }
 
-    a {
-      color: whitesmoke
+    .dropdown__content{
+      display: none;
+      top: 50px;
+      right: 0px;
+      position: absolute;
+      height: fit-content;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      transition: all 0.3s ease-in-out 0s;
+      background-color: $bg-dropdown;
+
+      ul {
+        list-style: none;
+        align-items: center;
+        outline: none;
+        padding: 0 10px;
+
+        li {
+
+          padding: 10px 15px;
+
+          a {
+            font-size: 14px;
+            color: #535353;
+            font-weight: bolder;
+            padding: 10px 15px;
+
+            &:active{
+              border: 1px solid $click-btn;
+            }
+          }
+
+          form {
+            button {
+              border: 0;
+              background-color: $bg-dropdown;
+              font-size: 14px;
+              color: #535353;
+              font-weight: bolder;
+              padding: 10px 15px;
+              outline: none;
+            }
+          }
+        }
+      }
     }
   }
 }
@@ -150,12 +209,11 @@ a {
       }
 
       button {
-        background-size: cover;
+        background-repeat:no-repeat;
+        width: 24px;
+        height: 24px;
+        outline: none;
         border: none;
-        background-color: none;
-        background-repeat: no-repeat;
-        height: 42px;
-        width: 42px;
       }
     }
     .nutrition {
@@ -310,6 +368,9 @@ a {
     }
   }
   .wrapper-small {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
     .card {
       display: flex;
       flex-direction: row;
@@ -334,11 +395,11 @@ a {
 
       .card-info {
         h3 {
+          text-align: center;
           font-size: 12px;
           color: #323232;
         }
       }
-
     }
   }
   .card {
@@ -405,18 +466,6 @@ a {
   transition: all 0.4s ease 0s;
   }
 
-.logout{
-  color: whitesmoke;
-  background: url("../images/exit-icon.png");
-  background-size: contain;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  background-color: $blue-navbar;
-  font-weight: bolder;
-  border: none;
-  width: 32px;
-  height: 37px;
-}
-
 .delete {
   background-color: #c44569;
 }
@@ -447,6 +496,17 @@ button:disabled {
   a:hover {
     color: #f5cd79
   }
+  .logout{
+    color: whitesmoke;
+    background: url("../images/exit-icon.png");
+    background-size: contain;
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    background-color: $blue-navbar;
+    font-weight: bolder;
+    border: none;
+    width: 32px;
+    height: 37px;
+  }
 }
 
                                         /* LARGE SCREEN */
@@ -454,6 +514,17 @@ button:disabled {
   // Fill
   a:hover {
     color: #f5cd79
+  }
+  .logout{
+    color: whitesmoke;
+    background: url("../images/exit-icon.png");
+    background-size: contain;
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    background-color: $blue-navbar;
+    font-weight: bolder;
+    border: none;
+    width: 32px;
+    height: 37px;
   }
 }
 
@@ -746,12 +817,12 @@ button:disabled {
   }
 
   input {
-    padding: 10px 10px 10px 16px;
+    padding: 10px;
     background: #fff;
     border: 1px solid #cdcdcd;
     transition: border .35s ease-in-out 0s;
     outline: none;
-    width: 50px;
+    width: 60px;
     margin-left: 10px;
     margin-right: 10px;
 

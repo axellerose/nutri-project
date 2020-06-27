@@ -1,5 +1,18 @@
 const createRecipe = document.getElementById("create-recipe-form");
 
+//SHOW / HIDE MENU
+let menuBtn = document.querySelector("#show-menu-btn")
+menuBtn.addEventListener('click', () => {
+  console.log("MENU PRESSED")
+  let menu = document.querySelector(".dropdown__content")
+  if(menu.style.display === 'block') {
+    menu.style.display = 'none';
+  } else {
+    menu.style.display = 'block';
+  }
+})
+
+
 // Minimum 2 products in the ingredients list
 function checkIngredientListLength() {
   const minimumLengthMessage = document.getElementById("info-min-products");
