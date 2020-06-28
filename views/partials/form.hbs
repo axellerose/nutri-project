@@ -16,10 +16,6 @@
   <label>minutes</label>
 </div>
 
-<div id="info-min-products">
-  <label class="form-error">Minimum two products to create a recipe</label>
-</div>
-
 <div class="list-container">
   <div>
     <label style="">Ingredients</label><span>Quantity</span>
@@ -46,17 +42,34 @@
     <label>gr</label>
   </div>
 </div>
-
 <button class="add-product__button" id="new-ingredient">+</button>
+
 <div class="input-container">
-  <label for="steps">Steps:</label>
-  <textarea id="steps" name="steps" rows="10" cols="30" value="{{steps}}">
-    Describe the steps here
+  <div class="steps-container">
+    <div>
+      <label>Steps</label>
+    </div>
+
+    <ol id="steps-list">
+        {{#each recipe.steps}}
+          <li>
+            <span>{{this}}</span><button class="delete-step__button"></button>
+          </li>
+        {{/each}}
+    </ol>
+  </div>
+  <textarea id="new-step" name="new-step" rows="10" cols="30">
+    Ex: "Peel and cut the avocado length-wise into 8 pieces."
   </textarea>
 </div>
+<button class="add-product__button" id="new-step-button">+</button>
 
 <div id="list-to-send">
   {{!-- Will be filled dynamically with JS --}}
+</div>
+
+<div id="info-min-products">
+  <label class="form-error">Minimum two products to create a recipe</label>
 </div>
 
 <button class="button-in-form create" type="submit" id="create-recipe-button" disabled>{{sendButton}}</button><br>

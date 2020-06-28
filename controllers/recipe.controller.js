@@ -31,12 +31,15 @@ const postCreateRecipe = (req, res, next) => {
   const newRecipe = {
     name: req.body.name,
     author: user.username,
-    image: req.file.path,
     time: req.body.time,
     products: [],
-    steps: req.body.steps,
+    steps: [],
+  }
+  if (req.file) {
+    newRecipe.image = req.file.path
   }
   req.body.productIds.forEach((elem,idx) => newRecipe.products.push({product: elem,quantity: req.body.quantities[idx]}))
+  req.body.steps.forEach(elem => newRecipe.steps.push(elem))
   Recipe.create(newRecipe)
   .then(recipe => {
     console.log("New recipe created : ", recipe)
@@ -50,7 +53,7 @@ const postCreateRecipe = (req, res, next) => {
           errorMessage: "Please fill all the fields to create a new recipe",
           user: user,
           products: products
-      })
+        })
       })
     } else {
       console.log(`Error while creating recipe: ${error}`)

@@ -828,7 +828,7 @@ button:disabled {
     outline: none;
   }
 
-  .delete-product__button{
+  .delete-product__button,.delete-step__button {
     background: url('/images/delete-icon.svg');
     background-size: cover;
     width: 24px;

@@ -60,7 +60,12 @@
       {{/each}}
       </ul>
       <div>
-        <label>Instructions: <span>{{recipe.steps}}</span>
+        <label>Instructions:
+          <ol>
+            {{#each recipe.steps}}
+              <li><span>{{this}}</span></li><br>
+            {{/each}}
+          </ol>
         </label>
       </div>
       <div>
