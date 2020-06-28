@@ -80,10 +80,18 @@ const getRecipeDetails = (req, res, next) => {
       }
     }
     recipe.info = calculateRecipe(recipe)
-    User.findOne({username: user.username})
-    .then(thisUser => {
+    if (user) {
+      User.findOne({username: user.username})
+      .then(thisUser => {
       res.render('recipes/recipe-details', {user: thisUser, recipe: recipe});
-    })
+      })
+      .catch(err => {
+        console.log(`Error getting the user: ${err}`)
+        res.redirect('/recipes');
+      })
+    } else {
+      res.render('recipes/recipe-details', {recipe});
+    }   
   })
   .catch(err => {
     console.log(`Error getting product details: ${err}`)

@@ -5,19 +5,21 @@
       <div class="details-description">
         <div class="head">
           <label class="header" style="border: none">{{recipe.name}}</label>
-          {{#ifNotContains user.favorites recipe._id}}
-            <form action="/recipes/addFavorite" method="POST">
-              <button name="addFavorite" value="{{recipe._id}}" 
-                style="background:url('https://image.flaticon.com/icons/svg/1077/1077035.svg');">
-              </button>
-            </form>
-          {{else}}
-            <form action="/recipes/deleteFavorite" method="POST">
-              <button name="deleteFavorite" value="{{recipe._id}}"
-                style="background:url('https://image.flaticon.com/icons/svg/833/833472.svg');">
-              </button>
-            </form>
-          {{/ifNotContains}}
+          {{#if user}}
+            {{#ifNotContains user.favorites recipe._id}}
+              <form action="/recipes/addFavorite" method="POST">
+                <button name="addFavorite" value="{{recipe._id}}" 
+                  style="background:url('https://image.flaticon.com/icons/svg/1077/1077035.svg');">
+                </button>
+              </form>
+            {{else}}
+              <form action="/recipes/deleteFavorite" method="POST">
+                <button name="deleteFavorite" value="{{recipe._id}}"
+                  style="background:url('https://image.flaticon.com/icons/svg/833/833472.svg');">
+                </button>
+              </form>
+            {{/ifNotContains}}
+          {{/if}}
         </div> 
         <div class="nutrition">
           <div>
