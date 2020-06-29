@@ -39,7 +39,15 @@ const recipeSchema = new Schema(
       type: [String],
       required: true
     },
-    reviews: [String]
+    reviews: [
+      {
+        author: String,
+        review: String
+      },
+      {
+        timestamps: true
+      }
+    ]
   },
   {
     timestamps: true
