@@ -37,7 +37,7 @@
               <span id="rating-percent" style="display:none">{{getAverageInPercent recipe.ratings}}</span>
                 <span>  {{getAverage recipe.ratings}} / 5 ({{numberOfVotes recipe.ratings}})</span>
               {{else}}
-                This recipe doesn't have any rating yet. Be the first one to evaluate it !
+                This recipe doesn't have any rating yet. {{#if user}} Be the first one to evaluate it !{{/if}}
               {{/if}}
               {{#if user}}
                 {{#ifNoRatings recipe.ratings user.username}}
