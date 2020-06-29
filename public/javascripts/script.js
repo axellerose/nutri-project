@@ -176,6 +176,22 @@ if (searchResults) {
   }
 }
 
+// #RECIPE DETAILS - Update the ratings
+const ratings = document.querySelector(".stars-inner")
+const moreThanZeroRatings = document.querySelector("#rating-percent")
+
+function updateRatings() {
+  if (moreThanZeroRatings) {
+    const ratingInPercentage = document.querySelector("#rating-percent").innerText
+    ratings.style.width = ratingInPercentage
+  } else {
+    ratings.style.width = "0";
+  }
+}
+if (ratings) {
+  updateRatings()
+}
+
 // #GLOBAL SEARCH RESULTS - Give total of products/recipes found
 const globalSearch = document.getElementById("global-search");
 if (globalSearch) {
