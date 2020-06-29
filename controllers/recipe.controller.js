@@ -86,7 +86,7 @@ const getRecipeDetails = (req, res, next) => {
     if (user) {
       User.findOne({username: user.username})
       .then(thisUser => {
-      res.render('recipes/recipe-details', {user: thisUser, recipe: recipe});
+      res.render('recipes/recipe-details', {user: thisUser, sessionUser: user, recipe: recipe});
       })
       .catch(err => {
         console.log(`Error getting the user: ${err}`)

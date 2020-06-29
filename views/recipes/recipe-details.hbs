@@ -75,7 +75,7 @@
     </div>
   </div>
     <div class="recipe-control-buttons">
-      {{#ifHasAuth user.username recipe.author user.isSuperuser}}
+      {{#ifHasAuth user.username recipe.author sessionUser.isSuperuser}}
           <a class="edit__button" href="/recipes/edit/{{recipe._id}}">EDIT</a>
           <a class="delete__button" href="/recipes/delete/{{recipe._id}}">DELETE</a>
       {{/ifHasAuth}}
