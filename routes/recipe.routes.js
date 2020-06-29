@@ -12,7 +12,8 @@ const {
   postEditRecipe,
   postAddFavorites,
   postDeleteFavorites,
-  postReview
+  postReview,
+  postRating
 } = require('../controllers/recipe.controller')
 
 router
@@ -26,5 +27,6 @@ router
 .post('/addFavorite', postAddFavorites)
 .post('/deleteFavorite', postDeleteFavorites)
 .post('/leaveReview', postReview)
+.post('/leaveRating', postRating)
 
 module.exports = router;
