@@ -14,7 +14,12 @@ const recipeSchema = new Schema(
       type: String,
       required: true
     },
-    rate: Number,
+    ratings: [
+      {
+        author: String,
+        rating: Number
+      }
+    ],
     time: {
       type: Number,
       required: true

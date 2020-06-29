@@ -222,14 +222,30 @@ const postReview = (req, res, next) => {
     review: req.body.review,
   }
   Recipe.findOneAndUpdate({_id: recipe}, {$push:{reviews: newReview}})
-  .then(review => {
+  .then(() => {
     res.redirect(`/recipes/details/${recipe}`)
   })
   .catch(err => {
     console.log(`Error while posting a new review: ${err}`)
     res.redirect(`/recipes/details/${recipe}`)
   })
-  
+}
+
+const postRating = (req, res, next) => {
+  const user = req.session.currentUser
+  const recipe = req.body.recipe
+  const newRating = {
+    author: req.body.user,
+    rating: req.body.rating,
+  }
+  Recipe.findOneAndUpdate({_id: recipe}, {$push:{ratings: newRating}})
+  .then(rating => {
+    res.redirect(`/recipes/details/${recipe}`)
+  })
+  .catch(err => {
+    console.log(`Error while posting a new rating: ${err}`)
+    res.redirect(`/recipes/details/${recipe}`)
+  })
 }
 
 module.exports = {
@@ -242,5 +258,6 @@ module.exports = {
   postEditRecipe,
   postAddFavorites,
   postDeleteFavorites,
-  postReview
+  postReview,
+  postRating
 };

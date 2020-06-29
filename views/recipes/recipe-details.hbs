@@ -25,7 +25,50 @@
           <div>
             <label>Author: <em>{{recipe.author}}</em></label>
               |
-            <label>Rate: {{recipe.rate}}</label>
+            <div class="details-ratings">
+              <div class="stars-container" style="width:80px">
+                <div class="stars-outer">
+                  {{!-- OJO the number of stars is calculated according to a width --}}
+                  {{!-- Here the width of the container is 80px. So to have 2.5/5 stars we need 40px for example --}}
+                  <div class="stars-inner"></div>
+                </div>
+              </div>
+              {{#if recipe.ratings}}
+              <span id="rating-percent" style="display:none">{{getAverageInPercent recipe.ratings}}</span>
+                <span>  {{getAverage recipe.ratings}} / 5 ({{numberOfVotes recipe.ratings}})</span>
+              {{else}}
+                This recipe doesn't have any rating yet. Be the first one to evaluate it !
+              {{/if}}
+              {{#if user}}
+                {{#ifNoRatings recipe.ratings user.username}}
+                  <div>
+                    <form action="/recipes/leaveRating" method="POST">
+                      {{!-- OJO textarea tags must be in the same LINE, or the placeholder won't appear ! --}}
+                      
+                      <input type="radio" id="1" name="rating" value=1>
+                      <label for="1">1</label><br>
+                      <input type="radio" id="2" name="rating" value=2>
+                      <label for="2">2</label><br>
+                      <input type="radio" id="3" name="rating" value=3>
+                      <label for="3">3</label><br>
+                      <input type="radio" id="4" name="rating" value=4>
+                      <label for="4">4</label><br>
+                      <input type="radio" id="5" name="rating" value=5>
+                      <label for="5">5</label><br>
+
+                      <input type="hidden" name="recipe" value="{{recipe._id}}">
+                      <input type="hidden" name="user" value="{{user.username}}">
+                      <button type="submit" class="button">Send</button>
+                    </form>
+                  </div>
+                {{/ifNoRatings}}
+              {{/if}}
+            </div>
+            {{#unless user}}
+              <div>
+                <span>Want to leave a evaluate this recipe ? Get <a href="/login">logged in</a> first!</span>
+              </div>
+            {{/unless}}
           </div>
           <ul>
             <li>
