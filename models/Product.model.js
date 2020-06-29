@@ -39,7 +39,7 @@ const productSchema = new Schema(
    },
    category: {
      type: String,
-     enum: ['Vegetable','Fruit','Fish','Meat','Seafood','Other']
+     enum: ['Vegetable','Fruit','Fish','Meat','Seafood','Other','Dairy product','Liquid','Spices and condiments']
    }
   },
   {

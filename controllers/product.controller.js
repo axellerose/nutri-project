@@ -54,7 +54,6 @@ const getProductDetails = (req, res, next) => {
   .then(product => {
     Recipe.find({"products.product": product._id})
     .then(recipes => {
-      // recipes.forEach(elem => console.log(elem.product))
       res.render('products/product-details', {user: user, product: product, relatedRecipes: recipes});
     })
     .catch(err => console.log(`Error creating relation products-recipes on Product's page: ${err}`))
