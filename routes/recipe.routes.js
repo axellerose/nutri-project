@@ -11,7 +11,8 @@ const {
   getEditRecipe,
   postEditRecipe,
   postAddFavorites,
-  postDeleteFavorites
+  postDeleteFavorites,
+  postReview
 } = require('../controllers/recipe.controller')
 
 router
@@ -24,5 +25,6 @@ router
 .post('/edit/:recipeId', fileUploader.single('image'), postEditRecipe)
 .post('/addFavorite', postAddFavorites)
 .post('/deleteFavorite', postDeleteFavorites)
+.post('/leaveReview', postReview)
 
 module.exports = router;

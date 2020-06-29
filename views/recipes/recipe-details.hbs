@@ -50,7 +50,7 @@
         </div>
       </div>
     </div>
-    <div class="details-ingredients" id="recipe-steps">
+    <div class="details-ingredients">
       <label>Ingredients:</label>
       <ul>
       {{#each recipe.products}}
@@ -59,7 +59,7 @@
         </li>
       {{/each}}
       </ul>
-      <div>
+      <div class="details-instructions">
         <label>Instructions:
           <ol>
             {{#each recipe.steps}}
@@ -68,10 +68,32 @@
           </ol>
         </label>
       </div>
-      <div>
-        <label>Reviews: <span>{{recipe.reviews}}</span>
+      <div class="details-reviews">
+        <label>Reviews: 
+          {{#each recipe.reviews}}
+            <h5>by <em>{{author}}</em></h5>
+            <p style="font-weight:lighter">{{review}}</p>
+          {{/each}}
         </label>
       </div>
+      {{#if user}}
+        {{#ifNoReview recipe.reviews user.username}}
+          <div>
+            <form action="/recipes/leaveReview" method="POST">
+              {{!-- OJO textarea tags must be in the same LINE, or the placeholder won't appear ! --}}
+              <textarea name="review" id="" cols="30" rows="3" placeholder="Share your opinion about this recipe !"></textarea>
+              <input type="hidden" name="recipe" value="{{recipe._id}}">
+              <input type="hidden" name="user" value="{{user.username}}">
+              <button type="submit" class="button">Send</button>
+            </form>
+          </div>
+        {{/ifNoReview}}
+      {{/if}}
+      {{#unless user}}
+        <div>
+          <span>Want to leave a review ? Get <a href="/login">logged in</a> first!</span>
+        </div>
+      {{/unless}}
     </div>
   </div>
     <div class="recipe-control-buttons">
@@ -80,5 +102,4 @@
           <a class="delete__button" href="/recipes/delete/{{recipe._id}}">DELETE</a>
       {{/ifHasAuth}}
   </div>
-
 </div>

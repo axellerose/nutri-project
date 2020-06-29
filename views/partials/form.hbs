@@ -49,18 +49,17 @@
     <div>
       <label>Steps</label>
     </div>
-
-    <ol id="steps-list">
-        {{#each recipe.steps}}
-          <li>
-            <span>{{this}}</span><button class="delete-step__button"></button>
-          </li>
-        {{/each}}
-    </ol>
+      <ol id="steps-list">
+          {{#each recipe.steps}}
+            <li>
+              <span>{{this}}</span><button class="delete-step__button"></button>
+            </li>
+          {{/each}}
+      </ol>
+  {{!-- OJO textarea tags must be in the same LINE, or the placeholder won't appear ! --}}
+  {{!-- <textarea id="new-step" name="new-step" rows="10" cols="30" ></textarea> --}}
+  <textarea id="new-step" name="new-step" cols="30" rows="10" placeholder="Ex: 'Peel and cut the avocado length-wise into 8 pieces.'"></textarea>
   </div>
-  <textarea id="new-step" name="new-step" rows="10" cols="30">
-    Ex: "Peel and cut the avocado length-wise into 8 pieces."
-  </textarea>
 </div>
 <button class="add-product__button" id="new-step-button">+</button>
 
