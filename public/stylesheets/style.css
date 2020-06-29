@@ -608,14 +608,14 @@ button:disabled {
     margin-left: 75%;
     margin-bottom: 15px;
     outline: none; }
-  .create-form .delete-product__button {
+  .create-form .delete-product__button, .create-form .delete-step__button {
     background: url("/images/delete-icon.svg");
     background-size: cover;
     width: 24px;
     height: 24px;
     padding-right: 10px;
     outline: none; }
-    .create-form .delete-product__button:active {
+    .create-form .delete-product__button:active, .create-form .delete-step__button:active {
       border: 1px solid #60a3bc; }
   .create-form a {
     font-size: 14px;
