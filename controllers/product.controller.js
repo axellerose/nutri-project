@@ -87,7 +87,7 @@ const postEditProduct = (req, res, next) => {
     newProduct.seasons = req.body.existingSeasons;
   }
   console.log(req.body)
-  Product.findByIdAndUpdate(req.body.id, newProduct)
+  Product.findByIdAndUpdate(req.body.id, newProduct, { runValidators: true })
   .then(product => {
     console.log(product)
     res.redirect('/products/')
