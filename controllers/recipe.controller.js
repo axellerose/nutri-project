@@ -236,10 +236,11 @@ const postRating = (req, res, next) => {
   const recipe = req.body.recipe
   const newRating = {
     author: req.body.user,
-    rating: req.body.rating,
+    rating: req.body.star,
   }
+  console.log(req.body)
   Recipe.findOneAndUpdate({_id: recipe}, {$push:{ratings: newRating}})
-  .then(rating => {
+  .then(() => {
     res.redirect(`/recipes/details/${recipe}`)
   })
   .catch(err => {
