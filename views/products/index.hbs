@@ -1,22 +1,7 @@
-<h2 class="header">Products</h2>
-<div class="search-input wrapper" id="search-results">
-  <input type="text" id="search-item" placeholder="Find a product..">
-  {{#each products}}
-    {{> cards parameter1="products" parameter2=name parameter3=image parameter4=name }}
-  {{/each}}
-  {{#if user.isSuperuser}}
-    <a href=""></a>
-    <a
-      href="/products/feedDb"
-      class="create-recipe__button"
-    > 
-      <div>
-        <img src="/images/add-icon.svg">
-      </div>
-    </a>
-  {{/if}}
-</div>
-  
-
-
-
+{{> indexList
+    itemHeader='Products'
+    itemStringLowerSingular='product'
+    object=products
+    productIndex='true'
+    link='/products/feedDb'
+}}
