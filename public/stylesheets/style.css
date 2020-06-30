@@ -417,6 +417,41 @@ button:disabled {
   font-weight: 900;
   color: #f8ce0b; }
 
+.star-rating {
+  font-family: 'Font Awesome 5 Free'; }
+  .star-rating > form {
+    border: none;
+    display: inline-block; }
+    .star-rating > form:not(:checked) > input {
+      position: absolute;
+      clip: rect(0, 0, 0, 0); }
+    .star-rating > form:not(:checked) > label {
+      float: right;
+      width: 1em;
+      padding: 0 .05em;
+      overflow: hidden;
+      white-space: nowrap;
+      cursor: pointer;
+      font-size: 200%;
+      color: #f8ce0b; }
+      .star-rating > form:not(:checked) > label:before {
+        content: '\f005';
+        color: #ccc; }
+      .star-rating > form:not(:checked) > label:hover,
+      .star-rating > form:not(:checked) > label:hover ~ label {
+        color: #f8ce0b;
+        text-shadow: 0 0 3px #f8ce0b; }
+        .star-rating > form:not(:checked) > label:hover:before,
+        .star-rating > form:not(:checked) > label:hover ~ label:before {
+          content: '\f005';
+          color: #f8ce0b; }
+    .star-rating > form > input:checked ~ label:before {
+      content: '\f005  ';
+      color: #f8ce0b; }
+    .star-rating > form > label:active {
+      position: relative;
+      top: 3px; }
+
 /* MEDIUM SCREEN */
 @media screen and (min-width: 960px) {
   a:hover {

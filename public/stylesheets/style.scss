@@ -161,7 +161,7 @@ body {
               border: 1px solid $click-btn;
             }
         }
-        
+
           button, input[type="submit"], input[type="reset"] {
             background: none;
             color: inherit;
@@ -569,6 +569,65 @@ button:disabled {
   font-weight: 900;
   color: #f8ce0b;
 }
+
+.star-rating {
+  font-family: 'Font Awesome 5 Free';
+
+  > form {
+    border: none;
+    display: inline-block;
+    
+    &:not(:checked) {
+      > input {
+        position: absolute;
+        // top: -9999px;
+        clip: rect(0,0,0,0);
+      }
+
+      > label {
+        float: right;
+        width: 1em;
+        padding: 0 .05em;
+        overflow: hidden;
+        white-space: nowrap;
+        cursor: pointer;
+        font-size: 200%;
+        color:#f8ce0b;
+        
+        &:before {
+          content: '\f005';
+          color: #ccc;
+        }
+        
+        &:hover,
+        &:hover ~ label {
+          color: #f8ce0b;
+          text-shadow: 0 0 3px #f8ce0b;
+          &:before {
+            content: '\f005';
+            color: #f8ce0b;
+          }
+        }
+      }
+    }
+    
+    > input:checked {
+      & ~ label {
+        &:before {
+          content: '\f005  ';
+          color: #f8ce0b;
+        }
+      }    
+    }    
+
+    > label:active {
+      position: relative;
+      top: 3px;
+    }
+  }
+}
+
+
 // STARS RATING END
 
 // IMPORTANT : Start to implement responsive CSS styles
