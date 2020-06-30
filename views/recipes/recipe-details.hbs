@@ -24,46 +24,20 @@
         <div class="nutrition">
           <div>
             <label>Author: <em>{{recipe.author}}</em></label>
-              |
-            <div class="details-ratings">
-              <div class="stars-container" style="width:80px">
-                <div class="stars-outer">
-                  {{!-- OJO the number of stars is calculated according to a width --}}
-                  {{!-- Here the width of the container is 80px. So to have 2.5/5 stars we need 40px for example --}}
-                  <div class="stars-inner"></div>
-                </div>
+          </div>
+          <div class="details-ratings">
+            <div class="stars-container" style="width:80px">
+              <div class="stars-outer">
+                {{!-- Here the width of the container is 80px. So to have 2.5/5 stars we need 40px for example --}}
+                <div class="stars-inner"></div>
               </div>
-              {{#if recipe.ratings}}
-              <span id="rating-percent" style="display:none">{{getAverageInPercent recipe.ratings}}</span>
-                <span>  {{getAverage recipe.ratings}} / 5 ({{numberOfVotes recipe.ratings}})</span>
-              {{else}}
-                <span>This recipe doesn't have any rating yet. {{#if user}} Be the first one to evaluate it !{{/if}}</span>
-              {{/if}}
-              {{#if user}}
-                {{#ifNoRatings recipe.ratings user.username}}
-                  <div>
-                    <form action="/recipes/leaveRating" method="POST">
-                      {{!-- OJO textarea tags must be in the same LINE, or the placeholder won't appear ! --}}
-                      
-                      <input type="radio" id="1" name="rating" value=1>
-                      <label for="1">1</label><br>
-                      <input type="radio" id="2" name="rating" value=2>
-                      <label for="2">2</label><br>
-                      <input type="radio" id="3" name="rating" value=3>
-                      <label for="3">3</label><br>
-                      <input type="radio" id="4" name="rating" value=4>
-                      <label for="4">4</label><br>
-                      <input type="radio" id="5" name="rating" value=5>
-                      <label for="5">5</label><br>
-
-                      <input type="hidden" name="recipe" value="{{recipe._id}}">
-                      <input type="hidden" name="user" value="{{user.username}}">
-                      <button type="submit" class="button">Send</button>
-                    </form>
-                  </div>
-                {{/ifNoRatings}}
-              {{/if}}
             </div>
+            {{#if recipe.ratings}}
+            <span id="rating-percent" style="display:none">{{getAverageInPercent recipe.ratings}}</span>
+              <span>  {{getAverage recipe.ratings}} / 5 ({{numberOfVotes recipe.ratings}})</span>
+            {{else}}
+              <span>This recipe doesn't have any rating yet.</span>
+            {{/if}}
             {{#unless user}}
               <div>
                 <span>Do you want to evaluate this recipe ? Click <a href="/login">here</a> to login first!</span>
@@ -111,6 +85,34 @@
           </ol>
         </label>
       </div>
+      {{#if user}}
+        <div class="details-rate-this-recipe">
+          <h4>Rate this recipe</h4>
+            {{#unless recipe.ratings}}
+              Be the first one to evaluate it !
+            {{/unless}}
+            {{#ifNoRatings recipe.ratings user.username}}
+              <div class="star-rating">
+                <form action="/recipes/leaveRating" method="POST">
+                  <input type="radio" name="star" id="star5" value=5>
+                  <label for="star5"></label>
+                  <input type="radio" name="star" id="star4" value=4>
+                  <label for="star4"></label>
+                  <input type="radio" name="star" id="star3" value=3>
+                  <label for="star3"></label>
+                  <input type="radio" name="star" id="star2" value=2>
+                  <label for="star2"></label>
+                  <input type="radio" name="star" id="star1" value=1>
+                  <label for="star1"></label>
+
+                  <input type="hidden" name="recipe" value="{{recipe._id}}"> 
+                  <input type="hidden" name="user" value="{{user.username}}">
+                  <button type="submit" class="button">Send</button>
+                </form>
+              </div>
+            {{/ifNoRatings}}
+        </div>
+      {{/if}}
       <div class="details-reviews">
         <label>Reviews: 
           {{#each recipe.reviews}}
@@ -141,10 +143,10 @@
       {{/unless}}
     </div>
   </div>
-    <div class="recipe-control-buttons">
-      {{#ifHasAuth user.username recipe.author sessionUser.isSuperuser}}
-          <a class="edit__button" href="/recipes/edit/{{recipe._id}}">EDIT</a>
-          <a id="delete-recipe-button" class="delete__button" href="/recipes/delete/{{recipe._id}}">DELETE</a>
-      {{/ifHasAuth}}
+  <div class="recipe-control-buttons">
+    {{#ifHasAuth user.username recipe.author sessionUser.isSuperuser}}
+        <a class="edit__button" href="/recipes/edit/{{recipe._id}}">EDIT</a>
+        <a id="delete-recipe-button" class="delete__button" href="/recipes/delete/{{recipe._id}}">DELETE</a>
+    {{/ifHasAuth}}
   </div>
 </div>

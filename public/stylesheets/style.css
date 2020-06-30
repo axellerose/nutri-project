@@ -81,9 +81,6 @@ body {
     max-width: 180px;
     width: 100%;
     outline: 0; }
-    .navbar form button {
-      width: 20px;
-      height: 20px; }
   .navbar .dropdown {
     display: flex;
     flex-direction: column; }
@@ -117,14 +114,18 @@ body {
             padding: 10px 15px; }
             .navbar .dropdown .dropdown__content ul li a:active {
               border: 1px solid #60a3bc; }
-          .navbar .dropdown .dropdown__content ul li form button {
-            border: 0;
-            background-color: rgba(255, 255, 255, 0.8);
+          .navbar .dropdown .dropdown__content ul li button, .navbar .dropdown .dropdown__content ul li input[type="submit"], .navbar .dropdown .dropdown__content ul li input[type="reset"] {
+            background: none;
+            color: inherit;
+            border: none;
+            padding: 0;
+            font: inherit;
+            cursor: pointer;
+            outline: inherit;
             font-size: 14px;
             color: #535353;
             font-weight: bolder;
-            padding: 10px 15px;
-            outline: none; }
+            padding-left: 15px; }
 
 a {
   text-decoration: none;
@@ -415,6 +416,41 @@ button:disabled {
   font-family: 'Font Awesome 5 Free';
   font-weight: 900;
   color: #f8ce0b; }
+
+.star-rating {
+  font-family: 'Font Awesome 5 Free'; }
+  .star-rating > form {
+    border: none;
+    display: inline-block; }
+    .star-rating > form:not(:checked) > input {
+      position: absolute;
+      clip: rect(0, 0, 0, 0); }
+    .star-rating > form:not(:checked) > label {
+      float: right;
+      width: 1em;
+      padding: 0 .05em;
+      overflow: hidden;
+      white-space: nowrap;
+      cursor: pointer;
+      font-size: 200%;
+      color: #f8ce0b; }
+      .star-rating > form:not(:checked) > label:before {
+        content: '\f005';
+        color: #ccc; }
+      .star-rating > form:not(:checked) > label:hover,
+      .star-rating > form:not(:checked) > label:hover ~ label {
+        color: #f8ce0b;
+        text-shadow: 0 0 3px #f8ce0b; }
+        .star-rating > form:not(:checked) > label:hover:before,
+        .star-rating > form:not(:checked) > label:hover ~ label:before {
+          content: '\f005';
+          color: #f8ce0b; }
+    .star-rating > form > input:checked ~ label:before {
+      content: '\f005  ';
+      color: #f8ce0b; }
+    .star-rating > form > label:active {
+      position: relative;
+      top: 3px; }
 
 /* MEDIUM SCREEN */
 @media screen and (min-width: 960px) {
