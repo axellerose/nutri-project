@@ -69,7 +69,6 @@ const postEditProduct = (req, res, next) => {
     name: req.body.name,
     description: req.body.description,
     category: req.body.category,
-    image: req.body.image,
     info :{
       calories: req.body.calories,
       fat: req.body.fat,
@@ -88,8 +87,9 @@ const postEditProduct = (req, res, next) => {
     newProduct.seasons = req.body.existingSeasons;
   }
   console.log(req.body)
-  Product.findOneAndUpdate({name: req.body.name}, newProduct, { runValidators: true })
-  .then(() => {
+  Product.findByIdAndUpdate(req.body.id, newProduct)
+  .then(product => {
+    console.log(product)
     res.redirect('/products/')
   })
   .catch(error => {
