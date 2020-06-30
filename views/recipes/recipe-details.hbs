@@ -37,7 +37,7 @@
               <span id="rating-percent" style="display:none">{{getAverageInPercent recipe.ratings}}</span>
                 <span>  {{getAverage recipe.ratings}} / 5 ({{numberOfVotes recipe.ratings}})</span>
               {{else}}
-                This recipe doesn't have any rating yet. {{#if user}} Be the first one to evaluate it !{{/if}}
+                <span>This recipe doesn't have any rating yet. {{#if user}} Be the first one to evaluate it !{{/if}}</span>
               {{/if}}
               {{#if user}}
                 {{#ifNoRatings recipe.ratings user.username}}
@@ -66,7 +66,7 @@
             </div>
             {{#unless user}}
               <div>
-                <span>Want to leave a evaluate this recipe ? Get <a href="/login">logged in</a> first!</span>
+                <span>Do you want to evaluate this recipe ? Click <a href="/login">here</a> to login first!</span>
               </div>
             {{/unless}}
           </div>
@@ -98,7 +98,7 @@
       <ul>
       {{#each recipe.products}}
         <li>
-          {{this.product.name}}    {{this.quantity}} g
+          <a href="/products/details/{{this.product.name}}">{{this.product.name}}</a>    {{this.quantity}} g
         </li>
       {{/each}}
       </ul>
@@ -116,6 +116,8 @@
           {{#each recipe.reviews}}
             <h5>by <em>{{author}}</em></h5>
             <p style="font-weight:lighter">{{review}}</p>
+          {{else}}
+            <span>This recipe doesn't have any review yet. {{#if user}} Be the first one to share your experience !{{/if}}</span> 
           {{/each}}
         </label>
       </div>
@@ -134,7 +136,7 @@
       {{/if}}
       {{#unless user}}
         <div>
-          <span>Want to leave a review ? Get <a href="/login">logged in</a> first!</span>
+          <span>Do you want to leave a review ? Click <a href="/login">here</a> to login first!</span>
         </div>
       {{/unless}}
     </div>
@@ -142,7 +144,7 @@
     <div class="recipe-control-buttons">
       {{#ifHasAuth user.username recipe.author sessionUser.isSuperuser}}
           <a class="edit__button" href="/recipes/edit/{{recipe._id}}">EDIT</a>
-          <a class="delete__button" href="/recipes/delete/{{recipe._id}}">DELETE</a>
+          <a id="delete-recipe-button" class="delete__button" href="/recipes/delete/{{recipe._id}}">DELETE</a>
       {{/ifHasAuth}}
   </div>
 </div>

@@ -1,7 +1,6 @@
 // #LAYOUT - Show/Hide burger menu
 let menuBtn = document.querySelector("#show-menu-btn")
 menuBtn.addEventListener('click', () => {
-  console.log("MENU PRESSED")
   let menu = document.querySelector(".dropdown__content")
   if(menu.style.display === 'block') {
     menu.style.display = 'none';
@@ -204,4 +203,18 @@ if (globalSearch) {
   const recipesFound = recipes.getElementsByClassName("card").length;
   document.getElementById("global-recipes-count").innerText =
   recipesFound === 0 ? `No recipe found.` : recipesFound === 1 ? `1 recipe found: ` : `${recipesFound} recipes found: `;
+}
+
+// #PRODUCT DETAILS - Confirm before deleting
+deleteProductButton = document.getElementById("delete-product-button")
+deleteRecipeButton = document.getElementById("delete-recipe-button")
+deleteConfirmation(deleteProductButton, "product")
+deleteConfirmation(deleteRecipeButton, "recipe")
+
+function deleteConfirmation(button, stringElement) {
+  if (button) {
+    button.addEventListener("click", function(){
+      return confirm(`Are you sure you want to delete this ${stringElement} ?`);
+    })
+  }
 }
