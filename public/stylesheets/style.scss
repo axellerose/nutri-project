@@ -19,7 +19,8 @@ $error: #b71540;
 $blue-header: #0c2461;
 $edit-btn: #786fa6;
 $delete-btn: #c44569;
-$bg-dropdown: rgba(255, 255, 255, .8);
+$bg-dropdown: rgb(249, 246, 246);
+$a-hover: #f5cd79;
 
 
 *, *:before, *:after {
@@ -79,8 +80,7 @@ body {
   width: 50px;
   height: 50px;
   border-radius: 10px;
-}
-
+  }
 }
 
 .flex-spacer {
@@ -130,7 +130,10 @@ body {
       border: none;
       outline: none;
     }
-
+    @keyframes menu-transition {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
     .dropdown__content{
       display: none;
       top: 50px;
@@ -138,9 +141,10 @@ body {
       position: absolute;
       height: fit-content;
       box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-      transition: all 0.3s ease-in-out 0s;
       background-color: $bg-dropdown;
-
+      animation-name: menu-transition;
+      animation-duration: 0.3s;
+      
       ul {
         list-style: none;
         align-items: center;
@@ -160,7 +164,7 @@ body {
             &:active{
               border: 1px solid $click-btn;
             }
-        }
+          }
 
           button, input[type="submit"], input[type="reset"] {
             background: none;
@@ -295,6 +299,12 @@ a {
           padding-left: 5px;
           color: #535353;
 
+          a {
+            text-decoration: none;
+            color: #535353;
+        
+          }
+
           label {
             color: #535353;
             font-weight: bolder;
@@ -366,6 +376,19 @@ a {
         color: #535353;
         font-weight: bolder;
       }
+
+      button, input[type="submit"], input[type="reset"] {
+        background: none;
+        color: inherit;
+        border: none;
+        padding: 0;
+        font: inherit;
+        cursor: pointer;
+        outline: inherit;
+        font-size: 14px;
+        color: #535353;
+        font-weight: bolder;
+      }
     }
   }
 }
@@ -425,6 +448,8 @@ a {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
+    align-content: flex-start;
+    height: fit-content;
     .card {
       display: flex;
       flex-direction: row;
@@ -433,7 +458,7 @@ a {
       border: 1px solid #d3d3d3;
       background-color: #fff;
       margin: 10px 5px;
-      max-width: 35vw;
+      max-width: 150px;
       width: 100%;
       animation: fade-in 0.65s ease-in-out forwards;
       box-shadow: 2px 2px 4px rgba(0,0,0,0.15);
@@ -452,6 +477,7 @@ a {
           text-align: center;
           font-size: 12px;
           color: #323232;
+          padding-left: 5px;
         }
       }
     }
@@ -491,8 +517,8 @@ a {
   text-transform: uppercase;
   text-decoration: none;
   background: #079992;
-  padding: 20px;
-  border-radius: 10px;
+  padding: 10px 15px;
+  font-size: 12px;
   display: inline-block;
   border: none;
   transition: all 0.4s ease 0s;
@@ -513,11 +539,11 @@ a {
 
 .button:hover {
   background: #434343;
-  letter-spacing: 1px;
   -webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
   -moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
   box-shadow: 5px 40px -10px rgba(0,0,0,0.57);
   transition: all 0.4s ease 0s;
+  cursor: pointer;
   }
 
 .delete {
@@ -542,6 +568,14 @@ button:disabled {
 }
 
 // STARS RATING START
+.details-rate-this-recipe{
+  display: flex;
+  flex-direction: column;
+}
+.stars-container{
+  border: none;
+  margin: 10px;
+}
 .stars-outer {
   position: relative;
   display: inline-block;
@@ -575,7 +609,9 @@ button:disabled {
 
   > form {
     border: none;
-    display: inline-block;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-evenly;
     
     &:not(:checked) {
       > input {
@@ -585,9 +621,8 @@ button:disabled {
       }
 
       > label {
-        float: right;
-        width: 1em;
-        padding: 0 .05em;
+        width: 100%;
+        padding: 0;
         overflow: hidden;
         white-space: nowrap;
         cursor: pointer;
@@ -622,7 +657,7 @@ button:disabled {
 
     > label:active {
       position: relative;
-      top: 3px;
+
     }
   }
 }
@@ -630,45 +665,6 @@ button:disabled {
 
 // STARS RATING END
 
-// IMPORTANT : Start to implement responsive CSS styles
-
-                                        /* MEDIUM SCREEN */
-@media screen and (min-width: 960px) {    
-  // Fill
-  a:hover {
-    color: #f5cd79
-  }
-  .logout{
-    color: whitesmoke;
-    background: url("../images/exit-icon.png");
-    background-size: contain;
-    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-    background-color: $blue-navbar;
-    font-weight: bolder;
-    border: none;
-    width: 32px;
-    height: 37px;
-  }
-}
-
-                                        /* LARGE SCREEN */
-@media screen and (min-width: 1200px) {
-  // Fill
-  a:hover {
-    color: #f5cd79
-  }
-  .logout{
-    color: whitesmoke;
-    background: url("../images/exit-icon.png");
-    background-size: contain;
-    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-    background-color: $blue-navbar;
-    font-weight: bolder;
-    border: none;
-    width: 32px;
-    height: 37px;
-  }
-}
 
 .auth-form {
   width: 100%;
@@ -761,6 +757,10 @@ button:disabled {
 }
 
 .wrapper {
+  h3 {
+    padding-left: 20px;
+    color: $blue-header; 
+  }
   .create-recipe__button {
     position: fixed;
     display: flex;
@@ -787,18 +787,18 @@ button:disabled {
     }
   }
 
-  input {
-  padding: 10px 10px 10px 16px;
-  background: #fff;
-  border: 1px solid #cdcdcd;
-  transition: border .35s ease-in-out 0s;
-  outline: none;
-  margin: 10px;
+  // input {
+  // padding: 10px 10px 10px 16px;
+  // background: #fff;
+  // border: 1px solid #cdcdcd;
+  // transition: border .35s ease-in-out 0s;
+  // outline: none;
+  // margin: 10px;
 
-  &:focus {
-    border: 1px solid $blue-navbar;
-    }
-  }
+  // &:focus {
+  //   border: 1px solid $blue-navbar;
+  //   }
+  // }
   .recipe-control-buttons {
     display: flex;
     flex-direction: row;
@@ -975,6 +975,31 @@ button:disabled {
 
 }
 
+.input-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+  
+  label {
+    font-size: 14px;
+    color: #585858;
+    margin-bottom: 10px;
+  }
+
+  input {
+    padding: 10px;
+    background: #fff;
+    border: 1px solid #cdcdcd;
+    transition: border .35s ease-in-out 0s;
+    outline: none;
+
+    &:focus {
+      border: 1px solid $blue-navbar;
+    }
+  }    
+}
+
 .list-container {
   display: flex;
   flex-direction: column;
@@ -1049,7 +1074,7 @@ button:disabled {
 
 .search-form {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   flex-direction: row;
   max-width: 300px;
   width: 100%;
@@ -1058,9 +1083,9 @@ button:disabled {
 
   div {
     background: none;
-    max-width: 80%;
+    max-width: 90%;
     padding: 0;
-    margin: 0;
+    margin: 0 5px;
     align-items: center;
   }
 
@@ -1079,7 +1104,6 @@ button:disabled {
     background-size: cover;
     width: 26px;
     height: 26px;
-    margin: 0px 0px 0px 5px;
     outline: none;
     padding: 3px;
 
@@ -1095,5 +1119,99 @@ button:disabled {
   }
   input{
     width: 100%;
+  }
+}
+
+/* SMALL SCREEN */
+@media screen and (max-width: 959px) {
+  //
+}
+
+
+/* MEDIUM SCREEN */
+@media screen and (min-width: 960px) {   
+  .wrapper {
+    .wrapper-small {
+      .card {
+        max-width: 300px;
+        width: 100%;
+
+        .card-img {
+          height: 150px;
+        }
+      }
+    }
+  }
+
+  .xs-only {
+    display: none;
+  }
+  
+  .navbar{
+    a {
+      flex-grow: 3;
+    }
+    .search-form{
+      max-width: fit-content;
+      width: 100%;
+
+    }
+    .dropdown {
+      display: inline-block;
+  
+      .dropdown__content{
+        display: flex;
+        background-color: $blue-navbar;
+        animation: none;
+        box-shadow: none;
+        position: relative;
+        top: 0px;
+        color: #fff;
+        
+        ul {
+          display: flex;
+          flex-direction: row;
+          padding: 0;
+
+          li {
+            padding: 0px 15px;
+  
+            a {
+              font-weight: normal;
+              color: #fff;
+              padding: 0px 15px;
+              &:hover{
+                color: $a-hover;
+              }
+            }
+            button{
+              color: #fff;
+
+              &:hover{
+                color: $error;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .wrapper{
+    .text-row {
+
+      label {
+        width: 15%;
+        text-align: center;
+      }
+    }
+  }
+}
+
+                                        /* LARGE SCREEN */
+@media screen and (min-width: 1200px) {
+  // Fill
+  a:hover {
+    color: #f5cd79
   }
 }
