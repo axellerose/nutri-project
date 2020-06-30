@@ -1,9 +1,9 @@
-<form class="create-form" action="/products/edit/" method="POST" enctype="multipart/form-data">
+<form class="create-form" action="/products/edit/{{product.name}}" method="POST" enctype="multipart/form-data">
 <h2 class="header">Edit a product</h2>
 
   <div class="input-container">
     <label for="name">Name:</label>
-    <input type="text" id="name" name="name" placeholder="Ex: Strawberry" value={{product.name}}>
+    <input type="text" id="name" name="name" placeholder="Ex: Strawberry" value="{{product.name}}">
   </div>
   
   <div class="input-container">
@@ -14,7 +14,7 @@
   <div class="input-container">
     <label for="category">Category</label>
     <select id="category" name="category">
-        <option value="{{product.category}}" selected disabled hidden>{{product.category}}</option> 
+        <option value="{{product.category}}" selected>{{product.category}}</option> 
         <option value="Vegetable">Vegetable</option>
         <option value="Fruit">Fruit</option>
         <option value="Fish">Fish</option>
@@ -55,8 +55,9 @@
     </select>
   </div>
   <input type="text" name="existingSeasons" hidden id="seasons" value="{{product.seasons}}">
-  
-  <button class="button-in-form create" type="submit">Edit product</button>
+
+  <input type="text" name="id" hidden id="productId" value="{{product._id}}">
+  <button class="button-in-form create" type="submit">Save changes</button>
   {{#if errorMessage}}
     <div>
         <p>{{errorMessage}}</p>

@@ -17,7 +17,7 @@ router
 .get('/feedDb', getFeed)
 .post('/feedDb', fileUploader.single('image'), postFeed)
 .get('/edit/:name', getEditProduct)
-.post('/edit/', fileUploader.single('image'), postEditProduct)
+.post('/edit/:name', fileUploader.single('image'), postEditProduct)
 .get('/details/:name', getProductDetails)
 .get('/delete/:name', getDeleteProduct)
 
