@@ -48,6 +48,56 @@ const postFeed = (req, res, next) => {
   res.render('products/feed-products-db');
 }
 
+const getEditProduct = (req, res, next) => {
+  const user = req.session.currentUser
+  Product.findOne({name: req.params.name})
+  .then(product => {
+    if ((user && user.isSuperuser)) {
+      res.render('products/product-edit', {product})
+    } else {
+      res.redirect('/products')
+    }
+  })
+  .catch(err => {
+    console.log("ERROR ACCESSING TO EDIT PRODUCT: ", err)
+  })
+}
+
+const postEditProduct = (req, res, next) => {
+  const user = req.session.currentUser
+  const newProduct = {
+    name: req.body.name,
+    description: req.body.description,
+    category: req.body.category,
+    image: req.body.image,
+    info :{
+      calories: req.body.calories,
+      fat: req.body.fat,
+      carbs: req.body.carbs,
+      proteins: req.body.proteins
+    }
+  }
+  if (req.file) {
+    newProduct.image = req.file.path;
+  } else {
+    newProduct.image = req.body.existingImage;
+  }
+  if (req.body.seasons) {
+    newProduct.seasons = req.body.seasons;
+  } else {
+    newProduct.seasons = req.body.existingSeasons;
+  }
+  console.log(req.body)
+  Product.findOneAndUpdate({name: req.body.name}, newProduct, { runValidators: true })
+  .then(() => {
+    res.redirect('/products/')
+  })
+  .catch(error => {
+    res.render('products/feed-products-db',{error: error, user: user})
+    console.log(`Error when editing product: ${error}`)
+})
+}
+
 const getProductDetails = (req, res, next) => {
   const user = req.session.currentUser
   Product.findOne({name: req.params.name})
@@ -82,6 +132,8 @@ module.exports = {
   getProducts,
   getFeed,
   postFeed,
+  getEditProduct,
+  postEditProduct,
   getProductDetails,
   getDeleteProduct
 };

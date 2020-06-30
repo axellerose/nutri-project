@@ -31,6 +31,7 @@
   </div>
   <div class="recipe-control-buttons">
     {{#if user.isSuperuser}}
+      <a class="edit__button" href="/products/edit/{{product.name}}">EDIT</a>
       <a id="delete-product-button" class="delete__button" href="/products/delete/{{product.name}}">DELETE</a>
     {{/if}}
   </div>
