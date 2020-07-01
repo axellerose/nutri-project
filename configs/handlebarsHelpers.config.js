@@ -14,6 +14,13 @@ module.exports = hbs.registerHelper('ifNotContains', function(v1, v2, options) {
   return options.inverse(this);
 });
 
+module.exports = hbs.registerHelper('ifAndOperator', function(v1, v2, options) {
+  if(v1 && v2) {
+    return options.fn(this);
+  }
+  return options.inverse(this);
+});
+
 module.exports = hbs.registerHelper('ifNoReview', function(v1, v2, options) {
   let reviewsAuthors = []
   v1.forEach(elem => reviewsAuthors.push(elem.author))

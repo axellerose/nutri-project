@@ -7,16 +7,19 @@
   <title>{{title}}</title>
   <link rel="stylesheet" href="/stylesheets/style.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
 </head>
 
 <body>
 <header>
   <nav class="navbar">
-      <a href="/">NutriApp</a>
 
+      <a href="/">
+      <img class="logo-image" src="/images/nutriapp-logo-inclined.png"/>
+      </a>
         <form class="search-form" action="/search">
-          <div>
-            <input class="search-input" type="text" placeholder="Search..." name="name">
+          <div class="input-container">
+            <input class="search-input input" type="text" placeholder="Find a recipe or a product.." name="name">
           </div>
           <button class="search-submit__button" type="submit"></button>
         </form>
@@ -24,6 +27,12 @@
           <a id="show-menu-btn" class="dropdown__button"></a>
             <div class="dropdown__content">
               <ul>
+                {{#if user}}
+                  <li class="xs-only">
+                    <img class="profile-logo-small" src="https://image.flaticon.com/icons/svg/848/848006.svg" alt="profile logo">
+                    <span><em>{{user.username}}</em></span>
+                  </li>
+                {{/if}}
                 <li>
                   <a href="/products">Products</a>
                 </li>
@@ -59,10 +68,21 @@
 </main>
 {{!-- EMPTY FOOTER --}}
 <footer>
-  <ul class="nav-all-items">
-    <li class="nav-item"><a href="/"></a></li>
-    <li><a href="/products"></a></li>
-    <li id="recipes"><a href="/recipes"></a></li>
+  <ul class="footer-list">
+    <li class="footer-list-item">
+      <img class="footer-logo-small" src="/images/apple-white.png" alt="Products logo">
+      <a href="/products">Products</a>
+    </li>
+    {{#if user}}
+      <li class="footer-list-item">
+        <img class="footer-logo-small" src="/images/user-white.png" alt="Products logo">
+        <a href="/profile">Profile</a>
+      </li>
+    {{/if}}
+    <li class="footer-list-item">
+      <img class="footer-logo-small" src="/images/salad-white.png" alt="Products logo">
+      <a href="/recipes">Recipes</a>
+    </li>
   </ul>
 </footer>
 

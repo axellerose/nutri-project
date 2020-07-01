@@ -10,12 +10,13 @@ const getIndex = (req, res, next) => {
 }
 
 const getSearch = (req, res) => {
+  const user = req.session.currentUser
   let query = new RegExp(req.query.name, 'i')
   Product.find({name: query})
   .then(products => {
     Recipe.find({name: query})
     .then(recipes => {
-      res.render("search", {products: products, recipes: recipes, query: req.query.name})
+      res.render("search", {products: products, recipes: recipes, query: req.query.name, user: user})
     })
     .catch(error => `Error while searching recipes: ${error}`)
   })

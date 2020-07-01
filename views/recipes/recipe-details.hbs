@@ -25,11 +25,11 @@
           <div>
             <label>Author: <em>{{recipe.author}}</em></label>
           </div>
-          <div class="details-ratings">
-            <div class="stars-container" style="width:80px">
-              <div class="stars-outer">
+          <div class="details-ratings" >
+            <div class="stars-container" style="width:80px; border-bottom:none">
+              <div class="stars-outer" style="border-bottom:none">
                 {{!-- Here the width of the container is 80px. So to have 2.5/5 stars we need 40px for example --}}
-                <div class="stars-inner"></div>
+                <div class="stars-inner" style="border-bottom:none"></div>
               </div>
             </div>
             {{#if recipe.ratings}}
@@ -87,33 +87,34 @@
       </div>
       {{#if user}}
         <div class="details-rate-this-recipe">
-          <h4>Rate this recipe</h4>
             {{#unless recipe.ratings}}
-              Be the first one to evaluate it !
+              <label>Be the first one to evaluate it !</label>
             {{/unless}}
             {{#ifNoRatings recipe.ratings user.username}}
+              <label>Rate this recipe</label>
               <div class="star-rating">
                 <form action="/recipes/leaveRating" method="POST">
+                  <button type="submit" class="button" style="float: right; margin-left: 30px;">Rate</button>                
                   <input type="radio" name="star" id="star5" value=5>
                   <label for="star5"></label>
                   <input type="radio" name="star" id="star4" value=4>
-                  <label for="star4"></label>
+                  <label for="star4"></label> 
                   <input type="radio" name="star" id="star3" value=3>
-                  <label for="star3"></label>
+                  <label for="star3"></label>            
                   <input type="radio" name="star" id="star2" value=2>
-                  <label for="star2"></label>
+                  <label for="star2"></label>                                       
                   <input type="radio" name="star" id="star1" value=1>
                   <label for="star1"></label>
+                  
+                  <input display="none" name="recipe" value="{{recipe._id}}"> 
+                  <input display="none" name="user" value="{{user.username}}">
 
-                  <input type="hidden" name="recipe" value="{{recipe._id}}"> 
-                  <input type="hidden" name="user" value="{{user.username}}">
-                  <button type="submit" class="button">Send</button>
                 </form>
               </div>
             {{/ifNoRatings}}
         </div>
       {{/if}}
-      <div class="details-reviews">
+      <div class="">
         <label>Reviews: 
           {{#each recipe.reviews}}
             <h5>by <em>{{author}}</em></h5>
@@ -125,13 +126,13 @@
       </div>
       {{#if user}}
         {{#ifNoReview recipe.reviews user.username}}
-          <div>
-            <form action="/recipes/leaveReview" method="POST">
+          <div class="input-container">
+            <form action="/recipes/leaveReview" method="POST"  style="display: flex; flex-direction:column; align-items:center">
               {{!-- OJO textarea tags must be in the same LINE, or the placeholder won't appear ! --}}
               <textarea name="review" id="" cols="30" rows="3" placeholder="Share your opinion about this recipe !"></textarea>
               <input type="hidden" name="recipe" value="{{recipe._id}}">
               <input type="hidden" name="user" value="{{user.username}}">
-              <button type="submit" class="button">Send</button>
+              <button type="submit" class="button" style="width: 50%; margin: 10px">Send</button>
             </form>
           </div>
         {{/ifNoReview}}
