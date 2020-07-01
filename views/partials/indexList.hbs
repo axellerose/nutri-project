@@ -1,6 +1,8 @@
 <h2 class="header">{{itemHeader}}</h2>
-<div id="search-results" class="search-input wrapper">
+<div class="input-container" style="margin: auto"> 
   <input type="text" id="search-item" placeholder="Find a {{itemStringLowerSingular}}..">
+</div>
+<div id="search-results" class="search-input wrapper">
   {{#if recipeIndex}}
     {{#each object}}
       {{> cards parameter1="recipes" parameter2=_id parameter3=image parameter4=name }}

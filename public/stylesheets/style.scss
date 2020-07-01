@@ -450,6 +450,8 @@ a {
     justify-content: space-evenly;
     align-content: flex-start;
     height: fit-content;
+    width: 100%;
+
     .card {
       display: flex;
       flex-direction: row;
@@ -459,7 +461,7 @@ a {
       background-color: #fff;
       margin: 10px 5px;
       max-width: 150px;
-      width: 100%;
+
       animation: fade-in 0.65s ease-in-out forwards;
       box-shadow: 2px 2px 4px rgba(0,0,0,0.15);
       overflow: hidden;
@@ -976,7 +978,7 @@ button:disabled {
 }
 
 .input-container {
-  width: 100%;
+  width: 50%;
   display: flex;
   flex-direction: column;
   margin-bottom: 15px;
@@ -1122,16 +1124,95 @@ button:disabled {
   }
 }
 
-/* SMALL SCREEN */
-@media screen and (max-width: 959px) {
-  //
+/* MENU FOR BIG SCREENS */
+@media screen and (min-width: 700px) {
+  .navbar{
+    a {
+      flex-grow: 3;
+    }
+    .search-form{
+      max-width: fit-content;
+      width: 100%;
+    }  
+    .dropdown {
+      display: inline-block;
+
+    .dropdown__content{
+      display: flex;
+      background-color: $blue-navbar;
+      animation: none;
+      box-shadow: none;
+      position: relative;
+      top: 0px;
+      color: #fff;
+      
+      ul {
+        display: flex;
+        flex-direction: row;
+        padding: 0;
+
+        li {
+          padding: 0px 15px;
+
+          a {
+            font-weight: normal;
+            color: #fff;
+            padding: 0px 15px;
+            &:hover{
+              color: $a-hover;
+            }
+          }
+          button{
+            color: #fff;
+
+            &:hover{
+              color: $error;
+            }
+          }
+        }
+      }
+    }
+  }
 }
 
 
+
 /* MEDIUM SCREEN */
-@media screen and (min-width: 960px) {   
+@media screen and (min-width: 700px) {
   .wrapper {
+    width: 80%;
+    background-color: white;
+    margin: auto;
+    .recipe-control-buttons {
+      width: 50%;
+      margin: auto;
+    }
+    .details-container {
+      .details-img{
+        margin: auto;
+        .img-big{
+        max-width: 300px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        object-fit: contain;
+        }
+      }
+        img {
+          margin: auto;
+          max-width: 300px;
+          box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+          object-fit: contain;
+        }
+    }
+    .card {
+      max-width: 300px;
+      width: 100%;
+
+      .card-img {
+        height: 150px;
+      }
+    }
     .wrapper-small {
+      width: 75%;
       .card {
         max-width: 300px;
         width: 100%;
@@ -1141,63 +1222,6 @@ button:disabled {
         }
       }
     }
-  }
-
-  .xs-only {
-    display: none;
-  }
-  
-  .navbar{
-    a {
-      flex-grow: 3;
-    }
-    .search-form{
-      max-width: fit-content;
-      width: 100%;
-
-    }
-    .dropdown {
-      display: inline-block;
-  
-      .dropdown__content{
-        display: flex;
-        background-color: $blue-navbar;
-        animation: none;
-        box-shadow: none;
-        position: relative;
-        top: 0px;
-        color: #fff;
-        
-        ul {
-          display: flex;
-          flex-direction: row;
-          padding: 0;
-
-          li {
-            padding: 0px 15px;
-  
-            a {
-              font-weight: normal;
-              color: #fff;
-              padding: 0px 15px;
-              &:hover{
-                color: $a-hover;
-              }
-            }
-            button{
-              color: #fff;
-
-              &:hover{
-                color: $error;
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-
-  .wrapper{
     .text-row {
 
       label {
@@ -1206,12 +1230,10 @@ button:disabled {
       }
     }
   }
-}
 
-                                        /* LARGE SCREEN */
-@media screen and (min-width: 1200px) {
-  // Fill
-  a:hover {
-    color: #f5cd79
+  .xs-only {
+    display: none;
+  }
   }
 }
+                                        /* LARGE SCREEN */
