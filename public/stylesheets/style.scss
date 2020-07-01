@@ -111,11 +111,6 @@ body {
     max-width: 180px;
     width: 100%;
     outline: 0;
-
-    // button {
-    //   width: 20px;
-    //   height: 20px;
-    // }
   }
   .dropdown {
     display: flex;
@@ -166,7 +161,7 @@ body {
             }
           }
 
-          button, input[type="submit"], input[type="reset"] {
+          button, input[type="submit"] {
             background: none;
             color: inherit;
             border: none;
@@ -334,7 +329,7 @@ a {
   display: flex;
   flex-direction: column;
   padding: 0;
-  margin: 10px 0;
+  margin: 50px 10px 0;
 
   img {
     margin: 15px 0;
@@ -377,7 +372,7 @@ a {
         font-weight: bolder;
       }
 
-      button, input[type="submit"], input[type="reset"] {
+      button, input[type="submit"] {
         background: none;
         color: inherit;
         border: none;
@@ -395,12 +390,11 @@ a {
 
 .text-row {
     display: flex;
-    justify-content: space-evenly;
-    width: 90%;
-    align-items: center;
+    justify-content: center;
     color: #535353;
     font-weight: bolder;
     font-size: larger;
+    margin-top: 40px;
 
     label {
       width: 50%;
@@ -664,6 +658,22 @@ button:disabled {
   }
 }
 
+#search-item {
+  margin-bottom: 10px;
+}
+
+.search-submit__button {
+  margin-left: 15px;
+}
+
+.xs-only {
+  display: flex;
+}
+
+.profile-logo-small {
+  width: 16px;
+  margin-right: 5px;
+}
 
 // STARS RATING END
 
@@ -1098,7 +1108,7 @@ button:disabled {
   }
 
   button {
-    background: url('https://image.flaticon.com/icons/svg/648/648407.svg');
+    background: url('https://image.flaticon.com/icons/svg/2948/2948272.svg');
     border: none;
     background-color: none;
     background-repeat: no-repeat;
@@ -1124,61 +1134,73 @@ button:disabled {
   }
 }
 
-/* MENU FOR BIG SCREENS */
+/* RESPONSIVE SMALL SCREENS */
+@media screen and (max-width: 699px) {
+  .navbar {
+    .search-form {
+      input {
+        padding: 5px;
+      }
+    }
+  }
+}
+
+/* RESPONSIVE LARGE SCREENS */
 @media screen and (min-width: 700px) {
   .navbar{
     a {
       flex-grow: 3;
     }
-    .search-form{
+    .search-form {
       max-width: fit-content;
       width: 100%;
+
+      input {
+        padding: 5px;
+      }
     }  
     .dropdown {
       display: inline-block;
 
-    .dropdown__content{
-      display: flex;
-      background-color: $blue-navbar;
-      animation: none;
-      box-shadow: none;
-      position: relative;
-      top: 0px;
-      color: #fff;
-      
-      ul {
+      .dropdown__content{
         display: flex;
-        flex-direction: row;
-        padding: 0;
+        background-color: $blue-navbar;
+        animation: none;
+        box-shadow: none;
+        position: relative;
+        top: 0px;
+        color: #fff;
+        
+        ul {
+          display: flex;
+          flex-direction: row;
+          padding: 0;
 
-        li {
-          padding: 0px 15px;
-
-          a {
-            font-weight: normal;
-            color: #fff;
+          li {
             padding: 0px 15px;
-            &:hover{
-              color: $a-hover;
-            }
-          }
-          button{
-            color: #fff;
 
-            &:hover{
-              color: $error;
+            a {
+              font-weight: normal;
+              color: #fff;
+              padding: 0px 15px;
+              &:hover{
+                color: $a-hover;
+              }
+            }
+            
+            button{
+              color: #fff;
+
+              &:hover{
+                color: $error;
+              }
             }
           }
         }
       }
     }
   }
-}
 
-
-
-/* MEDIUM SCREEN */
-@media screen and (min-width: 700px) {
   .wrapper {
     width: 80%;
     background-color: white;
@@ -1212,7 +1234,6 @@ button:disabled {
       }
     }
     .wrapper-small {
-      width: 75%;
       .card {
         max-width: 300px;
         width: 100%;
@@ -1222,6 +1243,7 @@ button:disabled {
         }
       }
     }
+
     .text-row {
 
       label {
@@ -1234,6 +1256,4 @@ button:disabled {
   .xs-only {
     display: none;
   }
-  }
 }
-                                        /* LARGE SCREEN */

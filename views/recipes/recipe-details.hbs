@@ -87,11 +87,11 @@
       </div>
       {{#if user}}
         <div class="details-rate-this-recipe">
-          <label>Rate this recipe</label>
             {{#unless recipe.ratings}}
               <label>Be the first one to evaluate it !</label>
             {{/unless}}
             {{#ifNoRatings recipe.ratings user.username}}
+              <label>Rate this recipe</label>
               <div class="star-rating">
                 <form action="/recipes/leaveRating" method="POST">
                   <button type="submit" class="button" style="float: right; margin-left: 30px;">Rate</button>                

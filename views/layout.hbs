@@ -15,8 +15,8 @@
 
       <a href="/">NutriApp</a>
         <form class="search-form" action="/search">
-          <div>
-            <input class="search-input" type="text" placeholder="Search..." name="name">
+          <div class="input-container">
+            <input class="search-input input" type="text" placeholder="Find a recipe or a product.." name="name">
           </div>
           <button class="search-submit__button" type="submit"></button>
         </form>
@@ -24,9 +24,12 @@
           <a id="show-menu-btn" class="dropdown__button"></a>
             <div class="dropdown__content">
               <ul>
-                <li class="xs-only">
-                  <span><em>{{user.username}}</em></span>
-                </li>
+                {{#if user}}
+                  <li class="xs-only">
+                    <img class="profile-logo-small" src="https://image.flaticon.com/icons/svg/848/848006.svg" alt="profile logo">
+                    <span><em>{{user.username}}</em></span>
+                  </li>
+                {{/if}}
                 <li>
                   <a href="/products">Products</a>
                 </li>
