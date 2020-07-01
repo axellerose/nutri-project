@@ -7,6 +7,7 @@
   <title>{{title}}</title>
   <link rel="stylesheet" href="/stylesheets/style.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -14,11 +15,7 @@
   <nav class="navbar">
 
       <a href="/">
-      <img src="https://image.flaticon.com/icons/svg/605/605147.svg" 
-        style="
-          height: 50px;
-          object-fit:cover;
-                                            " />
+      <img class="logo-image" src="/images/nutriapp-logo-inclined.png"/>
       </a>
         <form class="search-form" action="/search">
           <div class="input-container">
@@ -71,10 +68,21 @@
 </main>
 {{!-- EMPTY FOOTER --}}
 <footer>
-  <ul class="nav-all-items">
-    <li class="nav-item"><a href="/"></a></li>
-    <li><a href="/products"></a></li>
-    <li id="recipes"><a href="/recipes"></a></li>
+  <ul class="footer-list">
+    <li class="footer-list-item">
+      <img class="footer-logo-small" src="/images/apple-white.png" alt="Products logo">
+      <a href="/products">Products</a>
+    </li>
+    {{#if user}}
+      <li class="footer-list-item">
+        <img class="footer-logo-small" src="/images/user-white.png" alt="Products logo">
+        <a href="/profile">Profile</a>
+      </li>
+    {{/if}}
+    <li class="footer-list-item">
+      <img class="footer-logo-small" src="/images/salad-white.png" alt="Products logo">
+      <a href="/recipes">Recipes</a>
+    </li>
   </ul>
 </footer>
 

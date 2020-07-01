@@ -12,6 +12,12 @@
 
   Find a font-familyasdasd
 */
+@keyframes menu-transition {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
+
 *, *:before, *:after {
   box-sizing: border-box; }
 
@@ -20,9 +26,11 @@ html {
   height: 100%; }
 
 body {
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 14px "Roboto", Helvetica, Arial, sans-serif;
   margin: 0;
   padding-top: 50px; }
+  body h3, body h2, body a {
+    font-weight: 400; }
   body .header {
     font-size: 2em;
     color: #0c2461;
@@ -30,16 +38,14 @@ body {
     margin: 15px 0px 15px 20px;
     border-bottom: 1px solid rgba(0, 0, 0, 0.15);
     width: 90%;
-    position: relative; }
+    position: relative;
+    font-weight: 300; }
   body footer {
     background-color: #4a69bd;
     width: 100%;
     border-radius: 0;
     position: fixed;
-    bottom: 0px;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap; }
+    bottom: 0px; }
     body footer ul {
       display: flex;
       flex-direction: row;
@@ -72,6 +78,10 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 0px 15px; }
+  .navbar .logo-image {
+    height: 40px;
+    margin: 0 30px 0 10px;
+    object-fit: cover; }
   .navbar a {
     color: #fff;
     font-size: 20px; }
@@ -91,12 +101,6 @@ body {
       height: 32px;
       border: none;
       outline: none; }
-
-@keyframes menu-transition {
-  from {
-    opacity: 0; }
-  to {
-    opacity: 1; } }
     .navbar .dropdown .dropdown__content {
       display: none;
       top: 50px;
@@ -328,7 +332,7 @@ a {
       display: flex;
       flex-direction: row;
       flex-wrap: wrap;
-      align-items: center;
+      align-content: center;
       border: 1px solid #d3d3d3;
       background-color: #fff;
       margin: 10px 5px;
@@ -343,8 +347,7 @@ a {
         background-position: center center;
         background-repeat: no-repeat; }
       .wrapper .wrapper-small .card .card-info h3 {
-        text-align: center;
-        font-size: 12px;
+        font-size: 16px;
         color: #323232;
         padding-left: 5px; }
   .wrapper .card {
@@ -366,6 +369,7 @@ a {
       background-position: center center;
       background-repeat: no-repeat; }
     .wrapper .card .card-info h3 {
+      text-align: center;
       font-size: 16px;
       color: #323232; }
 
@@ -570,11 +574,11 @@ button:disabled {
   align-items: center;
   width: 50px;
   height: 50px;
-  background-color: #38ada9;
+  background-color: #c44569;
   color: #fff;
   border-radius: 50%;
   right: 10px;
-  bottom: 60px;
+  bottom: 75px;
   font-size: 16px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
   animation: slide-up 0.65s ease-in-out forwards;
@@ -830,17 +834,71 @@ button:disabled {
 /* RESPONSIVE SMALL SCREENS */
 @media screen and (max-width: 699px) {
   .navbar .search-form input {
-    padding: 5px; } }
+    padding: 5px;
+    width: 100px; }
+  .navbar .search-form .search-submit__button {
+    margin-left: 25px; }
+  .navbar .logo-image {
+    height: 30px;
+    margin: 0 20px 0 10px;
+    object-fit: cover; }
+  main {
+    margin-bottom: 60px; }
+  footer {
+    height: 60px; }
+    footer .footer-list {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      justify-content: space-around; }
+      footer .footer-list .footer-list-item {
+        display: flex;
+        flex-direction: column; }
+      footer .footer-list .footer-logo-small {
+        align-self: center;
+        height: 20px;
+        width: 20px;
+        margin-bottom: 5px; } }
+
+/* RESPONSIVE MEDIUM SCREENS */
+@media screen and (min-width: 450px) and (max-width: 699px) {
+  .navbar .logo-image {
+    height: 30px;
+    margin: 0 20px 0 20px;
+    object-fit: cover; }
+  .navbar .search-form input {
+    padding: 5px;
+    width: 180px; }
+  .navbar .search-form .search-submit__button {
+    margin-left: 50px; } }
 
 /* RESPONSIVE LARGE SCREENS */
 @media screen and (min-width: 700px) {
+  html {
+    background-size: cover;
+    background-repeat: repeat;
+    background-image: url(https://images.unsplash.com/photo-1576398289164-c48dc021b4e1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80); }
+  main {
+    max-width: 70%;
+    max-height: 70%;
+    margin: 100px auto;
+    background-color: #fff;
+    padding-bottom: 100px;
+    padding-top: 50px;
+    box-shadow: rgba(0, 0, 0, 0.803) 0 0 100px;
+    animation: fade-in 0.65s ease-in-out forwards; }
+  footer {
+    display: none; }
   .navbar a {
     flex-grow: 3; }
   .navbar .search-form {
     max-width: fit-content;
     width: 100%; }
     .navbar .search-form input {
-      padding: 5px; }
+      padding: 5px;
+      width: 250px; }
+    .navbar .search-form .search-submit__button {
+      margin-left: 60px; }
   .navbar .dropdown {
     display: inline-block; }
     .navbar .dropdown .dropdown__content {
@@ -856,11 +914,11 @@ button:disabled {
         flex-direction: row;
         padding: 0; }
         .navbar .dropdown .dropdown__content ul li {
-          padding: 0px 15px; }
+          padding: 0px 10px; }
           .navbar .dropdown .dropdown__content ul li a {
             font-weight: normal;
             color: #fff;
-            padding: 0px 15px; }
+            padding: 0px 10px; }
             .navbar .dropdown .dropdown__content ul li a:hover {
               color: #f5cd79; }
           .navbar .dropdown .dropdown__content ul li button {
@@ -869,8 +927,11 @@ button:disabled {
               color: #b71540; }
   .wrapper {
     width: 80%;
-    background-color: white;
+    background-color: #fff;
     margin: auto; }
+    .wrapper .create-recipe__button {
+      right: 17%;
+      bottom: 17%; }
     .wrapper .recipe-control-buttons {
       width: 50%;
       margin: auto; }
