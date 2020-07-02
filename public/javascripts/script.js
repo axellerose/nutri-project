@@ -206,15 +206,22 @@ if (globalSearch) {
 }
 
 // #PRODUCT DETAILS - Confirm before deleting
-deleteProductButton = document.getElementById("delete-product-button")
-deleteRecipeButton = document.getElementById("delete-recipe-button")
-deleteConfirmation(deleteProductButton, "product")
-deleteConfirmation(deleteRecipeButton, "recipe")
+const deleteProductButton = document.getElementById("delete-product-button")
+if (deleteProductButton) {
+  deleteProductButton.addEventListener("click", function() {
+    let confirmed = confirm("Are you sure you want to delete this product ?");
+    if (!confirmed) {
+      event.preventDefault()
+    }
+  })
+}
 
-function deleteConfirmation(button, stringElement) {
-  if (button) {
-    button.addEventListener("click", function(){
-      return confirm(`Are you sure you want to delete this ${stringElement} ?`);
-    })
-  }
+const deleteRecipeButton = document.getElementById("delete-recipe-button")
+if (deleteRecipeButton) {
+  deleteRecipeButton.addEventListener("click", function() {
+    let confirmed = confirm("Are you sure you want to delete this recipe ?");
+    if (!confirmed) {
+      event.preventDefault()
+    }
+  })
 }
