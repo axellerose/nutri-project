@@ -39,9 +39,7 @@
               <span>This recipe doesn't have any rating yet.</span>
             {{/if}}
             {{#unless user}}
-              <div>
-                <span>Do you want to evaluate this recipe ? Click <a href="/login">here</a> to login first!</span>
-              </div>
+              <span id="evaluation-message">Do you want to evaluate this recipe ? Click <a href="/login">here</a> to login first!</span>
             {{/unless}}
           </div>
           <ul>

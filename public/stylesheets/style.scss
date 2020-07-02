@@ -463,9 +463,8 @@ a {
 
     .card {
       display: flex;
-      flex-direction: row;
+      flex-direction: column;
       flex-wrap: wrap;
-      align-content: center;
       border: 1px solid #d3d3d3;
       background-color: #fff;
       margin: 10px 5px;
@@ -484,9 +483,9 @@ a {
 
       .card-info {
         h3 {
+          text-align: center; 
           font-size: 16px;
           color: #323232;
-          padding-left: 5px;
         }
       }
     }
@@ -494,7 +493,6 @@ a {
   .card {
     display: flex;
     flex-direction: column;
-    align-items: center;
     border: 1px solid #d3d3d3;
     background-color: #fff;
     margin: 5px;
@@ -514,7 +512,7 @@ a {
 
     .card-info {
       h3 {
-        text-align: center;
+        text-align: center;  
         font-size: 16px;
         color: #323232;
       }
@@ -672,6 +670,8 @@ button:disabled {
   }
 }
 
+// STARS RATING END
+
 #search-item {
   margin-bottom: 10px;
 }
@@ -689,8 +689,9 @@ button:disabled {
   margin-right: 5px;
 }
 
-// STARS RATING END
-
+#evaluation-message {
+  margin: 10px 5px 10px;
+}
 
 .auth-form {
   width: 100%;
@@ -784,7 +785,6 @@ button:disabled {
 
 .wrapper {
   h3 {
-    padding-left: 20px;
     color: $blue-header; 
   }
   .create-recipe__button {
@@ -1305,7 +1305,7 @@ button:disabled {
 
     .create-recipe__button {
       right: 17%;
-      bottom: 17%;
+      bottom: 10%;
     }
     
     width: 80%;
