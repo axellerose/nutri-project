@@ -493,7 +493,9 @@ button:disabled {
   margin-left: 15px; }
 
 .xs-only {
-  display: flex; }
+  display: flex;
+  height: 16px;
+  margin-bottom: 15px; }
 
 .profile-logo-small {
   width: 16px;
