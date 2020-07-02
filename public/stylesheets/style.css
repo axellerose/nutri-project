@@ -856,6 +856,15 @@ button:disabled {
   main {
     margin-bottom: 60px;
     background-color: rgba(255, 255, 255, 0.9); }
+    main .not-found {
+      width: auto;
+      max-width: 425px;
+      margin: 200px auto 0;
+      height: 130px;
+      background-image: url("/images/404-error-transparent.png");
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center; }
   #index-search {
     max-width: fit-content; }
     #index-search input {
@@ -908,6 +917,14 @@ button:disabled {
     padding-top: 50px;
     box-shadow: rgba(0, 0, 0, 0.803) 0 0 100px;
     animation: fade-in 0.65s ease-in-out forwards; }
+    main .not-found {
+      width: auto;
+      max-width: 530px;
+      height: 180px;
+      margin: 0 auto;
+      background-image: url("/images/404-error-transparent.png");
+      background-size: cover;
+      background-repeat: no-repeat; }
   footer {
     display: none; }
   .navbar a {

@@ -1195,6 +1195,17 @@ button:disabled {
   main {
     margin-bottom: 60px;
     background-color:rgba(255,255,255,0.9);
+
+    .not-found {
+      width: auto;
+      max-width: 425px;
+      margin: 200px auto 0;
+      height: 130px;
+      background-image: url('/images/404-error-transparent.png');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
   }
 
   #index-search {
@@ -1273,13 +1284,22 @@ button:disabled {
     max-width: 70%;
     max-height: 70%;
     margin: 100px auto;
-    // background-color: #fff;
     background-color:rgba(255,255,255,0.9);
     padding-bottom: 100px;
     padding-top: 50px; 
     box-shadow: rgba(0, 0, 0, 0.803) 0 0 100px;
     animation: fade-in 0.65s ease-in-out forwards;
-    
+
+    .not-found {
+      width: auto;
+      max-width: 530px;
+      height: 180px;
+      margin: 0 auto;
+      background-image: url('/images/404-error-transparent.png');
+      background-size: cover;
+      background-repeat: no-repeat;
+      // background-position: center;
+    }
   }
 
   footer {
