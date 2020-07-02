@@ -14,9 +14,9 @@
 */
 
 
-// $blue-navbar: #4a69bd; // #original blue
-// $blue-navbar: #e77f67; // #brewed mustard
-$blue-navbar: #f19066; // #sawtooth aak 
+// $navbar-color: #4a69bd; // #original blue
+// $navbar-color: #e77f67; // #brewed mustard
+$navbar-color: #f19066; // #sawtooth aak 
 $click-btn: #60a3bc;
 $error: #b71540;
 $blue-header: #0c2461;
@@ -64,7 +64,7 @@ body {
   }
 
   footer{
-    background-color: $blue-navbar;
+    background-color: white;
     width: 100%;
     border-radius: 0;
     position: fixed;
@@ -103,7 +103,7 @@ body {
 }
 
 .navbar{
-  background-color: $blue-navbar;
+  background-color: $navbar-color;
   position: fixed;
   top: 0px;
   width: 100%;
@@ -745,7 +745,7 @@ button:disabled {
       outline: none;
 
       &:focus {
-        border: 1px solid $blue-navbar;
+        border: 1px solid $navbar-color;
       }
     }    
   }
@@ -756,7 +756,7 @@ button:disabled {
 
     button {
       border: none;
-      background-color: $blue-navbar;
+      background-color: $navbar-color;
       color: #fff;
       font-size: 14px;
       padding: 10px 20px;
@@ -845,7 +845,7 @@ button:disabled {
   // margin: 10px;
 
   // &:focus {
-  //   border: 1px solid $blue-navbar;
+  //   border: 1px solid $navbar-color;
   //   }
   // }
   .recipe-control-buttons {
@@ -928,7 +928,7 @@ button:disabled {
       color: #585858;
 
       &:focus {
-        border: 1px solid $blue-navbar;
+        border: 1px solid $navbar-color;
       }
     }
     select {
@@ -1018,7 +1018,7 @@ button:disabled {
     margin-right: 10px;
 
     &:focus {
-      border: 1px solid $blue-navbar;
+      border: 1px solid $navbar-color;
     }
   }
 
@@ -1044,7 +1044,7 @@ button:disabled {
     outline: none;
 
     &:focus {
-      border: 1px solid $blue-navbar;
+      border: 1px solid $navbar-color;
     }
   }    
 }
@@ -1145,7 +1145,7 @@ button:disabled {
   }
 
   button {
-    background: url('https://image.flaticon.com/icons/svg/2948/2948272.svg');
+    background: url('/images/magnifying-glass-2.png');
     border: none;
     background-color: none;
     background-repeat: no-repeat;
@@ -1211,6 +1211,8 @@ button:disabled {
 
   footer {
     height: 60px;
+    border-top: 1px solid rgba(0,0,0,0.15);
+
     
     .footer-list {
       display: flex;
@@ -1221,6 +1223,10 @@ button:disabled {
       .footer-list-item {
         display: flex;
         flex-direction: column;
+
+        a {
+          color: black;
+        }
       }
       
       .footer-logo-small {
@@ -1302,7 +1308,7 @@ button:disabled {
 
       .dropdown__content{
         display: flex;
-        background-color: $blue-navbar;
+        background-color: $navbar-color;
         animation: none;
         box-shadow: none;
         position: relative;

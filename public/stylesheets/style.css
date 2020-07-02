@@ -41,7 +41,7 @@ body {
     position: relative;
     font-weight: 300; }
   body footer {
-    background-color: #f19066;
+    background-color: white;
     width: 100%;
     border-radius: 0;
     position: fixed;
@@ -823,7 +823,7 @@ button:disabled {
     color: #585858;
     margin: 6px 10px 0px 10px; }
   .search-form button {
-    background: url("https://image.flaticon.com/icons/svg/2948/2948272.svg");
+    background: url("/images/magnifying-glass-2.png");
     border: none;
     background-color: none;
     background-repeat: no-repeat;
@@ -863,7 +863,8 @@ button:disabled {
     #index-search .search-submit__button {
       margin-left: 40px; }
   footer {
-    height: 60px; }
+    height: 60px;
+    border-top: 1px solid rgba(0, 0, 0, 0.15); }
     footer .footer-list {
       display: flex;
       flex-direction: row;
@@ -872,6 +873,8 @@ button:disabled {
       footer .footer-list .footer-list-item {
         display: flex;
         flex-direction: column; }
+        footer .footer-list .footer-list-item a {
+          color: black; }
       footer .footer-list .footer-logo-small {
         align-self: center;
         height: 20px;
