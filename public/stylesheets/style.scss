@@ -14,7 +14,9 @@
 */
 
 
-$blue-navbar: #4a69bd;
+// $blue-navbar: #4a69bd; // #original blue
+// $blue-navbar: #e77f67; // #brewed mustard
+$blue-navbar: #f19066; // #sawtooth aak 
 $click-btn: #60a3bc;
 $error: #b71540;
 $blue-header: #0c2461;
@@ -202,6 +204,7 @@ a {
 }
 
 .wrapper {
+  background-color:rgba(255,255,255,0);
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -454,6 +457,7 @@ a {
   }
 }
   .wrapper-small {
+    background-color:rgba(255,255,255,0);
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
@@ -693,6 +697,22 @@ button:disabled {
   margin: 10px 5px 10px;
 }
 
+.card.homepage-picture {
+  background-color: rgba(255,255,255,0);
+}
+
+#index-search {
+  max-width: fit-content;
+
+  input {
+    width: 250px; 
+  }
+
+  .search-submit__button {
+    margin-left: 60px;
+  }
+}
+
 .auth-form {
   width: 100%;
   max-width: 300px;
@@ -784,9 +804,12 @@ button:disabled {
 }
 
 .wrapper {
+  background-color:rgba(255,255,255,0);
+
   h3 {
     color: $blue-header; 
   }
+
   .create-recipe__button {
     position: fixed;
     display: flex;
@@ -1171,6 +1194,19 @@ button:disabled {
 
   main {
     margin-bottom: 60px;
+    background-color:rgba(255,255,255,0.9);
+  }
+
+  #index-search {
+    max-width: fit-content;
+  
+    input {
+      width: 200px; 
+    }
+  
+    .search-submit__button {
+      margin-left: 40px;
+    }
   }
 
   footer {
@@ -1226,11 +1262,13 @@ button:disabled {
     background-repeat: repeat;
     background-image: url(https://images.unsplash.com/photo-1576398289164-c48dc021b4e1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80);
   }
+
   main {
     max-width: 70%;
     max-height: 70%;
     margin: 100px auto;
-    background-color: #fff;
+    // background-color: #fff;
+    background-color:rgba(255,255,255,0.9);
     padding-bottom: 100px;
     padding-top: 50px; 
     box-shadow: rgba(0, 0, 0, 0.803) 0 0 100px;
@@ -1303,13 +1341,15 @@ button:disabled {
 
   .wrapper {
 
+    background-color:rgba(255,255,255,0);
+
     .create-recipe__button {
       right: 17%;
       bottom: 10%;
     }
     
     width: 80%;
-    background-color: #fff;
+    // background-color: #fff;
     margin: auto;
     .recipe-control-buttons {
       width: 50%;
@@ -1340,6 +1380,8 @@ button:disabled {
       }
     }
     .wrapper-small {
+
+      background-color:rgba(255,255,255,0);
 
       .card {
         max-width: 300px;
