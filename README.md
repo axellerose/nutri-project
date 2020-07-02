@@ -1,9 +1,9 @@
 # NutriApp
 
-# Developers: 
+## Developers: 
 Alex Gerasymenko & Antoine Rolland
 
-# Link to App: 
+## Link to App: 
 [NutriApp](http://nutriapp-project.herokuapp.com/)
 
 ## Description
@@ -48,27 +48,6 @@ If more time :
 - I want to share my DB via an API
 
 ## ROUTES:
-
-/
-/search
-/recipes
-   /recipes/create
-   /recipes/details/:id
-   /recipes/edit/:id
-   /recipes/delete/:id
-   /recipes/addFavorite
-   /recipes/deleteFavorite
-   /recipes/leaveReview
-   /recipes/leaveRating
-/products
-/products/details/:id
-/profile
-/profile/my-recipes
-/profile/favorite-recipes
-/signup
-/login
-/logout
-/add-new
 
 |Method|URL|Description|
 |---|---|---|
