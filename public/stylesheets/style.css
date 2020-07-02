@@ -4,7 +4,9 @@
   to {
     opacity: 1; } }
 
-*, *:before, *:after {
+*,
+*:before,
+*:after {
   box-sizing: border-box; }
 
 html {
@@ -15,7 +17,9 @@ body {
   font: 14px "Roboto", Helvetica, Arial, sans-serif;
   margin: 0;
   padding-top: 50px; }
-  body h3, body h2, body a {
+  body h3,
+  body h2,
+  body a {
     font-weight: 400; }
   body .header {
     font-size: 2em;
@@ -39,7 +43,8 @@ a {
   text-decoration: none;
   outline: none; }
 
-button, input[type="submit"] {
+button,
+input[type="submit"] {
   background: none;
   color: inherit;
   border: none;
@@ -110,7 +115,8 @@ button, input[type="submit"] {
             padding: 10px 15px; }
             .navbar .dropdown .dropdown__content ul li a:active {
               border: 1px solid #60a3bc; }
-          .navbar .dropdown .dropdown__content ul li button, .navbar .dropdown .dropdown__content ul li input[type="submit"] {
+          .navbar .dropdown .dropdown__content ul li button,
+          .navbar .dropdown .dropdown__content ul li input[type="submit"] {
             padding-left: 15px; }
 
 .wrapper {
@@ -401,18 +407,18 @@ button:disabled {
 
 .stars-outer::before {
   content: "\f005 \f005 \f005 \f005 \f005";
-  font-family: 'Font Awesome 5 Free';
+  font-family: "Font Awesome 5 Free";
   font-weight: 900;
   color: #ccc; }
 
 .stars-inner::before {
   content: "\f005 \f005 \f005 \f005 \f005";
-  font-family: 'Font Awesome 5 Free';
+  font-family: "Font Awesome 5 Free";
   font-weight: 900;
   color: #f8ce0b; }
 
 .star-rating {
-  font-family: 'Font Awesome 5 Free'; }
+  font-family: "Font Awesome 5 Free"; }
   .star-rating > form {
     border: none;
     display: flex;
@@ -430,7 +436,7 @@ button:disabled {
       font-size: 200%;
       color: #f8ce0b; }
       .star-rating > form:not(:checked) > label:before {
-        content: '\f005';
+        content: "\f005";
         color: #ccc; }
       .star-rating > form:not(:checked) > label:hover,
       .star-rating > form:not(:checked) > label:hover ~ label {
@@ -438,10 +444,10 @@ button:disabled {
         text-shadow: 0 0 3px #f8ce0b; }
         .star-rating > form:not(:checked) > label:hover:before,
         .star-rating > form:not(:checked) > label:hover ~ label:before {
-          content: '\f005';
+          content: "\f005";
           color: #f8ce0b; }
     .star-rating > form > input:checked ~ label:before {
-      content: '\f005  ';
+      content: "\f005  ";
       color: #f8ce0b; }
     .star-rating > form > label:active {
       position: relative; }
@@ -497,7 +503,7 @@ button:disabled {
       padding: 10px;
       background: #fff;
       border: 1px solid #cdcdcd;
-      transition: border .35s ease-in-out 0s;
+      transition: border 0.35s ease-in-out 0s;
       outline: none; }
       .auth-form .input-container input:focus {
         border: 1px solid #f19066; }
@@ -612,7 +618,7 @@ button:disabled {
       padding: 10px;
       background: #fff;
       border: 1px solid #cdcdcd;
-      transition: border .35s ease-in-out 0s;
+      transition: border 0.35s ease-in-out 0s;
       outline: none; }
     .create-form .input-container label {
       font-size: 14px;
@@ -622,7 +628,7 @@ button:disabled {
       padding: 10px;
       background: #fff;
       border: 1px solid #cdcdcd;
-      transition: border .35s ease-in-out 0s;
+      transition: border 0.35s ease-in-out 0s;
       outline: none;
       color: #585858; }
       .create-form .input-container input:focus {
@@ -631,7 +637,7 @@ button:disabled {
       padding: 10px;
       background: #fff;
       border: 1px solid #cdcdcd;
-      transition: border .35s ease-in-out 0s;
+      transition: border 0.35s ease-in-out 0s;
       outline: none;
       max-width: 150px;
       width: 100%;
@@ -654,14 +660,16 @@ button:disabled {
     margin-left: 75%;
     margin-bottom: 15px;
     outline: none; }
-  .create-form .delete-product__button, .create-form .delete-step__button {
+  .create-form .delete-product__button,
+  .create-form .delete-step__button {
     background: url("/images/delete-icon.svg");
     background-size: cover;
     width: 24px;
     height: 24px;
     padding-right: 10px;
     outline: none; }
-    .create-form .delete-product__button:active, .create-form .delete-step__button:active {
+    .create-form .delete-product__button:active,
+    .create-form .delete-step__button:active {
       border: 1px solid #60a3bc; }
   .create-form a {
     font-size: 14px;
@@ -678,7 +686,8 @@ button:disabled {
   flex-direction: row;
   margin-bottom: 15px;
   align-items: center; }
-  .time-container label, .time-container span {
+  .time-container label,
+  .time-container span {
     font-size: 14px;
     color: #585858;
     margin-bottom: 3px;
@@ -687,7 +696,7 @@ button:disabled {
     padding: 10px;
     background: #fff;
     border: 1px solid #cdcdcd;
-    transition: border .35s ease-in-out 0s;
+    transition: border 0.35s ease-in-out 0s;
     outline: none;
     width: 60px;
     margin-left: 10px;
@@ -708,7 +717,7 @@ button:disabled {
     padding: 10px;
     background: #fff;
     border: 1px solid #cdcdcd;
-    transition: border .35s ease-in-out 0s;
+    transition: border 0.35s ease-in-out 0s;
     outline: none; }
     .input-container input:focus {
       border: 1px solid #f19066; }
@@ -762,7 +771,7 @@ button:disabled {
       margin-right: 5px;
       background: #fff;
       border: 1px solid #cdcdcd;
-      transition: border .35s ease-in-out 0s;
+      transition: border 0.35s ease-in-out 0s;
       outline: none;
       width: 75px;
       color: #585858; }
