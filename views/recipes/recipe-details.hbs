@@ -1,31 +1,31 @@
 <div class="wrapper">
   <div class="details-container">
     <div class="details-info" id="recipe-info">
-      <img class="img-big" id="img-big-product" src="{{recipe.image}}" alt="Recipe picture"> 
+      <img class="img-big" id="img-big-product" src="{{recipe.image}}" alt="Recipe picture">
       <div class="details-description">
         <div class="head">
           <label class="header" style="border: none">{{recipe.name}}</label>
           {{#if user}}
-            {{#ifNotContains user.favorites recipe._id}}
-              <form action="/recipes/addFavorite" method="POST">
-                <button name="addFavorite" value="{{recipe._id}}" 
-                  style="background:url('https://image.flaticon.com/icons/svg/1077/1077035.svg');">
-                </button>
-              </form>
-            {{else}}
-              <form action="/recipes/deleteFavorite" method="POST">
-                <button name="deleteFavorite" value="{{recipe._id}}"
-                  style="background:url('https://image.flaticon.com/icons/svg/833/833472.svg');">
-                </button>
-              </form>
-            {{/ifNotContains}}
+          {{#ifNotContains user.favorites recipe._id}}
+          <form action="/recipes/addFavorite" method="POST">
+            <button name="addFavorite" value="{{recipe._id}}"
+              style="background:url('https://image.flaticon.com/icons/svg/1077/1077035.svg');">
+            </button>
+          </form>
+          {{else}}
+          <form action="/recipes/deleteFavorite" method="POST">
+            <button name="deleteFavorite" value="{{recipe._id}}"
+              style="background:url('https://image.flaticon.com/icons/svg/833/833472.svg');">
+            </button>
+          </form>
+          {{/ifNotContains}}
           {{/if}}
-        </div> 
+        </div>
         <div class="nutrition">
           <div>
             <label>Author: <em>{{recipe.author}}</em></label>
           </div>
-          <div class="details-ratings" >
+          <div class="details-ratings">
             <div class="stars-container" style="width:80px; border-bottom:none">
               <div class="stars-outer" style="border-bottom:none">
                 {{!-- Here the width of the container is 80px. So to have 2.5/5 stars we need 40px for example --}}
@@ -34,19 +34,20 @@
             </div>
             {{#if recipe.ratings}}
             <span id="rating-percent" style="display:none">{{getAverageInPercent recipe.ratings}}</span>
-              <span>  {{getAverage recipe.ratings}} / 5 ({{numberOfVotes recipe.ratings}})</span>
+            <span> {{getAverage recipe.ratings}} / 5 ({{numberOfVotes recipe.ratings}})</span>
             {{else}}
-              <span>This recipe doesn't have any rating yet.</span>
+            <span>This recipe doesn't have any rating yet.</span>
             {{/if}}
             {{#unless user}}
-              <span id="evaluation-message">Do you want to evaluate this recipe ? Click <a href="/login">here</a> to login first!</span>
+            <span id="evaluation-message">Do you want to evaluate this recipe ? Click <a href="/login">here</a> to login
+              first!</span>
             {{/unless}}
           </div>
           <ul>
             <li>
               <label>Time: <span>{{recipe.time}}</span> min</label>
             </li>
-            <li style="font-weight: bolder;"> 
+            <li style="font-weight: bolder;">
               Nutrition facts (for 100g):
             </li>
             <li>
@@ -59,7 +60,8 @@
               <label>carbs: <span>{{#if recipe.info.carbs}}{{recipe.info.carbs}}{{else}}0{{/if}} g</span></label>
             </li>
             <li>
-              <label>proteins: <span>{{#if recipe.info.proteins}}{{recipe.info.proteins}}{{else}}0{{/if}} g</span></label>
+              <label>proteins: <span>{{#if recipe.info.proteins}}{{recipe.info.proteins}}{{else}}0{{/if}}
+                  g</span></label>
             </li>
           </ul>
         </div>
@@ -68,84 +70,87 @@
     <div class="details-ingredients">
       <label>Ingredients:</label>
       <ul>
-      {{#each recipe.products}}
+        {{#each recipe.products}}
         <li>
-          <a href="/products/details/{{this.product.name}}">{{this.product.name}}</a>    {{this.quantity}} g
+          <a href="/products/details/{{this.product.name}}">{{this.product.name}}</a> {{this.quantity}} g
         </li>
-      {{/each}}
+        {{/each}}
       </ul>
       <div class="details-instructions">
         <label>Instructions:
           <ol>
             {{#each recipe.steps}}
-              <li><span>{{this}}</span></li><br>
+            <li><span>{{this}}</span></li><br>
             {{/each}}
           </ol>
         </label>
       </div>
       {{#if user}}
-        <div class="details-rate-this-recipe">
-            {{#unless recipe.ratings}}
-              <label>Be the first one to evaluate it !</label>
-            {{/unless}}
-            {{#ifNoRatings recipe.ratings user.username}}
-              <label>Rate this recipe</label>
-              <div class="star-rating">
-                <form action="/recipes/leaveRating" method="POST">
-                  <button type="submit" class="button" style="float: right; margin-left: 30px;">Rate</button>                
-                  <input type="radio" name="star" id="star5" value=5>
-                  <label for="star5"></label>
-                  <input type="radio" name="star" id="star4" value=4>
-                  <label for="star4"></label> 
-                  <input type="radio" name="star" id="star3" value=3>
-                  <label for="star3"></label>            
-                  <input type="radio" name="star" id="star2" value=2>
-                  <label for="star2"></label>                                       
-                  <input type="radio" name="star" id="star1" value=1>
-                  <label for="star1"></label>
-                  
-                  <input display="none" name="recipe" value="{{recipe._id}}"> 
-                  <input display="none" name="user" value="{{user.username}}">
+      <div class="details-rate-this-recipe">
+        {{#unless recipe.ratings}}
+        <label>Be the first one to evaluate it !</label>
+        {{/unless}}
+        {{#ifNoRatings recipe.ratings user.username}}
+        <label>Rate this recipe</label>
+        <div class="star-rating">
+          <form action="/recipes/leaveRating" method="POST">
+            <button type="submit" class="button" style="float: right; margin-left: 30px;">Rate</button>
+            <input type="radio" name="star" id="star5" value=5>
+            <label for="star5"></label>
+            <input type="radio" name="star" id="star4" value=4>
+            <label for="star4"></label>
+            <input type="radio" name="star" id="star3" value=3>
+            <label for="star3"></label>
+            <input type="radio" name="star" id="star2" value=2>
+            <label for="star2"></label>
+            <input type="radio" name="star" id="star1" value=1>
+            <label for="star1"></label>
 
-                </form>
-              </div>
-            {{/ifNoRatings}}
+            <input display="none" name="recipe" value="{{recipe._id}}">
+            <input display="none" name="user" value="{{user.username}}">
+
+          </form>
         </div>
+        {{/ifNoRatings}}
+      </div>
       {{/if}}
       <div class="">
-        <label>Reviews: 
+        <label>Reviews:
           {{#each recipe.reviews}}
-            <h5>by <em>{{author}}</em></h5>
-            <p style="font-weight:lighter">{{review}}</p>
+          <h5>by <em>{{author}}</em></h5>
+          <p style="font-weight:lighter">{{review}}</p>
           {{else}}
-            <span>This recipe doesn't have any review yet. {{#if user}} Be the first one to share your experience !{{/if}}</span> 
+          <span>This recipe doesn't have any review yet. {{#if user}} Be the first one to share your experience
+            !{{/if}}</span>
           {{/each}}
         </label>
       </div>
       {{#if user}}
-        {{#ifNoReview recipe.reviews user.username}}
-          <div class="input-container">
-            <form action="/recipes/leaveReview" method="POST"  style="display: flex; flex-direction:column; align-items:center">
-              {{!-- OJO textarea tags must be in the same LINE, or the placeholder won't appear ! --}}
-              <textarea name="review" id="" cols="30" rows="3" placeholder="Share your opinion about this recipe !"></textarea>
-              <input type="hidden" name="recipe" value="{{recipe._id}}">
-              <input type="hidden" name="user" value="{{user.username}}">
-              <button type="submit" class="button" style="width: 50%; margin: 10px">Send</button>
-            </form>
-          </div>
-        {{/ifNoReview}}
+      {{#ifNoReview recipe.reviews user.username}}
+      <div class="input-container">
+        <form action="/recipes/leaveReview" method="POST"
+          style="display: flex; flex-direction:column; align-items:center">
+          {{!-- OJO textarea tags must be in the same LINE, or the placeholder won't appear ! --}}
+          <textarea name="review" id="" cols="30" rows="3"
+            placeholder="Share your opinion about this recipe !"></textarea>
+          <input type="hidden" name="recipe" value="{{recipe._id}}">
+          <input type="hidden" name="user" value="{{user.username}}">
+          <button type="submit" class="button" style="width: 50%; margin: 10px">Send</button>
+        </form>
+      </div>
+      {{/ifNoReview}}
       {{/if}}
       {{#unless user}}
-        <div>
-          <span>Do you want to leave a review ? Click <a href="/login">here</a> to login first!</span>
-        </div>
+      <div>
+        <span>Do you want to leave a review ? Click <a href="/login">here</a> to login first!</span>
+      </div>
       {{/unless}}
     </div>
   </div>
   <div class="recipe-control-buttons">
     {{#ifHasAuth user.username recipe.author sessionUser.isSuperuser}}
-        <a class="edit__button" href="/recipes/edit/{{recipe._id}}">EDIT</a>
-        <a id="delete-recipe-button" class="delete__button" href="/recipes/delete/{{recipe._id}}">DELETE</a>
+    <a class="edit__button" href="/recipes/edit/{{recipe._id}}">EDIT</a>
+    <a id="delete-recipe-button" class="delete__button" href="/recipes/delete/{{recipe._id}}">DELETE</a>
     {{/ifHasAuth}}
   </div>
 </div>

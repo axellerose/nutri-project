@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,87 +8,87 @@
   <title>{{title}}</title>
   <link rel="stylesheet" href="/stylesheets/style.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+    rel="stylesheet">
 </head>
 
 <body>
-<header>
-  <nav class="navbar">
+  <header>
+    <nav class="navbar">
 
       <a href="/">
-      {{!-- <img class="logo-image" src="/images/nutriapp-logo-inclined.png"/> --}}
-      {{!-- <img class="logo-image" src="/images/nutriapp-logo-inclined-green.png"/> --}}
-      {{!-- <img class="logo-image" src="/images/nutriapp-logo-inclined-border.png"/> --}}
-      <img class="logo-image" src="/images/nutriapp-logo-inclined-border-20.png"/>
+        <img class="logo-image" src="/images/nutriapp-logo-inclined-border-20.png" />
       </a>
-        <form class="search-form" action="/search">
-          <div class="input-container">
-            <input class="search-input input" type="text" placeholder="Find a recipe or a product.." name="name">
-          </div>
-          <button class="search-submit__button" type="submit"></button>
-        </form>
-        <div class="dropdown">
-          <a id="show-menu-btn" class="dropdown__button"></a>
-            <div class="dropdown__content">
-              <ul>
-                {{#if user}}
-                  <li class="xs-only">
-                    <img class="profile-logo-small" src="/images/profile.png" alt="profile logo">
-                    <span><em>{{user.username}}</em></span>
-                  </li>
-                {{/if}}
-                <li>
-                  <a href="/products">Products</a>
-                </li>
-                <li id="recipes">
-                  <a href="/recipes">Recipes</a>
-                </li>
-                <div class="flex-spacer"></div>
-                {{#unless user}}
-                <li>
-                  <a href="/login">Login</a>
-                </li>        
-                {{/unless}}
+      <form class="search-form" action="/search">
+        <div class="input-container">
+          <input class="search-input input" type="text" placeholder="Find a recipe or a product.." name="name">
+        </div>
+        <button class="search-submit__button" type="submit"></button>
+      </form>
+      <div class="dropdown">
+        <a id="show-menu-btn" class="dropdown__button"></a>
+        <div class="dropdown__content">
+          <ul>
+            {{#if user}}
+            <li class="xs-only">
+              <img class="profile-logo-small" src="/images/profile.png" alt="profile logo">
+              <span><em>{{user.username}}</em></span>
+            </li>
+            {{/if}}
+            <li>
+              <a href="/products">Products</a>
+            </li>
+            <li id="recipes">
+              <a href="/recipes">Recipes</a>
+            </li>
+            <div class="flex-spacer"></div>
+            {{#unless user}}
+            <li>
+              <a href="/login">Login</a>
+            </li>
+            {{/unless}}
 
-                {{#if user}}
-                <li>
-                  <a href="/profile">Profile</a>
-                </li>
-                <li>     
-                  <form action="/logout" style="display: inline" method="POST" class="form-logout">
-                  <button type="submit">Logout</button>
-                  </form>
-                </li>   
-                {{/if}}
-              </ul>
-            </div>
-          </div>
+            {{#if user}}
+            <li>
+              <a href="/profile">Profile</a>
+            </li>
+            <li>
+              <form action="/logout" style="display: inline" method="POST" class="form-logout">
+                <button type="submit">Logout</button>
+              </form>
+            </li>
+            {{/if}}
+          </ul>
+        </div>
+      </div>
     </nav>
-</header>
-<main>
+  </header>
+  <main>
 
-   {{{body}}}
+    {{{body}}}
 
-</main>
-<footer>
-  <ul class="footer-list">
-    <li class="footer-list-item">
-      <img class="footer-logo-small" src="/images/apple-colored.png" alt="Products logo">
-      <a href="/products">Products</a>
-    </li>
-    {{#if user}}
+  </main>
+  <footer>
+    <ul class="footer-list">
+      <li class="footer-list-item">
+        <img class="footer-logo-small" src="/images/apple-colored.png" alt="Products logo">
+        <a href="/products">Products</a>
+      </li>
+      {{#if user}}
       <li class="footer-list-item">
         <img class="footer-logo-small" src="/images/profile.png" alt="Products logo">
         <a href="/profile">Profile</a>
       </li>
-    {{/if}}
-    <li class="footer-list-item">
-      <img class="footer-logo-small" src="/images/salad.png" alt="Products logo">
-      <a href="/recipes">Recipes</a>
-    </li>
-  </ul>
-</footer>
+      {{/if}}
+      <li class="footer-list-item">
+        <img class="footer-logo-small" src="/images/salad.png" alt="Products logo">
+        <a href="/recipes">Recipes</a>
+      </li>
+    </ul>
+  </footer>
 
-<script src="/javascripts/script.js"></script>
+  <script src="/javascripts/script.js"></script>
 </body>
+
 </html>

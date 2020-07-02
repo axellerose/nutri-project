@@ -1,11 +1,11 @@
 <form class="create-form" action="/products/feedDb" method="POST" enctype="multipart/form-data">
-<h2 class="header">Add a product</h2>
+  <h2 class="header">Add a product</h2>
 
   <div class="input-container">
     <label for="name">Name:</label>
     <input type="text" id="name" name="name" placeholder="Ex: Strawberry">
   </div>
-  
+
   <div class="input-container">
     <label for="descr">Description:</label>
     <input type="text" id="descr" name="description" placeholder="Something about this product">
@@ -14,15 +14,15 @@
   <div class="input-container">
     <label for="category">Category</label>
     <select id="category" name="category">
-        <option value="Vegetable">Vegetable</option>
-        <option value="Fruit">Fruit</option>
-        <option value="Fish">Fish</option>
-        <option value="Meat">Meat</option>
-        <option value="Seafood">Seafood</option>
-        <option value="Other">Other</option>
-        <option value="Dairy product">Dairy product</option>
-        <option value="Liquid">Liquid</option>
-        <option value="Spices and condiments">Spices and condiments</option>
+      <option value="Vegetable">Vegetable</option>
+      <option value="Fruit">Fruit</option>
+      <option value="Fish">Fish</option>
+      <option value="Meat">Meat</option>
+      <option value="Seafood">Seafood</option>
+      <option value="Other">Other</option>
+      <option value="Dairy product">Dairy product</option>
+      <option value="Liquid">Liquid</option>
+      <option value="Spices and condiments">Spices and condiments</option>
     </select>
   </div>
 
@@ -46,17 +46,17 @@
   <div class="input-container">
     <label for="seasons">Season(s):</label>
     <select id="seasons" name="seasons" multiple>
-        <option value="Spring">Spring</option>
-        <option value="Summer">Summer</option>
-        <option value="Autumn">Autumn</option>
-        <option value="Winter">Winter</option>
+      <option value="Spring">Spring</option>
+      <option value="Summer">Summer</option>
+      <option value="Autumn">Autumn</option>
+      <option value="Winter">Winter</option>
     </select>
   </div>
-  
+
   <button class="button-in-form create" type="submit">Create product</button>
   {{#if errorMessage}}
-    <div>
-        <p>{{errorMessage}}</p>
-    </div>   
+  <div>
+    <p>{{errorMessage}}</p>
+  </div>
   {{/if}}
 </form>
