@@ -928,6 +928,8 @@ button:disabled {
       background-image: url("/images/404-error-transparent.png");
       background-size: cover;
       background-repeat: no-repeat; }
+  button:hover {
+    cursor: pointer; }
   footer {
     display: none; }
   .navbar a {
@@ -990,6 +992,8 @@ button:disabled {
     .wrapper .card {
       max-width: 300px;
       width: 100%; }
+      .wrapper .card:hover {
+        cursor: pointer; }
       .wrapper .card .card-img {
         height: 150px; }
     .wrapper .wrapper-small {
@@ -997,6 +1001,8 @@ button:disabled {
       .wrapper .wrapper-small .card {
         max-width: 300px;
         width: 100%; }
+        .wrapper .wrapper-small .card:hover {
+          cursor: pointer; }
         .wrapper .wrapper-small .card .card-img {
           height: 150px; }
     .wrapper .text-row label {

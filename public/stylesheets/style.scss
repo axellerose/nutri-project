@@ -1305,6 +1305,10 @@ button:disabled {
     }
   }
 
+  button:hover {
+    cursor: pointer;
+  }
+
   footer {
     display: none;
   }
@@ -1403,11 +1407,15 @@ button:disabled {
     .card {
       max-width: 300px;
       width: 100%;
+      &:hover {
+        cursor: pointer;
+      }
 
       .card-img {
         height: 150px;
       }
     }
+
     .wrapper-small {
 
       background-color:rgba(255,255,255,0);
@@ -1415,6 +1423,9 @@ button:disabled {
       .card {
         max-width: 300px;
         width: 100%;
+        &:hover {
+          cursor: pointer;
+        }
 
         .card-img {
           height: 150px;
