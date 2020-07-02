@@ -14,7 +14,9 @@
 */
 
 
-$blue-navbar: #4a69bd;
+// $navbar-color: #4a69bd; // #original blue
+// $navbar-color: #e77f67; // #brewed mustard
+$navbar-color: #f19066; // #sawtooth aak 
 $click-btn: #60a3bc;
 $error: #b71540;
 $blue-header: #0c2461;
@@ -62,7 +64,7 @@ body {
   }
 
   footer{
-    background-color: $blue-navbar;
+    background-color: white;
     width: 100%;
     border-radius: 0;
     position: fixed;
@@ -101,7 +103,7 @@ body {
 }
 
 .navbar{
-  background-color: $blue-navbar;
+  background-color: $navbar-color;
   position: fixed;
   top: 0px;
   width: 100%;
@@ -202,6 +204,7 @@ a {
 }
 
 .wrapper {
+  background-color:rgba(255,255,255,0);
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -441,20 +444,20 @@ a {
 
       &:hover {
         cursor: pointer;
-        filter: brightness(50%);
+        filter: brightness(70%);
 
         p {
           display: block;
         }
       }
       &:active {
-        border: 2px solid $click-btn;
         border-radius: 30%;
         outline: none;
       }
   }
 }
   .wrapper-small {
+    background-color:rgba(255,255,255,0);
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
@@ -464,9 +467,8 @@ a {
 
     .card {
       display: flex;
-      flex-direction: row;
+      flex-direction: column;
       flex-wrap: wrap;
-      align-content: center;
       border: 1px solid #d3d3d3;
       background-color: #fff;
       margin: 10px 5px;
@@ -485,9 +487,9 @@ a {
 
       .card-info {
         h3 {
+          text-align: center; 
           font-size: 16px;
           color: #323232;
-          padding-left: 5px;
         }
       }
     }
@@ -495,7 +497,6 @@ a {
   .card {
     display: flex;
     flex-direction: column;
-    align-items: center;
     border: 1px solid #d3d3d3;
     background-color: #fff;
     margin: 5px;
@@ -515,7 +516,7 @@ a {
 
     .card-info {
       h3 {
-        text-align: center;
+        text-align: center;  
         font-size: 16px;
         color: #323232;
       }
@@ -673,6 +674,8 @@ button:disabled {
   }
 }
 
+// STARS RATING END
+
 #search-item {
   margin-bottom: 10px;
 }
@@ -690,8 +693,25 @@ button:disabled {
   margin-right: 5px;
 }
 
-// STARS RATING END
+#evaluation-message {
+  margin: 10px 5px 10px;
+}
 
+.card.homepage-picture {
+  background-color: rgba(255,255,255,0);
+}
+
+#index-search {
+  max-width: fit-content;
+
+  input {
+    width: 250px; 
+  }
+
+  .search-submit__button {
+    margin-left: 60px;
+  }
+}
 
 .auth-form {
   width: 100%;
@@ -725,7 +745,7 @@ button:disabled {
       outline: none;
 
       &:focus {
-        border: 1px solid $blue-navbar;
+        border: 1px solid $navbar-color;
       }
     }    
   }
@@ -736,7 +756,7 @@ button:disabled {
 
     button {
       border: none;
-      background-color: $blue-navbar;
+      background-color: $navbar-color;
       color: #fff;
       font-size: 14px;
       padding: 10px 20px;
@@ -784,10 +804,12 @@ button:disabled {
 }
 
 .wrapper {
+  background-color:rgba(255,255,255,0);
+
   h3 {
-    padding-left: 20px;
     color: $blue-header; 
   }
+
   .create-recipe__button {
     position: fixed;
     display: flex;
@@ -823,7 +845,7 @@ button:disabled {
   // margin: 10px;
 
   // &:focus {
-  //   border: 1px solid $blue-navbar;
+  //   border: 1px solid $navbar-color;
   //   }
   // }
   .recipe-control-buttons {
@@ -906,7 +928,7 @@ button:disabled {
       color: #585858;
 
       &:focus {
-        border: 1px solid $blue-navbar;
+        border: 1px solid $navbar-color;
       }
     }
     select {
@@ -996,7 +1018,7 @@ button:disabled {
     margin-right: 10px;
 
     &:focus {
-      border: 1px solid $blue-navbar;
+      border: 1px solid $navbar-color;
     }
   }
 
@@ -1022,7 +1044,7 @@ button:disabled {
     outline: none;
 
     &:focus {
-      border: 1px solid $blue-navbar;
+      border: 1px solid $navbar-color;
     }
   }    
 }
@@ -1123,7 +1145,7 @@ button:disabled {
   }
 
   button {
-    background: url('https://image.flaticon.com/icons/svg/2948/2948272.svg');
+    background: url('/images/magnifying-glass-2.png');
     border: none;
     background-color: none;
     background-repeat: no-repeat;
@@ -1172,10 +1194,25 @@ button:disabled {
 
   main {
     margin-bottom: 60px;
+    background-color:rgba(255,255,255,0.9);
+  }
+
+  #index-search {
+    max-width: fit-content;
+  
+    input {
+      width: 200px; 
+    }
+  
+    .search-submit__button {
+      margin-left: 40px;
+    }
   }
 
   footer {
     height: 60px;
+    border-top: 1px solid rgba(0,0,0,0.15);
+
     
     .footer-list {
       display: flex;
@@ -1186,6 +1223,10 @@ button:disabled {
       .footer-list-item {
         display: flex;
         flex-direction: column;
+
+        a {
+          color: black;
+        }
       }
       
       .footer-logo-small {
@@ -1227,11 +1268,13 @@ button:disabled {
     background-repeat: repeat;
     background-image: url(https://images.unsplash.com/photo-1576398289164-c48dc021b4e1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80);
   }
+
   main {
     max-width: 70%;
     max-height: 70%;
     margin: 100px auto;
-    background-color: #fff;
+    // background-color: #fff;
+    background-color:rgba(255,255,255,0.9);
     padding-bottom: 100px;
     padding-top: 50px; 
     box-shadow: rgba(0, 0, 0, 0.803) 0 0 100px;
@@ -1265,7 +1308,7 @@ button:disabled {
 
       .dropdown__content{
         display: flex;
-        background-color: $blue-navbar;
+        background-color: $navbar-color;
         animation: none;
         box-shadow: none;
         position: relative;
@@ -1304,13 +1347,15 @@ button:disabled {
 
   .wrapper {
 
+    background-color:rgba(255,255,255,0);
+
     .create-recipe__button {
       right: 17%;
-      bottom: 17%;
+      bottom: 10%;
     }
     
     width: 80%;
-    background-color: #fff;
+    // background-color: #fff;
     margin: auto;
     .recipe-control-buttons {
       width: 50%;
@@ -1341,6 +1386,8 @@ button:disabled {
       }
     }
     .wrapper-small {
+
+      background-color:rgba(255,255,255,0);
 
       .card {
         max-width: 300px;
