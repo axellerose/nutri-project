@@ -314,11 +314,10 @@ a {
       outline: none; }
       .wrapper .container div:hover {
         cursor: pointer;
-        filter: brightness(50%); }
+        filter: brightness(70%); }
         .wrapper .container div:hover p {
           display: block; }
       .wrapper .container div:active {
-        border: 2px solid #60a3bc;
         border-radius: 30%;
         outline: none; }
   .wrapper .wrapper-small {

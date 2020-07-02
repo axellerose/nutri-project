@@ -441,14 +441,13 @@ a {
 
       &:hover {
         cursor: pointer;
-        filter: brightness(50%);
+        filter: brightness(70%);
 
         p {
           display: block;
         }
       }
       &:active {
-        border: 2px solid $click-btn;
         border-radius: 30%;
         outline: none;
       }
