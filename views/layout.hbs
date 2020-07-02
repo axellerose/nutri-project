@@ -15,7 +15,10 @@
   <nav class="navbar">
 
       <a href="/">
-      <img class="logo-image" src="/images/nutriapp-logo-inclined.png"/>
+      {{!-- <img class="logo-image" src="/images/nutriapp-logo-inclined.png"/> --}}
+      {{!-- <img class="logo-image" src="/images/nutriapp-logo-inclined-green.png"/> --}}
+      {{!-- <img class="logo-image" src="/images/nutriapp-logo-inclined-border.png"/> --}}
+      <img class="logo-image" src="/images/nutriapp-logo-inclined-border-20.png"/>
       </a>
         <form class="search-form" action="/search">
           <div class="input-container">
@@ -29,7 +32,7 @@
               <ul>
                 {{#if user}}
                   <li class="xs-only">
-                    <img class="profile-logo-small" src="https://image.flaticon.com/icons/svg/848/848006.svg" alt="profile logo">
+                    <img class="profile-logo-small" src="/images/profile.png" alt="profile logo">
                     <span><em>{{user.username}}</em></span>
                   </li>
                 {{/if}}
@@ -66,21 +69,20 @@
    {{{body}}}
 
 </main>
-{{!-- EMPTY FOOTER --}}
 <footer>
   <ul class="footer-list">
     <li class="footer-list-item">
-      <img class="footer-logo-small" src="/images/apple-white.png" alt="Products logo">
+      <img class="footer-logo-small" src="/images/apple-colored.png" alt="Products logo">
       <a href="/products">Products</a>
     </li>
     {{#if user}}
       <li class="footer-list-item">
-        <img class="footer-logo-small" src="/images/user-white.png" alt="Products logo">
+        <img class="footer-logo-small" src="/images/profile.png" alt="Products logo">
         <a href="/profile">Profile</a>
       </li>
     {{/if}}
     <li class="footer-list-item">
-      <img class="footer-logo-small" src="/images/salad-white.png" alt="Products logo">
+      <img class="footer-logo-small" src="/images/salad.png" alt="Products logo">
       <a href="/recipes">Recipes</a>
     </li>
   </ul>

@@ -2,18 +2,18 @@
 <div class="wrapper">
   <div class="container">
     <div>
-      <div onclick=location="/products" class="card" style="background-image: url('/images/apple-colored.png');">
+      <div onclick=location="/products" class="card homepage-picture" style="background-image: url('/images/apple-colored.png');">
       </div>
       <label class="text-row" onclick=location="/products">PRODUCTS</label>
     </div>
     <div>
-      <div onclick=location="/recipes"  class="card" style="background-image: url('/images/salad.png');">
+      <div onclick=location="/recipes"  class="card homepage-picture" style="background-image: url('/images/salad.png');">
       </div>  
       <label class="text-row" onclick=location="/recipes">RECIPES</label> 
     </div>
   </div>
   
-  <form class="search-form" action="/search">
+  <form id="index-search" class="search-form" action="/search">
     <div class="input-container">
       <input class="search-input" type="text" placeholder="Find a recipe or a product.." name="name">
     </div>
