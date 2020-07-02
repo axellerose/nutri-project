@@ -1,12 +1,12 @@
 <div class="wrapper">
   {{#if user}}
   <div class="profile">
-    
+
     <label> Welcome <span>{{user.username}}</span></label>
-    <img src="https://image.flaticon.com/icons/svg/3089/3089855.svg"class="avatar">
+    <img src="https://image.flaticon.com/icons/svg/3089/3089855.svg" class="avatar">
     <ul>
       <li>
-      <a href="/recipes/create">Create a new recipe</a>
+        <a href="/recipes/create">Create a new recipe</a>
       </li>
       {{#if user.isSuperuser}}
       <li>
@@ -17,16 +17,16 @@
         <a href="/profile/my-recipes">My recipes</a>
       </li>
       <li>
-      <a href="/profile/favorite-recipes">My favorite recipes</a>
+        <a href="/profile/favorite-recipes">My favorite recipes</a>
       </li>
-      <li>     
+      <li>
         <form action="/logout" style="display: inline" method="POST" class="form-logout">
-        <button type="submit">Logout</button>
+          <button type="submit">Logout</button>
         </form>
-      </li>  
-    {{else}}
+      </li>
+      {{else}}
       <p>You need to <a href="/login">login</a> to see your profile page. </p>
-    {{/if}}
-  </ul>
+      {{/if}}
+    </ul>
   </div>
 </div>

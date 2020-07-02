@@ -1,16 +1,15 @@
 <h2 class="header" id="global-search">Results for "{{query}}"</h2>
 <div class="wrapper" style="display:block;">
-    <h3 id="global-products-count"></h3>
+  <h3 id="global-products-count"></h3>
   <div class="wrapper-small" id="global-products">
     {{#each products}}
-      {{> cards parameter1="products" parameter2=name parameter3=image parameter4=name }}
+    {{> cards parameter1="products" parameter2=name parameter3=image parameter4=name }}
     {{/each}}
   </div>
-    <h3 id="global-recipes-count"></h3>
+  <h3 id="global-recipes-count"></h3>
   <div class="wrapper-small" id="global-recipes">
     {{#each recipes}}
-      {{> cards parameter1="recipes" parameter2=_id parameter3=image parameter4=name }}
+    {{> cards parameter1="recipes" parameter2=_id parameter3=image parameter4=name }}
     {{/each}}
   </div>
 </div>
-

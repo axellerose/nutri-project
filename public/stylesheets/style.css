@@ -1,17 +1,3 @@
-/* Colors for this app
-  NAVBAR COLORS
-  blue navbar - #4a69bd
-  a text color - whitesmoke
-  a text hover - #f5cd79
-  
-  
-  CARD COLORS
-  border: #3dc1d3
-
-  button-delete: #c44569
-
-  Find a font-familyasdasd
-*/
 @keyframes menu-transition {
   from {
     opacity: 0; }
@@ -40,23 +26,6 @@ body {
     width: 90%;
     position: relative;
     font-weight: 300; }
-  body footer {
-    background-color: white;
-    width: 100%;
-    border-radius: 0;
-    position: fixed;
-    bottom: 0px; }
-    body footer ul {
-      display: flex;
-      flex-direction: row;
-      flex-wrap: nowrap;
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      align-items: center;
-      height: 100%; }
-      body footer ul a {
-        color: whitesmoke; }
   body .logo {
     background-color: #b71540;
     width: 50px;
@@ -65,6 +34,22 @@ body {
 
 .flex-spacer {
   flex: 1; }
+
+a {
+  text-decoration: none;
+  outline: none; }
+
+button, input[type="submit"] {
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+  font-size: 14px;
+  color: #535353;
+  font-weight: bolder; }
 
 .navbar {
   background-color: #f19066;
@@ -126,21 +111,7 @@ body {
             .navbar .dropdown .dropdown__content ul li a:active {
               border: 1px solid #60a3bc; }
           .navbar .dropdown .dropdown__content ul li button, .navbar .dropdown .dropdown__content ul li input[type="submit"] {
-            background: none;
-            color: inherit;
-            border: none;
-            padding: 0;
-            font: inherit;
-            cursor: pointer;
-            outline: inherit;
-            font-size: 14px;
-            color: #535353;
-            font-weight: bolder;
             padding-left: 15px; }
-
-a {
-  text-decoration: none;
-  outline: none; }
 
 .wrapper {
   background-color: rgba(255, 255, 255, 0);
@@ -272,17 +243,6 @@ a {
         .wrapper .profile ul li:active {
           border: 1px solid #60a3bc; }
         .wrapper .profile ul li a {
-          font-size: 14px;
-          color: #535353;
-          font-weight: bolder; }
-        .wrapper .profile ul li button, .wrapper .profile ul li input[type="submit"] {
-          background: none;
-          color: inherit;
-          border: none;
-          padding: 0;
-          font: inherit;
-          cursor: pointer;
-          outline: inherit;
           font-size: 14px;
           color: #535353;
           font-weight: bolder; }
@@ -875,8 +835,21 @@ button:disabled {
     #index-search .search-submit__button {
       margin-left: 40px; }
   footer {
+    background-color: white;
+    width: 100%;
     height: 60px;
-    border-top: 1px solid rgba(0, 0, 0, 0.15); }
+    border-top: 1px solid rgba(0, 0, 0, 0.15);
+    position: fixed;
+    bottom: 0px; }
+    footer ul {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      align-items: center;
+      height: 100%; }
     footer .footer-list {
       display: flex;
       flex-direction: row;

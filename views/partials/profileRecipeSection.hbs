@@ -1,10 +1,10 @@
 <h2>{{title}}</h2>
 {{#if user}}
-  <div id="my-recipes" class="wrapper">
-    {{#each object}}
-      {{> cards parameter1="recipes" parameter2=_id parameter3=image parameter4=name }}
-    {{else}}
-      <p>{{{ifEmpty}}}</p>
-    {{/each}}
-  </div> 
+<div id="my-recipes" class="wrapper">
+  {{#each object}}
+  {{> cards parameter1="recipes" parameter2=_id parameter3=image parameter4=name }}
+  {{else}}
+  <p>{{{ifEmpty}}}</p>
+  {{/each}}
+</div>
 {{/if}}

@@ -1,62 +1,61 @@
-const { Schema, model } = require('mongoose');
-const Product = require('../models/Product.model');
+const { Schema, model } = require("mongoose");
+const Product = require("../models/Product.model");
 
 const recipeSchema = new Schema(
   {
     name: {
       type: String,
-      required: [true, 'Name is required.'],
+      required: [true, "Name is required."],
     },
     author: {
-      type: String
+      type: String,
     },
     image: {
       type: String,
-      required: true
+      required: true,
     },
     ratings: [
       {
         author: String,
-        rating: Number
-      }
+        rating: Number,
+      },
     ],
     time: {
       type: Number,
-      required: true
+      required: true,
     },
     info: {
       calories: Number,
       fat: Number,
       carbs: Number,
-      proteins: Number
+      proteins: Number,
     },
     products: [
       {
-      quantity: Number,
-      product: 
-          {
+        quantity: Number,
+        product: {
           type: Schema.Types.ObjectId,
-          ref: 'Product'
-          }
-      }
+          ref: "Product",
+        },
+      },
     ],
     steps: {
       type: [String],
-      required: true
+      required: true,
     },
     reviews: [
       {
         author: String,
-        review: String
+        review: String,
       },
       {
-        timestamps: true
-      }
-    ]
+        timestamps: true,
+      },
+    ],
   },
   {
-    timestamps: true
+    timestamps: true,
   }
 );
 
-module.exports = model('Recipe', recipeSchema);
+module.exports = model("Recipe", recipeSchema);

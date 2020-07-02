@@ -1,30 +1,30 @@
 <h2 class="header">{{itemHeader}}</h2>
-<div class="input-container" style="margin: auto"> 
+<div class="input-container" style="margin: auto">
   <input type="text" id="search-item" placeholder="Find a {{itemStringLowerSingular}}..">
 </div>
 <div id="search-results" class="search-input wrapper">
   {{#if recipeIndex}}
-    {{#each object}}
-      {{> cards parameter1="recipes" parameter2=_id parameter3=image parameter4=name }}
-    {{/each}}
+  {{#each object}}
+  {{> cards parameter1="recipes" parameter2=_id parameter3=image parameter4=name }}
+  {{/each}}
   {{/if}}
   {{#if productIndex}}
-    {{#each object}}
-      {{> cards parameter1="products" parameter2=name parameter3=image parameter4=name }}
-    {{/each}}
+  {{#each object}}
+  {{> cards parameter1="products" parameter2=name parameter3=image parameter4=name }}
+  {{/each}}
   {{/if}}
   {{#ifAndOperator recipeIndex user}}
-    <a href={{link}} class="create-recipe__button"> 
-      <div>
-        <img src="/images/add-icon.svg">
-      </div>
-    </a>
+  <a href={{link}} class="create-recipe__button">
+    <div>
+      <img src="/images/add-icon.svg">
+    </div>
+  </a>
   {{/ifAndOperator}}
   {{#ifAndOperator productIndex user.isSuperuser}}
-    <a href={{link}} class="create-recipe__button"> 
-      <div>
-        <img src="/images/add-icon.svg">
-      </div>
-    </a>
-  {{/ifAndOperator}}      
+  <a href={{link}} class="create-recipe__button">
+    <div>
+      <img src="/images/add-icon.svg">
+    </div>
+  </a>
+  {{/ifAndOperator}}
 </div>
